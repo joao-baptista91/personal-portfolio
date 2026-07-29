@@ -33,7 +33,7 @@ Outsystems:
 
 <img width="1186" height="715" alt="outsystems - gestao encomendas e produtos" src="https://github.com/user-attachments/assets/b0b0f272-8899-48a2-8844-2898ff9c4774" />
 
-- Entry Logs
+- Entry Logs (with JavaScript)
 
 <img width="438" height="881" alt="outsystems - registo de pontos" src="https://github.com/user-attachments/assets/7a1e9414-9b63-43ff-80db-4de0af966ab7" />
 <img width="439" height="861" alt="outsystems - registo de pontos2" src="https://github.com/user-attachments/assets/e4137011-0f65-48df-a50f-076166e01402" />
@@ -51,6 +51,12 @@ Python:
 <img width="866" height="512" alt="Python-Gestão de produtos" src="https://github.com/user-attachments/assets/e6bbd379-57ae-4495-8513-7e4b9ccfa4b3" />
 - Expenses Approval
 <img width="1920" height="946" alt="image" src="https://github.com/user-attachments/assets/fcd37aba-f7fc-4283-b6c0-c505c61e8ccf" />
+
+JavaScript:
+- Secret Mission
+<img width="1920" height="1080" alt="2026-07-29 11_46_53-" src="https://github.com/user-attachments/assets/e9a17b17-d66b-4938-a15a-cc67fde28908" />
+<img width="1920" height="1080" alt="2026-07-29 11_47_07-" src="https://github.com/user-attachments/assets/330efd2c-aabd-4dca-8f2d-fde5e3873653" />
+
 
 
 
