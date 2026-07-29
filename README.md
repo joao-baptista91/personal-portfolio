@@ -49,6 +49,7 @@ C#:
 Python:
 - Product Management
 <img width="866" height="512" alt="Python-Gestão de produtos" src="https://github.com/user-attachments/assets/e6bbd379-57ae-4495-8513-7e4b9ccfa4b3" />
+
 - Expenses Approval
 <img width="1920" height="946" alt="image" src="https://github.com/user-attachments/assets/fcd37aba-f7fc-4283-b6c0-c505c61e8ccf" />
 
