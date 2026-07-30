@@ -1,319 +1,522 @@
 <!DOCTYPE html>
 
-<html lang="pt">
+<html lang="pt-PT">
 
 <head>
-
-<meta charset="UTF-8">
-
-<title>Missão Secreta</title>
-
- 
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missão Secreta</title>
+>T
+```
 <style>
 
- 
-
-body{
-
-    margin:0;
-
-    font-family:Georgia, serif;
-
-    background:#1e1b18;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    height:100vh;
-
-}
-
- 
-
-#pergaminho{
-
-    width:750px;
-
-    max-width:90%;
-
-    background:#f3e3b2;
-
-    padding:40px;
-
-    border:12px solid #7a4b18;
-
-    border-radius:12px;
-
-    box-shadow:0px 0px 40px black;
-
-    text-align:center;
-
-}
-
- 
-
-h1{
-
-    color:#6b1f1f;
-
-    font-size:48px;
-
-    margin-bottom:10px;
-
-}
-
- 
-
-h2{
-
-    color:#4a2d16;
-
-}
-
- 
-
-input{
-
-    font-size:24px;
-
-    text-align:center;
-
-    padding:10px;
-
-    width:180px;
-
-    border-radius:8px;
-
-    border:2px solid #6b1f1f;
-
-}
-
- 
-
-button{
-
- 
-
-    margin-top:20px;
-
-    font-size:22px;
-
-    padding:12px 30px;
-
-    border:none;
-
-    border-radius:8px;
-
-    cursor:pointer;
-
-    background:#6b1f1f;
-
-    color:white;
-
- 
-
-}
-
- 
-
-button:hover{
-
-    background:#8a2b2b;
-
-}
-
- 
-
-#resultado{
-
-    display:none;
-
-    margin-top:30px;
-
-}
-
- 
-
-.mapa{
-
- 
-
-    border:5px solid #6b1f1f;
-
-    margin-top:20px;
-
-    width:100%;
-
-    border-radius:10px;
-
- 
-
-}
-
- 
-
-.erro{
-
-    color:red;
-
-    font-weight:bold;
-
-    margin-top:20px;
-
-}
-
- 
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=MedievalSharp&display=swap');
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        background:
+            radial-gradient(circle at center, #3b3024 0%, #1a1511 70%);
+        font-family: Georgia, serif;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background:
+            radial-gradient(circle at 20% 20%, rgba(255, 180, 70, 0.08), transparent 25%),
+            radial-gradient(circle at 80% 80%, rgba(255, 120, 30, 0.06), transparent 25%);
+        animation: luzFogo 4s infinite alternate;
+    }
+
+    @keyframes luzFogo {
+        from {
+            opacity: 0.5;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    #pergaminho {
+        position: relative;
+        width: 800px;
+        max-width: 100%;
+        padding: 55px 50px;
+        text-align: center;
+        color: #3b2413;
+
+        background:
+            linear-gradient(
+                90deg,
+                rgba(100, 55, 15, 0.18),
+                transparent 8%,
+                transparent 92%,
+                rgba(100, 55, 15, 0.18)
+            ),
+            radial-gradient(
+                ellipse at center,
+                #f6e5ae 0%,
+                #e7c982 70%,
+                #b88743 100%
+            );
+
+        border: 14px solid #6e421c;
+        border-radius: 18px;
+
+        box-shadow:
+            0 0 0 5px #3c2413,
+            0 0 30px rgba(0, 0, 0, 0.9),
+            inset 0 0 45px rgba(95, 48, 12, 0.45);
+
+        animation: aparecer 1.5s ease-out;
+    }
+
+    @keyframes aparecer {
+        from {
+            opacity: 0;
+            transform: scale(0.75) rotate(-3deg);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1) rotate(0);
+        }
+    }
+
+    h1 {
+        margin: 0 0 12px;
+        font-family: 'MedievalSharp', Georgia, serif;
+        font-size: clamp(42px, 8vw, 72px);
+        color: #641d1d;
+        text-shadow:
+            2px 2px 0 #d2a85f,
+            3px 3px 4px rgba(0, 0, 0, 0.35);
+        animation: brilho 2s infinite alternate;
+    }
+
+    @keyframes brilho {
+        from {
+            text-shadow:
+                2px 2px 0 #d2a85f,
+                3px 3px 4px rgba(0, 0, 0, 0.35);
+        }
+
+        to {
+            text-shadow:
+                2px 2px 0 #d2a85f,
+                0 0 18px rgba(255, 213, 100, 0.8);
+        }
+    }
+
+    h2 {
+        font-family: 'Cinzel', Georgia, serif;
+        color: #4a2d16;
+    }
+
+    .subtitulo {
+        font-size: 21px;
+        margin-bottom: 30px;
+    }
+
+    .chave {
+        font-size: 55px;
+        display: inline-block;
+        animation: flutuar 2s ease-in-out infinite;
+    }
+
+    @keyframes flutuar {
+        0%, 100% {
+            transform: translateY(0) rotate(-5deg);
+        }
+
+        50% {
+            transform: translateY(-10px) rotate(5deg);
+        }
+    }
+
+    input {
+        width: 220px;
+        padding: 14px;
+        font-size: 26px;
+        text-align: center;
+        letter-spacing: 8px;
+        color: #3b2413;
+        background: #f8e8b6;
+        border: 3px solid #6b1f1f;
+        border-radius: 10px;
+        outline: none;
+        box-shadow: inset 0 0 12px rgba(80, 40, 10, 0.3);
+    }
+
+    input:focus {
+        box-shadow:
+            0 0 15px rgba(107, 31, 31, 0.6),
+            inset 0 0 12px rgba(80, 40, 10, 0.3);
+    }
+
+    button {
+        display: block;
+        margin: 25px auto 0;
+        padding: 15px 35px;
+        font-family: 'Cinzel', Georgia, serif;
+        font-size: 21px;
+        font-weight: bold;
+        color: #f8e8b6;
+        background: linear-gradient(#8b3030, #571717);
+        border: 3px solid #3c1515;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow:
+            0 5px 0 #351010,
+            0 8px 15px rgba(0, 0, 0, 0.4);
+        transition: all 0.2s ease;
+    }
+
+    button:hover {
+        transform: translateY(-3px);
+        box-shadow:
+            0 8px 0 #351010,
+            0 12px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    button:active {
+        transform: translateY(4px);
+        box-shadow:
+            0 1px 0 #351010,
+            0 4px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .erro {
+        min-height: 28px;
+        margin-top: 22px;
+        color: #8b0000;
+        font-weight: bold;
+        font-size: 20px;
+        animation: erro 0.3s ease;
+    }
+
+    @keyframes erro {
+        0%, 100% {
+            transform: translateX(0);
+        }
+
+        25% {
+            transform: translateX(-8px);
+        }
+
+        75% {
+            transform: translateX(8px);
+        }
+    }
+
+    #resultado {
+        display: none;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 2px solid rgba(100, 50, 15, 0.5);
+        animation: revelar 1.5s ease-out;
+    }
+
+    @keyframes revelar {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+            clip-path: inset(0 0 100% 0);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+            clip-path: inset(0 0 0 0);
+        }
+    }
+
+    .parabens {
+        color: #641d1d;
+        font-size: 32px;
+    }
+
+    .local {
+        font-size: 23px;
+        line-height: 1.6;
+    }
+
+    .mapa {
+        width: 90%;
+        max-width: 600px;
+        margin-top: 20px;
+        border: 7px solid #6b1f1f;
+        border-radius: 12px;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .mapa:hover {
+        transform: scale(1.04) rotate(1deg);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7);
+    }
+
+    .mensagem-final {
+        margin-top: 25px;
+        padding: 18px;
+        font-size: 21px;
+        line-height: 1.5;
+        background: rgba(255, 239, 178, 0.45);
+        border: 2px dashed #6b1f1f;
+        border-radius: 10px;
+    }
+
+    .brasao {
+        margin-top: 25px;
+        font-size: 28px;
+        letter-spacing: 12px;
+        color: #6b1f1f;
+    }
+
+    @media (max-width: 600px) {
+
+        #pergaminho {
+            padding: 40px 20px;
+            border-width: 8px;
+        }
+
+        h1 {
+            font-size: 43px;
+        }
+
+        .subtitulo {
+            font-size: 18px;
+        }
+
+        .local {
+            font-size: 19px;
+        }
+
+        .mensagem-final {
+            font-size: 18px;
+        }
+    }
 
 </style>
-
- 
+```
 
 </head>
 
- 
-
 <body>
 
- 
+```
+<main id="pergaminho">
 
-<div id="pergaminho">
+    <div class="chave">🗝️</div>
 
- 
+    <h1>Missão Secreta</h1>
 
-<h1>🔑 Missão Secreta</h1>
+    <p class="subtitulo">
+        Uma mensagem misteriosa aguarda por ti...
+        <br>
+        Apenas os dignos conseguirão avançar.
+    </p>
 
- 
+    <h2>🔐 Introduz o código secreto 🔐</h2>
 
-<h2>Introduz o Código para desbloquear a primeira pista.</h2>
+    <input
+        id="codigo"
+        type="password"
+        maxlength="4"
+        placeholder="∗∗∗∗"
+        aria-label="Código secreto"
+    >
 
- 
+   <button onclick="verificar()" style = "margin-bottom: 50px">
+        🔓 Desbloquear a Missão
+    </button>
 
-<input id="codigo" type="password" placeholder="Código">
+    <h2> CORTES - LEIRIA- 2025/2026</h2>
+    <p id="erro" class="erro"></p>
 
- 
+    <section id="resultado">
 
-<br>
+        <h2 class="parabens">
+            🎉 PARABÉNS, MISSÃO DESBLOQUEADA! 🎉
+        </h2>
 
- 
+        <h3>
+            A primeira etapa da aventura foi concluída.
+        </h3>
 
-<button onclick="verificar()">Desbloquear</button>
+        <p class="local">
+            📜 No dia <strong>22 de julho</strong><br>
+            ⏳ às <strong>19 horas</strong><br><br>
 
- 
+            Deverás dirigir-te ao seguinte ponto de encontro!
+        </p>
 
-<p id="erro" class="erro"></p>
+        <h2>
+            📍 Clicar no Icone! 📍 
+        </h2>
 
- 
+        <a
+            href="https://maps.app.goo.gl/21BqhSGcvybXyAqQ6"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <img
+                style="max-width: 30%;"
+                src="https://cdn-icons-png.flaticon.com/512/235/235861.png"
+                alt="Mapa do ponto de encontro"
+                class="mapa"
+            >
+        </a>
 
-<div id="resultado">
+        <p>
+            🧭 Clique no mapa para descobrir o caminho.
+        </p>
 
- 
+        <div class="mensagem-final">
+            🗝️ No local <strong>“IMT, Parque de Estacionamento”</strong>,
+            receberás uma mensagem por e-mail com o destino secreto do jantar.
+        </div>
 
-<h2>🎉 Parabéns!</h2>
+        <div class="brasao">
+            ⚔️ 🏰 ⚔️
+        </div>
 
- 
+    </section>
 
-<h3>Concluíste a primeira missão.</h3>
-
- 
-
-<p>
-
-No dia <strong>22 de julho</strong><br>
-
-às <strong>16h45</strong><br><br>
-
- 
-
-Dirige-te ao ponto de encontro:
-
-</p>
-
- 
-
-<h2>📍R. Cel. Pereira Pascoal 23A 2410-453 Leiria<br>
-
-Guimarota</h2>
-
- 
-
-<img class="mapa"
-
-src="https://maps.googleapis.com/maps/api/staticmap?center=Castelo+de+Leiria&zoom=17&size=700x400&markers=color:red%7CCastelo+de+Leiria"
-
-alt="https://maps.app.goo.gl/21BqhSGcvybXyAqQ6
-
-">
-
- 
-
-<p style="font-size:22px">
-
- 
-
-🗝️ No local “IMT – Parque de Estacionamento” receberás uma mensagem por e-mail com o destino do jantar.
-
- 
-
-</p>
-
- 
-
-</div>
-
- 
-
-</div>
-
- 
+</main>
 
 <script>
 
- 
+    let audioContext;
 
-function verificar(){
+    function iniciarSom() {
 
- 
+        if (!audioContext) {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        }
 
-let codigo=document.getElementById("codigo").value;
+        if (audioContext.state === "suspended") {
+            audioContext.resume();
+        }
+    }
 
- 
+    function tocarSom(tipo) {
 
-if(codigo=="2410"){
+        iniciarSom();
 
- 
+        const oscilador = audioContext.createOscillator();
+        const ganho = audioContext.createGain();
 
-document.getElementById("resultado").style.display="block";
+        oscilador.connect(ganho);
+        ganho.connect(audioContext.destination);
 
-document.getElementById("erro").innerHTML="";
+        const agora = audioContext.currentTime;
 
- 
+        if (tipo === "sucesso") {
 
-}else{
+            oscilador.type = "sine";
 
- 
+            oscilador.frequency.setValueAtTime(392, agora);
+            oscilador.frequency.setValueAtTime(523, agora + 0.15);
+            oscilador.frequency.setValueAtTime(659, agora + 0.3);
+            oscilador.frequency.setValueAtTime(784, agora + 0.45);
 
-document.getElementById("erro").innerHTML="Código incorreto.";
+            ganho.gain.setValueAtTime(0.25, agora);
+            ganho.gain.exponentialRampToValueAtTime(0.01, agora + 1);
 
- 
+            oscilador.start(agora);
+            oscilador.stop(agora + 1);
 
-}
+        } else {
 
- 
+            oscilador.type = "sawtooth";
 
-}
+            oscilador.frequency.setValueAtTime(180, agora);
+            oscilador.frequency.exponentialRampToValueAtTime(80, agora + 0.3);
 
- 
+            ganho.gain.setValueAtTime(0.18, agora);
+            ganho.gain.exponentialRampToValueAtTime(0.01, agora + 0.3);
+
+            oscilador.start(agora);
+            oscilador.stop(agora + 0.3);
+        }
+    }
+
+    function verificar() {
+
+        const codigo = document.getElementById("codigo").value.trim();
+        const resultado = document.getElementById("resultado");
+        const erro = document.getElementById("erro");
+
+        if (codigo === "2410") {
+
+            tocarSom("sucesso");
+
+            erro.textContent = "";
+            resultado.style.display = "block";
+
+            document.getElementById("codigo").style.display = "none";
+
+            document.querySelector("button").style.display = "none";
+
+            resultado.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        } else {
+
+            tocarSom("erro");
+
+            resultado.style.display = "none";
+            erro.textContent = "⚠️ Código incorreto. A missão permanece selada!";
+
+            const campo = document.getElementById("codigo");
+
+            campo.value = "";
+
+            campo.animate(
+                [
+                    { transform: "translateX(0)" },
+                    { transform: "translateX(-10px)" },
+                    { transform: "translateX(10px)" },
+                    { transform: "translateX(0)" }
+                ],
+                {
+                    duration: 400
+                }
+            );
+        }
+    }
+
+    document.getElementById("codigo").addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.key === "Enter") {
+                verificar();
+            }
+
+        }
+    );
 
 </script>
-
- 
+```
 
 </body>
-
- 
 
 </html>
