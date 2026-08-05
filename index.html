@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>João Baptista — Portfólio</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#home" class="logo">
+        <span class="logo-mark">JB</span>
+        <span class="logo-text">
+          João Baptista
+          <small>IT Consultant</small>
+        </span>
+      </a>
+
+      <div class="nav-wrap">
+        <nav class="nav">
+          <a href="#home">Home</a>
+          <a href="#about" data-i18n="nav.about">Sobre mim</a>
+          <a href="#skills" data-i18n="nav.skills">Competências</a>
+          <a href="#certifications" data-i18n="nav.certs">Certificações</a>
+          <a href="#projects" data-i18n="nav.projects">Projetos</a>
+          <a href="#contact" data-i18n="nav.contact">Contacto</a>
+        </nav>
+
+        <div class="lang-switcher">
+          <button id="lang-toggle" class="lang-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+            <img class="lang-flag" id="lang-flag" src="assets/icons/flag-pt.svg" alt="PT">
+            <span class="lang-code" id="lang-code">PT</span>
+            <span class="lang-caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="lang-popover" id="lang-popover" role="menu" hidden>
+            <label class="lang-option">
+              <input type="radio" name="lang" value="pt" checked>
+              <img class="lang-flag" src="assets/icons/flag-pt.svg" alt="PT">
+              <span>Português</span>
+            </label>
+            <label class="lang-option">
+              <input type="radio" name="lang" value="en">
+              <img class="lang-flag" src="assets/icons/flag-gb.svg" alt="EN">
+              <span>English</span>
+            </label>
+          </div>
+        </div>
+
+        <a class="btn btn-outline btn-cv" href="assets/documents/CV_JoaoBaptista.pdf" download>
+          <span data-i18n="header.downloadCV">Download CV</span>
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 3v12"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <path d="M5 19h14"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <h1>
+          <span data-i18n="hero.title1">João Baptista, Consultor de TI, com uma base</span><br>
+          <span class="accent-blue" data-i18n="hero.title2">sustentável</span>
+        </h1>
+        <p class="hero-text" data-i18n="hero.text">
+          Desenvolvo e dou suporte a aplicações web com foco na eficiência, fiabilidade, melhoria contínua
+          e sustentabilidade. Este portefólio reúne alguns dos projetos que refletem a minha evolução técnica
+          e profissional.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">
+            <span data-i18n="hero.viewProjects">Ver Projetos</span>
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <polyline points="16 18 22 12 16 6"/>
+              <polyline points="8 6 2 12 8 18"/>
+            </svg>
+          </a>
+          <a href="#contact" class="btn btn-outline">
+            <span data-i18n="hero.contact">Contactar-me</span>
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <polyline points="2 7 12 13 22 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container about-grid">
+        <div class="about-photo">
+          <!-- TODO: quando tiveres uma foto, substitui o svg abaixo por:
+               <img src="assets/images/about-photo.jpg" alt="João Baptista"> -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path fill="currentColor" d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/>
+          </svg>
+        </div>
+        <div class="about-content">
+          <h2 class="section-title" data-i18n="about.title">Sobre mim</h2>
+          <p class="text-justify" data-i18n="about.text1">Eu, João Baptista, tenho formação académica em Engenharia da Energia e do Ambiente (Mestrado pela Escola Superior de Tecnologia e Gestão de Leiria) e passei por estágios nas áreas da consultoria em Qualidade e Ambiente e das energias renováveis. A minha formação, aliada à experiência profissional inicial, levou-me a valorizar a eficiência dos processos e a utilização racional dos recursos, princípios que continuo a aplicar quando desenvolvo ou dou suporte a soluções tecnológicas.</p>
+          <p class="text-justify" data-i18n="about.text2">Mais tarde, foi através do suporte informático e da formação que me aproximei da tecnologia e decidi orientar o meu percurso profissional para essa área. Atualmente, lido com desenvolvimento e suporte aplicacional na plataforma OutSystems, possuindo as certificações Associate Developer for ODC e Associate Reactive Developer. Ao longo deste percurso participei em projetos nos setores Seguros/Gestão de Sinistros e Automóvel, enquanto continuo a expandir competências em Python, JavaScript e C#.</p>
+          <p class="text-justify" data-i18n="about.text3">Procuro cruzar as duas áreas sempre que faz sentido. A engenharia ensinou-me a pensar em sistemas, processos e eficiência, e procuro aplicar essa forma de pensar em cada projeto que desenvolvo. Este portfólio nasce precisamente dessa vontade de continuar a aprender, evoluir e transformar conhecimento em soluções práticas.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills">
+      <div class="container">
+        <h2 class="section-title" data-i18n="skills.title">Competências</h2>
+        <p class="section-subtitle" data-i18n="skills.subtitle">As ferramentas e tecnologias que uso no dia a dia.</p>
+
+        <div class="skills-grid">
+          <div class="skill-card">
+            <span class="skill-icon">
+              <img src="assets/icons/skills/outsystems.svg" alt="O11">
+            </span>
+            <span class="skill-name">OutSystems 11</span>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">
+              <img src="assets/icons/skills/odc.svg" alt="ODC">
+            </span>
+            <span class="skill-name">OutSystems ODC</span>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">
+              <img src="assets/icons/skills/sql.svg" alt="SQL">
+            </span>
+            <span class="skill-name">SQL</span>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">
+              <img src="assets/icons/skills/api.svg" alt="API">
+            </span>
+            <span class="skill-name">REST / SOAP</span>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">
+              <img src="assets/icons/skills/javascript.svg" alt="JavaScript">
+            </span>
+            <span class="skill-name">JavaScript</span>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">
+              <img src="assets/icons/skills/html5.svg" alt="HTML5">
+            </span>
+            <span class="skill-name">HTML5</span>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">
+              <img src="assets/icons/skills/css3.svg" alt="CSS3">
+            </span>
+            <span class="skill-name">CSS3</span>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">
+              <img src="assets/icons/skills/csharp.svg" alt="C#">
+            </span>
+            <span class="skill-name">C#</span>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">
+              <img src="assets/icons/skills/python.svg" alt="Python">
+            </span>
+            <span class="skill-name">Python</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications" class="certifications">
+      <div class="container">
+        <h2 class="section-title" data-i18n="certs.title">Certificações</h2>
+        <p class="section-subtitle" data-i18n="certs.subtitle">Formação e certificações que sustentam o meu trabalho.</p>
+
+        <div class="certs-grid">
+          <div class="cert-card">
+            <span class="cert-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="8" r="6"/>
+                <path d="M9 13.5 7 22l5-3 5 3-2-8.5"/>
+              </svg>
+            </span>
+            <div class="cert-body">
+              <p class="cert-title">Associate Developer for ODC</p>
+              <p class="cert-entity">OutSystems, Inc.</p>
+              <p class="cert-year">2023</p>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <span class="cert-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="8" r="6"/>
+                <path d="M9 13.5 7 22l5-3 5 3-2-8.5"/>
+              </svg>
+            </span>
+            <div class="cert-body">
+              <p class="cert-title">Associate Reactive Developer for OutSystems</p>
+              <p class="cert-entity">OutSystems, Inc.</p>
+              <p class="cert-year">2023</p>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <span class="cert-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="8" r="6"/>
+                <path d="M9 13.5 7 22l5-3 5 3-2-8.5"/>
+              </svg>
+            </span>
+            <div class="cert-body">
+              <p class="cert-title">Certificado de Competências Pedagógicas (CCP)</p>
+              <p class="cert-entity">Conclusão – Estudos e Formação, Lda</p>
+              <p class="cert-year">2019</p>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <span class="cert-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="8" r="6"/>
+                <path d="M9 13.5 7 22l5-3 5 3-2-8.5"/>
+              </svg>
+            </span>
+            <div class="cert-body">
+              <p class="cert-title">Microsoft Technology Associate</p>
+              <p class="cert-entity">Master.D – Centros Formativos</p>
+              <p class="cert-year">2021</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <div class="container">
+        <h2 class="section-title" data-i18n="projects.title">Projetos</h2>
+        <p class="section-subtitle" data-i18n="projects.subtitle">Uma seleção das aplicações que desenvolvi.</p>
+
+        <div id="projects-grid" class="projects-grid">
+          <!-- Os cartões de projeto são gerados a partir de js/data.js -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="site-footer">
+    <div class="container">
+      <h2 class="section-title" data-i18n="footer.title">Contacto</h2>
+    </div>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <span class="logo-mark small">JB</span>
+        <p class="footer-name">João Baptista — <span data-i18n="footer.role">Consultor TI</span></p>
+        <p class="footer-tagline" data-i18n="footer.tagline">Sempre com espaço na agenda para novos projetos e boas conversas sobre tecnologia.</p>
+      </div>
+
+      <div class="footer-nav">
+        <p class="footer-heading" data-i18n="footer.linksTitle">Links Rápidos</p>
+        <nav class="footer-nav-links">
+          <a href="#home">Home</a>
+          <a href="#about" data-i18n="nav.about">Sobre mim</a>
+          <a href="#skills" data-i18n="nav.skills">Competências</a>
+          <a href="#certifications" data-i18n="nav.certs">Certificações</a>
+          <a href="#projects" data-i18n="nav.projects">Projetos</a>
+          <a href="#contact" data-i18n="nav.contact">Contactar-me</a>
+        </nav>
+      </div>
+
+      <div class="footer-contact">
+        <p class="footer-heading" data-i18n="footer.heading">Vamos conversar?</p>
+        <div class="social-links">
+          <a class="social-icon" href="mailto:jfcb012@gmail.com" aria-label="Enviar-me um email" title="Enviar-me um email" data-i18n-title="footer.emailLabel">
+            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path fill="currentColor" d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/>
+            </svg>
+          </a>
+          <a class="social-icon" href="https://www.linkedin.com/in/jo%C3%A3o-baptista-b2862414b" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a class="social-icon" href="https://github.com/joao-baptista91" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="copyright" data-i18n="footer.copyright">© 2026 João Baptista. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
