@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 45" width="20" height="15" role="img" aria-label="Bandeira do Reino Unido">
+  <defs>
+    <clipPath id="ukClip"><rect width="60" height="45"/></clipPath>
+  </defs>
+  <g clip-path="url(#ukClip)">
+    <rect width="60" height="45" fill="#012169"/>
+    <g stroke="#fff" stroke-width="9">
+      <line x1="0" y1="0" x2="60" y2="45"/>
+      <line x1="60" y1="0" x2="0" y2="45"/>
+    </g>
+    <g stroke="#C8102E" stroke-width="3">
+      <line x1="0" y1="0" x2="60" y2="45"/>
+      <line x1="60" y1="0" x2="0" y2="45"/>
+    </g>
+    <g stroke="#fff" stroke-width="15">
+      <line x1="30" y1="0" x2="30" y2="45"/>
+      <line x1="0" y1="22.5" x2="60" y2="22.5"/>
+    </g>
+    <g stroke="#C8102E" stroke-width="9">
+      <line x1="30" y1="0" x2="30" y2="45"/>
+      <line x1="0" y1="22.5" x2="60" y2="22.5"/>
+    </g>
+  </g>
+</svg>

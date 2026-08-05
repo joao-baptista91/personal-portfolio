@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 45" width="20" height="15" role="img" aria-label="Bandeira de Portugal">
+  <rect width="60" height="45" fill="#ff0000"/>
+  <rect width="24" height="45" fill="#046a38"/>
+  <circle cx="24" cy="22.5" r="9" fill="none" stroke="#ffcc00" stroke-width="1.4"/>
+  <circle cx="24" cy="22.5" r="9" fill="none" stroke="#ffcc00" stroke-width="1.4" transform="rotate(45 24 22.5)"/>
+  <path d="M19.5 16 h9 v12.5 a4.5 4.5 0 0 1 -9 0 z" fill="#fff" stroke="#ff0000" stroke-width="0.7"/>
+  <g fill="#003399">
+    <rect x="21.2" y="18.2" width="1.4" height="1.4"/>
+    <rect x="24.4" y="18.2" width="1.4" height="1.4"/>
+    <rect x="21.2" y="21" width="1.4" height="1.4"/>
+    <rect x="24.4" y="21" width="1.4" height="1.4"/>
+    <rect x="22.8" y="19.6" width="1.4" height="1.4"/>
+  </g>
+</svg>
