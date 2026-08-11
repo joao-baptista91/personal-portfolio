@@ -220,7 +220,7 @@ function renderStatusTag(project) {
 
 // Lista de recursos (guias/artigos) da secção "Recursos".
 // Para adicionar um novo recurso, basta copiar um dos objetos abaixo e preencher os campos.
-// "id" tem de ser único — é usado no URL da página de detalhe (recurso.html?id=...).
+// "id" tem de ser único — é usado no URL da página de detalhe (resource.html?id=...).
 // Todos os textos de conteúdo (title, cardDescription, subtitle, intro, topics, checklist,
 // footerUpdated) têm sempre uma versão por idioma (pt / en).
 // "pdf" aponta para o ficheiro PDF descarregável em assets/documents/.
@@ -318,12 +318,12 @@ const RESOURCES = [
   }
 ];
 
-// Gera o markup de um cartão de recurso (usado em recursos.html). Aponta sempre para
-// recurso.html?id=... — uma única página de detalhe partilhada por todos os recursos,
+// Gera o markup de um cartão de recurso (usado em resources.html). Aponta sempre para
+// resource.html?id=... — uma única página de detalhe partilhada por todos os recursos,
 // tal como project.html faz para os projetos.
 function renderResourceCard(resource, lang) {
   return `
-    <a href="recurso.html?id=${encodeURIComponent(resource.id)}" class="resource-card">
+    <a href="resource.html?id=${encodeURIComponent(resource.id)}" class="resource-card">
       <div class="resource-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           ${resource.iconSvg}
