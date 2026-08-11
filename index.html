@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>João Baptista — Portfólio</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#home" class="logo">
+        <span class="logo-mark">JB</span>
+        <span class="logo-text">
+          João Baptista
+          <small>IT Consultant</small>
+        </span>
+      </a>
+
+      <div class="nav-wrap">
+        <nav class="nav">
+          <a href="#home">Home</a>
+          <a href="#about" data-i18n="nav.about">Sobre mim</a>
+          <a href="#experience" data-i18n="nav.experience">Experiência</a>
+          <a href="#skills" data-i18n="nav.skills">Competências</a>
+          <a href="#certifications" data-i18n="nav.certs">Certificações</a>
+          <a href="#projects" data-i18n="nav.projects">Projetos</a>
+          <a href="#resources-teaser" data-i18n="nav.resources">Recursos</a>
+          <a href="#contact" data-i18n="nav.contact">Contacto</a>
+        </nav>
+
+        <div class="lang-switcher">
+          <button id="lang-toggle" class="lang-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+            <img class="lang-flag" id="lang-flag" src="assets/icons/flag-pt.svg" alt="PT">
+            <span class="lang-code" id="lang-code">PT</span>
+            <span class="lang-caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="lang-popover" id="lang-popover" role="menu" hidden>
+            <label class="lang-option">
+              <input type="radio" name="lang" value="pt" checked>
+              <img class="lang-flag" src="assets/icons/flag-pt.svg" alt="PT">
+              <span>Português</span>
+            </label>
+            <label class="lang-option">
+              <input type="radio" name="lang" value="en">
+              <img class="lang-flag" src="assets/icons/flag-gb.svg" alt="EN">
+              <span>English</span>
+            </label>
+          </div>
+        </div>
+
+        <a class="btn btn-outline btn-cv" href="assets/documents/CV_JoaoBaptista.pdf" download>
+          <span data-i18n="header.downloadCV">Download CV</span>
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 3v12"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <path d="M5 19h14"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <h1>
+          <span data-i18n="hero.title1">João Baptista</span><br>
+          <span class="accent-blue hero-subtitle" data-i18n="hero.title2">Consultor TI com uma base sustentável</span>
+        </h1>
+        <p class="hero-text" data-i18n="hero.text">
+          Desenvolvo e dou suporte a aplicações web com foco na eficiência, fiabilidade, melhoria contínua
+          e sustentabilidade. Este portefólio reúne alguns dos projetos que refletem a minha evolução técnica
+          e profissional.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">
+            <span data-i18n="hero.viewProjects">Ver Projetos</span>
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <polyline points="16 18 22 12 16 6"/>
+              <polyline points="8 6 2 12 8 18"/>
+            </svg>
+          </a>
+          <a href="#contact" class="btn btn-outline">
+            <span data-i18n="hero.contact">Contactar-me</span>
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <polyline points="2 7 12 13 22 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-banner">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <polyline points="8 12 11 15 16 9"/>
+              </svg>
+            </div>
+            <div class="stat-text">
+              <span class="stat-number" id="stat-projects">0</span>
+              <span class="stat-label" data-i18n="stats.projectsLabel">Projetos Concluídos</span>
+            </div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M12 3 2 8l10 5 10-5-10-5Z"/>
+                <path d="M6 10v5c0 1.5 2.5 3.5 6 3.5s6-2 6-3.5v-5"/>
+              </svg>
+            </div>
+            <div class="stat-text">
+              <span class="stat-number" id="stat-certs">0</span>
+              <span class="stat-label" data-i18n="stats.certsLabel">Certificações Obtidas</span>
+            </div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+            </div>
+            <div class="stat-text">
+              <span class="stat-number" id="stat-years">Desde 2021</span>
+              <span class="stat-label" data-i18n="stats.yearsLabel">em TI</span>
+            </div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-icon stat-icon-green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 11 13.5 11 11"/>
+              </svg>
+            </div>
+            <div class="stat-text">
+              <span class="stat-number">1</span>
+              <span class="stat-label"><span data-i18n="stats.missionLabel">Missão:</span> <span class="highlight-green" data-i18n="stats.missionValue">Futuro Sustentável</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container about-grid">
+        <div class="about-photo">
+          <!-- TODO: quando tiveres uma foto, substitui o svg abaixo por:
+               <img src="assets/images/about-photo.jpg" alt="João Baptista"> -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path fill="currentColor" d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/>
+          </svg>
+        </div>
+        <div class="about-content">
+          <h2 class="section-title">
+            <svg class="section-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>
+            </svg>
+            <span data-i18n="about.title">Sobre mim</span>
+          </h2>
+          <p class="text-justify" data-i18n="about.text1">Eu, João Baptista, tenho formação académica em Engenharia da Energia e do Ambiente (Mestrado pela Escola Superior de Tecnologia e Gestão de Leiria) e passei por estágios nas áreas da consultoria em Qualidade e Ambiente e das energias renováveis. A minha formação, aliada à experiência profissional inicial, levou-me a valorizar a eficiência dos processos e a utilização racional dos recursos, princípios que continuo a aplicar quando desenvolvo ou dou suporte a soluções tecnológicas.</p>
+          <p class="text-justify" data-i18n="about.text2">Mais tarde, foi através do suporte informático e da formação que me aproximei da tecnologia e decidi orientar o meu percurso profissional para essa área. Atualmente, lido com desenvolvimento e suporte aplicacional na plataforma OutSystems, possuindo as certificações Associate Developer for ODC e Associate Reactive Developer. Ao longo deste percurso participei em projetos nos setores Seguros/Gestão de Sinistros e Automóvel, enquanto continuo a expandir competências em Python, JavaScript e C#.</p>
+          <p class="text-justify" data-i18n="about.text3">Procuro cruzar as duas áreas sempre que faz sentido. A engenharia ensinou-me a pensar em sistemas, processos e eficiência, e procuro aplicar essa forma de pensar em cada projeto que desenvolvo. Este portfólio nasce precisamente dessa vontade de continuar a aprender, evoluir e transformar conhecimento em soluções práticas.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="experience">
+      <div class="container">
+        <h2 class="section-title">
+          <svg class="section-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="7" width="20" height="14" rx="2"/>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+          </svg>
+          <span data-i18n="experience.title">Experiência Profissional</span>
+        </h2>
+        <p class="section-subtitle" data-i18n="experience.subtitle">Da consultoria em Ambiente ao suporte e desenvolvimento em TI — o meu percurso até aqui.</p>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <span class="timeline-period">2022 — 2024</span>
+              <h3 class="timeline-role" data-i18n="experience.entry1.role">Consultor TI OutSystems — Desenvolvimento e Suporte Aplicacional</h3>
+              <span class="timeline-company">KinetIT, Lda (atual Babel Ibérica, S.A.), Oeiras</span>
+              <ul class="timeline-highlights">
+                <li data-i18n="experience.entry1.highlight1">Suporte aplicacional de 2ª linha via plataforma de tickets (TopDesk): resolução de incidentes em produção, análise de código, SQL e integrações REST/SOAP.</li>
+                <li data-i18n="experience.entry1.highlight2">Desenvolvimento e manutenção de funcionalidades em aplicações Web Reactive na plataforma OutSystems 11, incluindo testes e preparação de deploys.</li>
+                <li data-i18n="experience.entry1.highlight3">Participação na reestruturação da fábrica OutSystems de um cliente, reorganizando a estrutura das aplicações para melhorar desempenho e manutenção.</li>
+                <li data-i18n="experience.entry1.highlight4">Controlo e redução da dívida técnica com o apoio do AI Mentor Studio, assegurando boas práticas de arquitetura e desempenho de código.</li>
+              </ul>
+              <div class="timeline-tags">
+                <span class="tag">OutSystems 11</span>
+                <span class="tag">SQL</span>
+                <span class="tag">REST / SOAP</span>
+                <span class="tag">TopDesk</span>
+                <span class="tag">AI Mentor Studio</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <span class="timeline-period">2019 — 2022</span>
+              <h3 class="timeline-role" data-i18n="experience.entry2.role">Administrativo, Manutenção/Apoio Informático e Formador</h3>
+              <span class="timeline-company">Memória Constante — Consultoria e Gestão, Lda, Marinha Grande</span>
+              <ul class="timeline-highlights">
+                <li data-i18n="experience.entry2.highlight1">Suporte técnico a colegas (hardware, software e monitorização do servidor) e preparação de postos de trabalho para novas admissões — tarefas de TI iniciadas em 2021.</li>
+                <li data-i18n="experience.entry2.highlight2">Ministração de ações de formação em Informática (a primeira em 2020, Excel Básico) e apoio técnico em formações dadas por colegas e formadores externos.</li>
+                <li data-i18n="experience.entry2.highlight3">Trabalho administrativo mantido ao longo de todo o período, em paralelo com as funções acima.</li>
+              </ul>
+              <div class="timeline-tags">
+                <span class="tag">Helpdesk</span>
+                <span class="tag">Hardware</span>
+                <span class="tag">Windows</span>
+                <span class="tag">Formação</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <span class="timeline-period">2018 — 2019</span>
+              <h3 class="timeline-role" data-i18n="experience.entry3.role">Estágio Profissional — Consultoria em Qualidade e Ambiente</h3>
+              <span class="timeline-company">Memória Constante — Consultoria e Gestão, Lda, Marinha Grande</span>
+              <ul class="timeline-highlights">
+                <li data-i18n="experience.entry3.highlight1">Participação em auditorias e ações de consultoria nas áreas de Qualidade e Ambiente.</li>
+                <li data-i18n="experience.entry3.highlight2">Apoio na definição, recolha e monitorização de indicadores (KPIs) e objetivos operacionais.</li>
+                <li data-i18n="experience.entry3.highlight3">Elaboração de relatórios técnicos de acompanhamento, diagnósticos e documentação de intervenções.</li>
+              </ul>
+              <div class="timeline-tags">
+                <span class="tag">Qualidade</span>
+                <span class="tag">Auditorias</span>
+                <span class="tag">KPIs</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <span class="timeline-period">2016 — 2017</span>
+              <h3 class="timeline-role" data-i18n="experience.entry4.role">Estágio Curricular — Energias Renováveis</h3>
+              <span class="timeline-company">RESPOL, SA, Leiria</span>
+              <ul class="timeline-highlights">
+                <li data-i18n="experience.entry4.highlight1">Elaboração de um projeto de produção fotovoltaica para a empresa.</li>
+                <li data-i18n="experience.entry4.highlight2">Recolha e tratamento de dados energéticos, meteorológicos, cartográficos e geológicos.</li>
+                <li data-i18n="experience.entry4.highlight3">Estudo e simulação de produção de energia e de retorno financeiro.</li>
+              </ul>
+              <div class="timeline-tags">
+                <span class="tag">Energias Renováveis</span>
+                <span class="tag">Fotovoltaico</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="continuous-education" class="continuous-education">
+      <div class="container">
+        <h2 class="section-title">
+          <svg class="section-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+          <span data-i18n="continuedu.title">Formação Contínua</span>
+        </h2>
+        <p class="section-subtitle" data-i18n="continuedu.subtitle">Cursos que continuei a fazer para expandir competências técnicas.</p>
+
+        <div class="continuedu-grid">
+          <div class="continuedu-item">
+            <span class="continuedu-name" data-i18n="continuedu.item2.name">Programação em Python</span>
+            <span class="continuedu-meta">Instituto do Emprego e Formação Profissional, Faro · 2026</span>
+          </div>
+          <div class="continuedu-item">
+            <span class="continuedu-name" data-i18n="continuedu.item1.name">Linguagens de Programação ASP.NET</span>
+            <span class="continuedu-meta">Instituto do Emprego e Formação Profissional, Leiria · 2025</span>
+          </div>
+          <div class="continuedu-item">
+            <span class="continuedu-name" data-i18n="continuedu.item3.name">The Complete JavaScript Course: From Zero to Expert!</span>
+            <span class="continuedu-meta">Udemy, Inc · 2024</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills">
+      <div class="container">
+        <h2 class="section-title">
+          <svg class="section-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <line x1="4" y1="6" x2="20" y2="6"/>
+            <circle cx="9" cy="6" r="2"/>
+            <line x1="4" y1="12" x2="20" y2="12"/>
+            <circle cx="15" cy="12" r="2"/>
+            <line x1="4" y1="18" x2="20" y2="18"/>
+            <circle cx="7" cy="18" r="2"/>
+          </svg>
+          <span data-i18n="skills.title">Competências</span>
+        </h2>
+        <p class="section-subtitle" data-i18n="skills.subtitle">O meu kit de ferramentas para transformar problemas em soluções.</p>
+
+        <div class="skills-grid">
+          <div class="skill-card">
+            <span class="skill-icon">
+              <img src="assets/icons/skills/outsystems.svg" alt="O11">
+            </span>
+            <span class="skill-name">OutSystems 11</span>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">
+              <img src="assets/icons/skills/odc.svg" alt="ODC">
+            </span>
+            <span class="skill-name">OutSystems ODC</span>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">
+              <img src="assets/icons/skills/outsystems-mentor.svg" alt="OutSystems Mentor">
+            </span>
+            <span class="skill-name">OutSystems Mentor</span>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">
+              <img src="assets/icons/skills/sql.svg" alt="SQL">
+            </span>
+            <span class="skill-name">SQL</span>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">
+              <img src="assets/icons/skills/api.svg" alt="API">
+            </span>
+            <span class="skill-name">REST / SOAP</span>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">
+              <img src="assets/icons/skills/javascript.svg" alt="JavaScript">
+            </span>
+            <span class="skill-name">JavaScript</span>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">
+              <img src="assets/icons/skills/html5.svg" alt="HTML5">
+            </span>
+            <span class="skill-name">HTML5</span>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">
+              <img src="assets/icons/skills/css3.svg" alt="CSS3">
+            </span>
+            <span class="skill-name">CSS3</span>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">
+              <img src="assets/icons/skills/csharp.svg" alt="C#">
+            </span>
+            <span class="skill-name">C#</span>
+          </div>
+          <div class="skill-card">
+            <span class="skill-icon">
+              <img src="assets/icons/skills/python.svg" alt="Python">
+            </span>
+            <span class="skill-name">Python</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications" class="certifications">
+      <div class="container">
+        <h2 class="section-title">
+          <svg class="section-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5l-8-3Z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+          <span data-i18n="certs.title">Certificações</span>
+        </h2>
+        <p class="section-subtitle" data-i18n="certs.subtitle">A base que sustenta cada solução que construo.</p>
+
+        <div class="certs-grid">
+          <div class="cert-card">
+            <div class="cert-content">
+              <div class="cert-icon-col">
+<span class="cert-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+                </svg>
+              </span>
+              </div>
+              <div class="cert-body">
+                <p class="cert-title">Associate Developer for ODC</p>
+                <p class="cert-entity">OutSystems, Inc.</p>
+                <p class="cert-year">2023</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cert-card">
+              <div class="cert-content">
+                <div class="cert-icon-col">
+<span class="cert-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="4" width="20" height="16" rx="2"/>
+                    <line x1="2" y1="9" x2="22" y2="9"/>
+                    <line x1="6" y1="6.5" x2="6" y2="6.5"/>
+                  </svg>
+                </span>
+              </div>
+                <div class="cert-body">
+                  <p class="cert-title">Associate Reactive Developer for OutSystems</p>
+                  <p class="cert-entity">OutSystems, Inc.</p>
+                  <p class="cert-year">2023</p>
+                </div>
+              </div>
+          </div>
+
+          <div class="cert-card">
+              <div class="cert-content">
+                <div class="cert-icon-col">
+<span class="cert-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.7 6.3a4 4 0 1 0-5.6 5.6L3 18v3h3l6.1-6.1a4 4 0 0 0 5.6-5.6l-2.65 2.65a1.5 1.5 0 0 1-2.12-2.12L14.7 6.3z"/>
+                  </svg>
+                </span>
+              </div>
+                <div class="cert-body">
+                  <p class="cert-title">Microsoft Technology Associate</p>
+                  <p class="cert-entity">Master.D – Centros Formativos</p>
+                  <p class="cert-year">2021</p>
+                </div>
+              </div>
+          </div>
+
+          <div class="cert-card">
+              <div class="cert-content">
+                <div class="cert-icon-col">
+<span class="cert-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 10 12 5 2 10l10 5 10-5Z"/>
+                    <path d="M6 12v4.5c0 .8 2.5 2.5 6 2.5s6-1.7 6-2.5V12"/>
+                    <path d="M22 10v6"/>
+                  </svg>
+                </span>
+              </div>
+                <div class="cert-body">
+                  <p class="cert-title">Certificado de Competências Pedagógicas (CCP)</p>
+                  <p class="cert-entity">Conclusão – Estudos e Formação, Lda</p>
+                  <p class="cert-year">2019</p>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <div class="container">
+        <h2 class="section-title">
+          <svg class="section-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/>
+          </svg>
+          <span data-i18n="projects.title">Projetos</span>
+        </h2>
+        <p class="section-subtitle" data-i18n="projects.subtitle">Uma seleção das aplicações que desenvolvi.</p>
+
+        <div class="projects-carousel">
+          <button id="projects-prev" class="carousel-arrow carousel-arrow-prev" type="button" aria-label="Anterior" title="Anterior" data-i18n-title="projects.prev">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+          </button>
+
+          <div id="projects-grid" class="projects-grid">
+            <!-- Os cartões de projeto são gerados a partir de js/data.js -->
+          </div>
+
+          <button id="projects-next" class="carousel-arrow carousel-arrow-next" type="button" aria-label="Seguinte" title="Seguinte" data-i18n-title="projects.next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </button>
+        </div>
+
+        <div id="projects-dots" class="projects-dots" aria-hidden="true"></div>
+
+        <div class="projects-cta">
+          <a href="all-projects.html" class="btn btn-outline">
+            <span data-i18n="projects.viewAll">Ver Todos os Projetos</span>
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources-teaser" class="resources-teaser">
+      <div class="container">
+        <h2 class="section-title">
+          <svg class="section-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+          <span data-i18n="resources.title">Recursos</span>
+        </h2>
+        <p class="section-subtitle resources-teaser-text" data-i18n="resources.teaserText">Para além dos projetos, também partilho guias práticos e conhecimento técnico — de boas práticas de segurança a checklists de suporte. Uma extensão deste portfólio pensada para ajudar quem também anda a aprender.</p>
+        <a href="recursos.html" class="btn btn-outline">
+          <span data-i18n="resources.viewAll">Ver Recursos</span>
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M5 12h14"/>
+            <polyline points="13 6 19 12 13 18"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer-root"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

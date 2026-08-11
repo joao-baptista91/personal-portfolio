@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>João Baptista — Todos os Projetos</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">JB</span>
+        <span class="logo-text">
+          João Baptista
+          <small>IT Consultant</small>
+        </span>
+      </a>
+
+      <div class="nav-wrap">
+        <nav class="nav">
+          <a href="index.html#home">Home</a>
+          <a href="index.html#about" data-i18n="nav.about">Sobre mim</a>
+          <a href="index.html#skills" data-i18n="nav.skills">Competências</a>
+          <a href="index.html#certifications" data-i18n="nav.certs">Certificações</a>
+          <a href="index.html#projects" data-i18n="nav.projects">Projetos</a>
+          <a href="index.html#resources-teaser" data-i18n="nav.resources">Recursos</a>
+          <a href="index.html#contact" data-i18n="nav.contact">Contactar-me</a>
+        </nav>
+
+        <div class="lang-switcher">
+          <button id="lang-toggle" class="lang-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+            <img class="lang-flag" id="lang-flag" src="assets/icons/flag-pt.svg" alt="PT">
+            <span class="lang-code" id="lang-code">PT</span>
+            <span class="lang-caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="lang-popover" id="lang-popover" role="menu" hidden>
+            <label class="lang-option">
+              <input type="radio" name="lang" value="pt" checked>
+              <img class="lang-flag" src="assets/icons/flag-pt.svg" alt="PT">
+              <span>Português</span>
+            </label>
+            <label class="lang-option">
+              <input type="radio" name="lang" value="en">
+              <img class="lang-flag" src="assets/icons/flag-gb.svg" alt="EN">
+              <span>English</span>
+            </label>
+          </div>
+        </div>
+
+        <a class="btn btn-outline btn-cv" href="assets/documents/CV_JoaoBaptista.pdf" download>
+          <span data-i18n="header.downloadCV">Download CV</span>
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 3v12"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <path d="M5 19h14"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="projects all-projects-page">
+      <div class="container">
+        <h1 class="section-title">
+          <svg class="section-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/>
+          </svg>
+          <span data-i18n="projects.allTitle">Todos os Projetos</span>
+        </h1>
+        <div class="projects-intro">
+          <p class="section-subtitle" data-i18n="projects.allSubtitle">Nem todos couberam na página principal... Aqui fica a lista completa.</p>
+          <div class="projects-arrow-block">
+            <p class="section-subtitle-secondary" data-i18n="projects.allSubtitleSecondary">Mais problemas chatos, mais soluções!</p>
+            <div class="projects-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 4v16"/>
+                <polyline points="6 14 12 20 18 14"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div id="all-projects-grid" class="projects-grid">
+          <!-- Os cartões de projeto são gerados a partir de js/data.js -->
+        </div>
+
+        <a href="index.html#projects" class="back-link back-link-bottom">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+          <span data-i18n="projects.backHome">Voltar</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer-root"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/all-projects.js"></script>
+</body>
+</html>
