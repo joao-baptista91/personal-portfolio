@@ -236,6 +236,14 @@ function applyTranslations() {
   document.querySelectorAll('input[name="lang"]').forEach((input) => {
     input.checked = input.value === lang;
   });
+
+  // Botão "Download CV" do header: descarrega a versão PT ou EN consoante o idioma ativo.
+  // (Usa a classe "cv-download", distinta de ".btn-cv", para não afetar o botão de
+  // download de PDF dos artigos em Recursos, que partilha a classe ".btn-cv" só por estilo.)
+  const cvFile = lang === "en" ? "assets/documents/CV_JoaoBaptista_EN.pdf" : "assets/documents/CV_JoaoBaptista.pdf";
+  document.querySelectorAll(".cv-download").forEach((el) => {
+    el.href = cvFile;
+  });
 }
 
 function setLang(lang) {
