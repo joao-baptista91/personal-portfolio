@@ -125,7 +125,7 @@ const PROJECTS = [
       pt: "Chatbot do Telegram que busca numa galeria de fotografias pessoal e gera textos promocionais.",
       en: "Telegram chatbot that searches a personal photo gallery and generates promotional text."
     },
-    image: "assets\\images\\app-screenshots\\telegram-photopicker-1.png",
+    image: "assets\\images\\app-screenshots\\telegram-photopicker\\telegram-photopicker-1.png",
     images: ["assets\\images\\app-screenshots\\telegram-photopicker\\telegram-photopicker-1.png", "assets\\images\\app-screenshots\\telegram-photopicker\\telegram-photopicker-2.png"],
     logo: "assets\\images\\app-logos\\photopicker-logo.png",
     status: "in-progress",
