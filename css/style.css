@@ -10,6 +10,7 @@
   --green: #4ade80;
   --green-solid: #16a34a;
   --orange: #f97316;
+  --yellow: #eab308;
   --gray-solid: #64748b;
   --radius: 10px;
   --max-width: 1560px;
@@ -1438,6 +1439,74 @@ img {
 #project-not-found {
   color: var(--text-muted);
   padding: 40px 0;
+}
+
+.project-process {
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--card-border);
+}
+
+.process-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.process-block {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+}
+
+.process-block-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.process-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--blue-light);
+}
+
+.process-icon-problem {
+  color: var(--orange);
+}
+
+.process-icon-solution {
+  color: var(--green);
+}
+
+.process-icon-database {
+  color: var(--yellow);
+}
+
+.process-block-header h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.process-block p {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.65;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  overflow-wrap: break-word;
 }
 
 @media (max-width: 640px) {

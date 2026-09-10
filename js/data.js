@@ -12,29 +12,18 @@
 // "status" indica o estado de desenvolvimento da app e mostra uma tag colorida nos cartões e na
 // página de detalhe: "planned" (cinzento, "Planeado"), "in-progress" (laranja, "Em desenvolvimento")
 // ou "done" (verde, "Finalizado").
+// "process" é opcional — documenta o processo de desenvolvimento na página de detalhe (Problema /
+// Solução / Base de Dados / Desafios Técnicos, cada um com pt/en). Só aparece se estiver definido,
+// e cada parte só é mostrada se tiver conteúdo (ex: projetos sem base de dados podem omitir
+// "database"). Este campo ainda não tem um formulário próprio no admin — se editares e
+// guardares um projeto que já tenha "process" através do admin, o valor mantém-se, mas para
+// adicionares "process" a um projeto novo, escreve-o diretamente em js/data.js depois de
+// descarregares.
 //
-// Este ficheiro foi gerado a partir de admin.html (Gestão de Projetos). Podes continuar a editá-lo
-// à mão se preferires — a estrutura é exatamente a mesma.
+// Este ficheiro foi gerado a partir de admin.html (Gestão de Projetos, Certificações e Formação
+// Contínua). Podes continuar a editá-lo à mão se preferires — a estrutura é exatamente a mesma.
 
 const PROJECTS = [
-  {
-    id: "fleet-management-platform",
-    title: "Fleet Management Platform",
-    description: {
-      pt: "Registo de veículos, histórico de manutenções, alertas de revisão/seguro a expirar, e integração com uma API REST externa.",
-      en: "Vehicle registration, maintenance history, revision/insurance expiry alerts, and integration with an external REST API."
-    },
-    longDescription: {
-      pt: "Sistema para gerir a frota de viaturas da empresa: registo de veículos, histórico de manutenções preventivas e corretivas, alertas automáticos de revisão e de seguro a expirar, e integração com uma API REST externa para sincronizar dados com sistemas de terceiros.",
-      en: "System for managing the company's vehicle fleet: vehicle registration, preventive and corrective maintenance history, automatic revision and insurance-expiry alerts, and integration with an external REST API to sync data with third-party systems."
-    },
-    image: "assets/images/app-screenshots/fleet-management/fleet-management-platform-0.png",
-    images: ["assets/images/app-screenshots/fleet-management/fleet-management-platform-0.png", "assets/images/app-screenshots/fleet-management/fleet-management-platform-1.png"],
-    logo: "assets/images/app-logos/fleet-management-platform-logo.png",
-    status: "in-progress",
-    tags: ["OutSystems 11", "SQL", "REST"],
-    link: "#"
-  },
   {
     id: "fastdrop",
     title: "FastDrop",
@@ -72,6 +61,60 @@ const PROJECTS = [
     link: "#"
   },
   {
+    id: "talent-bridge-recruitment-platform",
+    title: "Talent Bridge - Recruitment Platform",
+    description: {
+      pt: "Plataforma pessoal de recrutamento com IA, que liga recrutadores, candidatos e oportunidades de emprego.",
+      en: "Personal AI-powered recruitment platform connecting recruiters, candidates and job opportunities."
+    },
+    longDescription: {
+      pt: "Talent Bridge é uma plataforma pessoal de recrutamento com IA, que liga recrutadores, candidatos e oportunidades de emprego, com três papéis (Admin, Recrutador, Candidato) que cobrem a publicação de vagas, candidaturas e entrevistas.\n\nA IA está integrada no núcleo da aplicação: um Agente avalia a compatibilidade entre candidato e vaga para os recrutadores, com uma justificação escrita, e um segundo Agente recomenda vagas adequadas aos candidatos e consegue submeter candidaturas de forma autónoma em nome deles, através de Action Calling.",
+      en: "Talent Bridge is a personal AI-powered recruitment platform connecting recruiters, candidates and job opportunities, with three roles (Admin, Recruiter, Applicant) covering job postings, applications and interviews.\n\nAI is built into the app's core: an Agent scores candidate-to-job fit for recruiters with a written justification, and a second Agent recommends matching jobs to candidates and can autonomously submit applications on their behalf via Action Calling."
+    },
+    image: "assets\\images\\app-screenshots\\talent-bridge\\print-tb-0.png",
+    images: ["assets\\images\\app-screenshots\\talent-bridge\\print-tb-0.png", "assets\\images\\app-screenshots\\talent-bridge\\print-tb-1.png", "assets\\images\\app-screenshots\\talent-bridge\\print-tb-2.png", "assets\\images\\app-screenshots\\talent-bridge\\print-tb-3.png", "assets\\images\\app-screenshots\\talent-bridge\\print-tb-4.png", "assets\\images\\app-screenshots\\talent-bridge\\print-tb-5.png", "assets\\images\\app-screenshots\\talent-bridge\\print-tb-6.png", "assets\\images\\app-screenshots\\talent-bridge\\print-tb-7.png", "assets\\images\\app-screenshots\\talent-bridge\\print-tb-8.png", "assets\\images\\app-screenshots\\talent-bridge\\print-tb-9.png", "assets\\images\\app-screenshots\\talent-bridge\\print-tb-10.png", "assets\\images\\app-screenshots\\talent-bridge\\print-tb-11.png"],
+    logo: "assets\\images\\app-logos\\talent-bridge-logo.png",
+    status: "done",
+    tags: ["OutSystems ODC", "AI"],
+    link: "#"
+  },
+  {
+    id: "meal-planner",
+    title: "Meal Planner",
+    description: {
+      pt: "Planeamento de ementas semanais (almoço e jantar) com sugestões geradas por Inteligência Artificial.",
+      en: "Weekly meal-planning app (lunch and dinner) with AI-generated suggestions."
+    },
+    longDescription: {
+      pt: "Meal Planner é uma aplicação para planeamento de ementas semanais, desenvolvida na plataforma OutSystems ODC, que permite organizar as refeições de almoço e jantar de toda a semana com um único clique. Além da escolha manual entre refeições já registadas, a aplicação integra um Agente de Inteligência Artificial que sugere pratos completos, com nome e processo de preparação, tendo em conta a cultura gastronómica portuguesa e, quando indicado, um ingrediente de referência escolhido pelo utilizador, como por exemplo peixe ou frango. Cada sugestão gerada evita repetir refeições já existentes na base de dados e fica disponível para reutilização em planos futuros.",
+      en: "Meal Planner is a weekly meal-planning application built on the OutSystems ODC platform, allowing a full week of lunches and dinners to be organised with a single click. Beyond manually selecting from existing meals, the app integrates an AI Agent that suggests complete dishes, including name and preparation process, informed by Portuguese cuisine and, when specified, a reference ingredient chosen by the user, such as fish or chicken. Each generated suggestion avoids repeating meals already in the database and becomes available for reuse in future plans."
+    },
+    image: "assets\\images\\app-screenshots\\meal-planner\\print-mp-0.png",
+    images: ["assets\\images\\app-screenshots\\meal-planner\\print-mp-0.png", "assets\\images\\app-screenshots\\meal-planner\\print-mp-1.png", "assets\\images\\app-screenshots\\meal-planner\\print-mp-2.png", "assets\\images\\app-screenshots\\meal-planner\\print-mp-3.png", "assets\\images\\app-screenshots\\meal-planner\\print-mp-4.png", "assets\\images\\app-screenshots\\meal-planner\\print-mp-5.png", "assets\\images\\app-screenshots\\meal-planner\\print-mp-6.png", "assets\\images\\app-screenshots\\meal-planner\\print-mp-7.png"],
+    logo: "assets\\images\\app-logos\\meal-planner-logo.png",
+    status: "in-progress",
+    tags: ["OutSystems ODC", "AI"],
+    link: "#"
+  },
+  {
+    id: "fleet-management-platform",
+    title: "Fleet Management Platform",
+    description: {
+      pt: "Registo de veículos, histórico de manutenções, alertas de revisão/seguro a expirar, e integração com uma API REST externa.",
+      en: "Vehicle registration, maintenance history, revision/insurance expiry alerts, and integration with an external REST API."
+    },
+    longDescription: {
+      pt: "Sistema para gerir a frota de viaturas da empresa: registo de veículos, histórico de manutenções preventivas e corretivas, alertas automáticos de revisão e de seguro a expirar, e integração com uma API REST externa para sincronizar dados com sistemas de terceiros.",
+      en: "System for managing the company's vehicle fleet: vehicle registration, preventive and corrective maintenance history, automatic revision and insurance-expiry alerts, and integration with an external REST API to sync data with third-party systems."
+    },
+    image: "assets/images/app-screenshots/fleet-management/fleet-management-platform-0.png",
+    images: ["assets/images/app-screenshots/fleet-management/fleet-management-platform-0.png", "assets/images/app-screenshots/fleet-management/fleet-management-platform-1.png"],
+    logo: "assets/images/app-logos/fleet-management-platform-logo.png",
+    status: "in-progress",
+    tags: ["OutSystems 11", "SQL", "REST"],
+    link: "#"
+  },
+  {
     id: "telegram-photopicker-bot",
     title: "Telegram Photopicker Bot",
     description: {
@@ -83,7 +126,7 @@ const PROJECTS = [
       en: "Telegram chatbot that searches a personal photo gallery and generates promotional text."
     },
     image: "assets\\images\\app-screenshots\\telegram-photopicker-1.png",
-    images: ["assets\\images\\app-screenshots\\telegram-photopicker-1.png", "assets\\images\\app-screenshots\\telegram-photopicker-2.png"],
+    images: ["assets\\images\\app-screenshots\\telegram-photopicker\\telegram-photopicker-1.png", "assets\\images\\app-screenshots\\telegram-photopicker\\telegram-photopicker-2.png"],
     logo: "assets\\images\\app-logos\\photopicker-logo.png",
     status: "in-progress",
     tags: ["Python", "Telegram Bot API"],
@@ -126,24 +169,6 @@ const PROJECTS = [
     link: "#"
   },
   {
-    id: "application-support-dashboard",
-    title: "Application Support Dashboard",
-    description: {
-      pt: "Painel de monitorização com KPIs, incidentes, tempos de resposta e cumprimento de SLA.",
-      en: "Monitoring dashboard with KPIs, incidents, response times and SLA compliance."
-    },
-    longDescription: {
-      pt: "Dashboard de suporte aplicacional que reúne métricas de vários sistemas num só sítio: número de incidentes abertos, tempo médio de resolução e percentagem de cumprimento de SLA por equipa.",
-      en: "Application support dashboard that brings metrics from several systems into one place: open incidents, average resolution time and SLA compliance rate per team."
-    },
-    image: "",
-    images: [],
-    logo: "",
-    status: "planned",
-    tags: ["JavaScript", "Chart.js"],
-    link: "#"
-  },
-  {
     id: "environmental-audit-manager",
     title: "Environmental Audit Manager",
     description: {
@@ -181,6 +206,124 @@ const PROJECTS = [
   }
 ];
 
+// Lista de certificações, mostrada na secção "Certificações" da homepage.
+// "title" e "entity" não têm tradução (são nomes próprios/oficiais, iguais em PT e EN).
+// "icon" escolhe um ícone de uma pequena biblioteca pré-definida (ver CERT_ICONS, mais abaixo)
+// — usa uma das chaves existentes (ex: "cloud", "shield") ou pede-me para acrescentar uma nova
+// se nenhuma servir.
+const CERTIFICATIONS = [
+  {
+    title: "Associate Developer for ODC",
+    entity: "OutSystems, Inc.",
+    year: "2023",
+    icon: "cloud"
+  },
+  {
+    title: "Associate Reactive Developer for OutSystems",
+    entity: "OutSystems, Inc.",
+    year: "2023",
+    icon: "monitor"
+  },
+  {
+    title: "Microsoft Technology Associate",
+    entity: "Master.D – Centros Formativos",
+    year: "2021",
+    icon: "key"
+  },
+  {
+    title: "Certificado de Competências Pedagógicas (CCP)",
+    entity: "Conclusão – Estudos e Formação, Lda",
+    year: "2019",
+    icon: "cap"
+  }
+];
+
+// Lista de formações contínuas, mostrada na secção "Formação Contínua" da homepage.
+// "name" tem sempre uma versão por idioma (pt / en). "institution" e "year" não são traduzidos.
+const CONTINUING_EDUCATION = [
+  {
+    name: {
+      pt: "Become an AI Developer (Guided Path)",
+      en: "Become an AI Developer (Guided Path)"
+    },
+    institution: "OutSystems, Inc.",
+    year: "2026"
+  },
+  {
+    name: {
+      pt: "Programação em Python",
+      en: "Python Programming"
+    },
+    institution: "Instituto do Emprego e Formação Profissional, Faro",
+    year: "2026"
+  },
+  {
+    name: {
+      pt: "Linguagens de Programação ASP.NET",
+      en: "ASP.NET Programming Languages"
+    },
+    institution: "Instituto do Emprego e Formação Profissional, Leiria",
+    year: "2025"
+  },
+  {
+    name: {
+      pt: "The Complete JavaScript Course: From Zero to Expert!",
+      en: "The Complete JavaScript Course: From Zero to Expert!"
+    },
+    institution: "Udemy, Inc",
+    year: "2024"
+  }
+];
+
+// Biblioteca de ícones disponíveis para as certificações. Cada entrada é o conteúdo interno
+// (paths/shapes) de um <svg viewBox="0 0 24 24">, no estilo "outline" usado em todo o site.
+// Para acrescentar um ícone novo: define aqui uma chave nova com o path SVG, e passa a poder
+// escolhê-la no campo "icon" de uma certificação (e no dropdown do admin.html — ver
+// CERT_ICON_LIBRARY em js/admin.js, que tem de ficar sincronizado com este objeto).
+const CERT_ICONS = {
+  cloud: "<path d=\"M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z\"/>",
+  monitor: "<rect x=\"2\" y=\"4\" width=\"20\" height=\"16\" rx=\"2\"/><line x1=\"2\" y1=\"9\" x2=\"22\" y2=\"9\"/><line x1=\"6\" y1=\"6.5\" x2=\"6\" y2=\"6.5\"/>",
+  key: "<path d=\"M14.7 6.3a4 4 0 1 0-5.6 5.6L3 18v3h3l6.1-6.1a4 4 0 0 0 5.6-5.6l-2.65 2.65a1.5 1.5 0 0 1-2.12-2.12L14.7 6.3z\"/>",
+  cap: "<path d=\"M22 10 12 5 2 10l10 5 10-5Z\"/><path d=\"M6 12v4.5c0 .8 2.5 2.5 6 2.5s6-1.7 6-2.5V12\"/><path d=\"M22 10v6\"/>",
+  shield: "<path d=\"M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5l-8-3Z\"/><path d=\"m9 12 2 2 4-4\"/>",
+  database: "<ellipse cx=\"12\" cy=\"5\" rx=\"8\" ry=\"3\"/><path d=\"M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5\"/><path d=\"M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3\"/>",
+  code: "<polyline points=\"16 18 22 12 16 6\"/><polyline points=\"8 6 2 12 8 18\"/>",
+  book: "<path d=\"M4 19.5A2.5 2.5 0 0 1 6.5 17H20\"/><path d=\"M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z\"/>",
+  lock: "<rect x=\"5\" y=\"11\" width=\"14\" height=\"10\" rx=\"2\"/><path d=\"M8 11V7a4 4 0 0 1 8 0v4\"/>",
+  puzzle: "<path d=\"M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1\"/>",
+  star: "<path d=\"M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z\"/>"
+};
+
+function renderCertCard(cert) {
+  const iconPath = CERT_ICONS[cert.icon] || CERT_ICONS.shield;
+  return `
+    <div class="cert-card">
+      <div class="cert-content">
+        <div class="cert-icon-col">
+          <span class="cert-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">${iconPath}</svg>
+          </span>
+        </div>
+        <div class="cert-body">
+          <p class="cert-title">${cert.title}</p>
+          <p class="cert-entity">${cert.entity}</p>
+          <p class="cert-year">${cert.year}</p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderContinueduItem(item, lang) {
+  const name = (item.name && (item.name[lang] || item.name.pt)) || "";
+  return `
+    <div class="continuedu-item">
+      <span class="continuedu-name">${name}</span>
+      <span class="continuedu-meta">${item.institution} · ${item.year}</span>
+    </div>
+  `;
+}
+
 // Gera o markup do pequeno logótipo/ícone da aplicação, usado ao lado do título tanto nos
 // cartões (homepage e "Todos os Projetos") como na página de detalhe. Se o projeto tiver um
 // "logo" definido, mostra essa imagem; caso contrário, mostra um ícone genérico de aplicação.
@@ -216,125 +359,4 @@ function renderStatusTag(project) {
   const info = STATUS_TAGS[project.status];
   if (!info) return "";
   return `<span class="status-tag ${info.cls}">${t(info.key)}</span>`;
-}
-
-// Lista de recursos (guias/artigos) da secção "Recursos".
-// Para adicionar um novo recurso, basta copiar um dos objetos abaixo e preencher os campos.
-// "id" tem de ser único — é usado no URL da página de detalhe (resource.html?id=...).
-// Todos os textos de conteúdo (title, cardDescription, subtitle, intro, topics, checklist,
-// footerUpdated) têm sempre uma versão por idioma (pt / en).
-// "pdf" aponta para o ficheiro PDF descarregável em assets/documents/.
-// "iconSvg" é o markup interno (paths) do ícone mostrado no cartão e na página de detalhe.
-// "topics" é a lista das secções do guia; cada uma tem "title", "items" (lista de textos) e,
-// opcionalmente, "callout" (uma dica em destaque).
-const RESOURCES = [
-  {
-    id: "seguranca-informatica",
-    iconSvg: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/>',
-    tag: { pt: "Guia", en: "Guide" },
-    title: {
-      pt: "Boas Práticas de Segurança Informática",
-      en: "IT Security Best Practices"
-    },
-    cardDescription: {
-      pt: "Um guia rápido e prático com recomendações simples para proteger dados, equipamento e rede no dia a dia.",
-      en: "A quick, practical guide with simple recommendations to protect data, equipment and the network in everyday use."
-    },
-    subtitle: {
-      pt: "Um guia rápido e prático para o dia a dia, com recomendações simples para proteger os teus dados, o equipamento e a rede da organização.",
-      en: "A quick, practical guide for everyday use, with simple recommendations to protect your data, equipment and the organization's network."
-    },
-    intro: {
-      pt: "Muitos incidentes de segurança informática não começa com um ataque sofisticado, mas sim com um clique apressado, uma password fraca ou um computador desbloqueado. Este guia reúne recomendações simples, sem jargão técnico, para reduzir esse risco no dia a dia.",
-      en: "Many IT security incidents don't start with a sophisticated attack, but they start with a rushed click, a weak password or an unlocked computer. This guide gathers simple, jargon-free recommendations to reduce that risk in everyday use."
-    },
-    meta: "João Baptista · Consultor TI · v1.0",
-    pdf: "assets/documents/guia-seguranca-informatica.pdf",
-    topics: [
-      {
-        title: { pt: "Palavras-passe e acessos", en: "Passwords and access" },
-        items: [
-          { pt: "Usa uma password diferente para cada serviço — se uma for comprometida, as outras contas ficam protegidas.", en: "Use a different password for each service — if one is compromised, the others stay protected." },
-          { pt: "Prefere frases longas e fáceis de lembrar (ex: \"CafeAzul-27!Porta\") a palavras curtas e óbvias.", en: "Prefer long, memorable passphrases (e.g. \"BlueCoffee-27!Door\") over short, obvious words." },
-          { pt: "Ativa a autenticação em dois fatores (2FA) sempre que disponível, especialmente no email e em aplicações de trabalho.", en: "Enable two-factor authentication (2FA) wherever available, especially for email and work applications." },
-          { pt: "Nunca partilhes a tua password por email, chat ou telefone — nenhum departamento de TI legítimo a pede dessa forma.", en: "Never share your password by email, chat or phone — no legitimate IT department asks for it that way." }
-        ],
-        callout: {
-          pt: "Dica: um gestor de passwords (ex: Bitwarden) permite usar passwords fortes e diferentes sem teres de as memorizar todas.",
-          en: "Tip: a password manager (e.g. Bitwarden) lets you use strong, different passwords without having to memorize them all."
-        }
-      },
-      {
-        title: { pt: "Reconhecer phishing e engenharia social", en: "Recognizing phishing and social engineering" },
-        items: [
-          { pt: "Desconfia de emails com urgência excessiva (\"a tua conta será bloqueada em 24h\") — é uma tática comum para provocar reações precipitadas.", en: "Be wary of emails with excessive urgency (\"your account will be blocked in 24h\") — a common tactic to provoke hasty reactions." },
-          { pt: "Verifica sempre o endereço de email do remetente, não apenas o nome apresentado.", en: "Always check the sender's actual email address, not just the display name." },
-          { pt: "Antes de clicar num link, passa o cursor por cima para ver o destino real.", en: "Before clicking a link, hover over it to see the real destination." },
-          { pt: "Nunca abras anexos inesperados, mesmo que pareçam vir de alguém conhecido.", en: "Never open unexpected attachments, even if they appear to come from someone you know." },
-          { pt: "Em caso de dúvida, confirma o pedido por outro canal (telefone, presencialmente) antes de agir.", en: "When in doubt, confirm the request through another channel (phone, in person) before acting." }
-        ]
-      },
-      {
-        title: { pt: "Atualizações de software", en: "Software updates" },
-        items: [
-          { pt: "Mantém o sistema operativo, antivírus e aplicações sempre atualizados — as atualizações corrigem falhas de segurança conhecidas.", en: "Keep your operating system, antivirus and applications up to date — updates fix known security flaws." },
-          { pt: "Não adies indefinidamente os pedidos de reinício para atualizar o Windows.", en: "Don't indefinitely postpone Windows restart prompts for updates." },
-          { pt: "Evita instalar software de fontes não oficiais ou desconhecidas.", en: "Avoid installing software from unofficial or unknown sources." }
-        ]
-      },
-      {
-        title: { pt: "Cópias de segurança (backups)", en: "Backups" },
-        items: [
-          { pt: "Guarda documentos importantes em locais com backup automático (rede da empresa, cloud), não apenas no ambiente de trabalho local.", en: "Store important documents in locations with automatic backup (company network, cloud), not just the local desktop." },
-          { pt: "Confirma periodicamente que consegues aceder e restaurar os teus backups — um backup nunca testado é um risco.", en: "Periodically confirm you can access and restore your backups — an untested backup is a risk." }
-        ]
-      },
-      {
-        title: { pt: "Redes Wi-Fi públicas e trabalho remoto", en: "Public Wi-Fi and remote work" },
-        items: [
-          { pt: "Evita aceder a sistemas sensíveis (email de trabalho, banca) em redes Wi-Fi públicas sem VPN.", en: "Avoid accessing sensitive systems (work email, banking) on public Wi-Fi networks without a VPN." },
-          { pt: "Desativa a ligação automática a redes Wi-Fi desconhecidas no portátil e telemóvel.", en: "Disable automatic connection to unknown Wi-Fi networks on your laptop and phone." },
-          { pt: "Em teletrabalho, mantém o router de casa com password própria e firmware atualizado.", en: "When working remotely, keep your home router with its own password and updated firmware." }
-        ]
-      },
-      {
-        title: { pt: "Cuidados físicos com o equipamento", en: "Physical care of equipment" },
-        items: [
-          { pt: "Bloqueia sempre o ecrã (Windows + L) ao afastar-te do posto de trabalho, mesmo por poucos minutos.", en: "Always lock your screen (Windows + L) when stepping away from your workstation, even for a few minutes." },
-          { pt: "Não deixes o portátil ou dispositivos com dados da empresa visíveis dentro do carro ou em locais públicos.", en: "Don't leave laptops or devices with company data visible inside your car or in public places." },
-          { pt: "Usa apenas pens USB de origem confiável — podem ser um vetor comum de malware.", en: "Only use USB drives from trusted sources — they're a common malware vector." }
-        ]
-      }
-    ],
-    checklist: [
-      { pt: "Passwords diferentes por serviço, com 2FA ativo onde possível", en: "Different passwords per service, with 2FA enabled where possible" },
-      { pt: "Verificar remetente e link antes de clicar", en: "Check sender and link before clicking" },
-      { pt: "Sistema e antivírus atualizados", en: "System and antivirus up to date" },
-      { pt: "Documentos importantes com backup automático", en: "Important documents with automatic backup" },
-      { pt: "Evitar redes Wi-Fi públicas sem VPN para dados sensíveis", en: "Avoid public Wi-Fi without a VPN for sensitive data" },
-      { pt: "Ecrã sempre bloqueado ao ausentar-se do posto de trabalho", en: "Screen always locked when away from your workstation" }
-    ],
-    footerUpdated: { pt: "Última atualização: agosto de 2026", en: "Last updated: August 2026" }
-  }
-];
-
-// Gera o markup de um cartão de recurso (usado em resources.html). Aponta sempre para
-// resource.html?id=... — uma única página de detalhe partilhada por todos os recursos,
-// tal como project.html faz para os projetos.
-function renderResourceCard(resource, lang) {
-  return `
-    <a href="resource.html?id=${encodeURIComponent(resource.id)}" class="resource-card">
-      <div class="resource-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          ${resource.iconSvg}
-        </svg>
-      </div>
-      <div class="resource-text">
-        <span class="resource-tag">${resource.tag[lang] || resource.tag.pt}</span>
-        <h2 class="resource-title">${resource.title[lang] || resource.title.pt}</h2>
-        <p class="resource-description">${resource.cardDescription[lang] || resource.cardDescription.pt}</p>
-        <span class="resource-link">${t("resources.openLabel")}</span>
-      </div>
-    </a>
-  `;
 }

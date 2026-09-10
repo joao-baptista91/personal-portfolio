@@ -74,6 +74,19 @@ function initProjectsCarousel() {
   });
 }
 
+function renderCertifications() {
+  const grid = document.getElementById("certs-grid");
+  if (!grid || typeof CERTIFICATIONS === "undefined" || typeof renderCertCard !== "function") return;
+  grid.innerHTML = CERTIFICATIONS.map(renderCertCard).join("");
+}
+
+function renderContinuingEducation() {
+  const grid = document.getElementById("continuedu-grid");
+  if (!grid || typeof CONTINUING_EDUCATION === "undefined" || typeof renderContinueduItem !== "function") return;
+  const lang = typeof getLang === "function" ? getLang() : "pt";
+  grid.innerHTML = CONTINUING_EDUCATION.map((item) => renderContinueduItem(item, lang)).join("");
+}
+
 function renderStatsBanner() {
   const projectsEl = document.getElementById("stat-projects");
   const certsEl = document.getElementById("stat-certs");
@@ -214,6 +227,8 @@ function initNavClickScroll() {
 document.addEventListener("DOMContentLoaded", () => {
   renderProjects();
   initProjectsCarousel();
+  renderCertifications();
+  renderContinuingEducation();
   renderStatsBanner();
   initNavScrollSpy();
   initNavClickScroll();

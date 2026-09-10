@@ -63,9 +63,6 @@ const TRANSLATIONS = {
     "experience.entry4.highlight3": "Estudo e simulação de produção de energia e de retorno financeiro.",
     "continuedu.title": "Formação Contínua",
     "continuedu.subtitle": "Cursos que continuei a fazer para expandir competências técnicas.",
-    "continuedu.item1.name": "Linguagens de Programação ASP.NET",
-    "continuedu.item2.name": "Programação em Python",
-    "continuedu.item3.name": "The Complete JavaScript Course: From Zero to Expert!",
     "resources.title": "Recursos",
     "resources.subtitle": "Documentos e guias práticos que preparei para partilhar conhecimento técnico de forma simples e acessível, desde boas práticas de segurança a checklists de suporte.",
     "resources.openLabel": "Abrir guia →",
@@ -96,6 +93,11 @@ const TRANSLATIONS = {
     "project.zoomImage": "Ampliar imagem",
     "project.viewImage": "Imagem",
     "project.close": "Fechar",
+    "project.process.title": "Processo de Desenvolvimento",
+    "project.process.problem": "Problema",
+    "project.process.solution": "Solução",
+    "project.process.database": "Base de Dados",
+    "project.process.challenges": "Desafios Técnicos",
     "status.planned": "Planeado",
     "status.inProgress": "Em desenvolvimento",
     "status.done": "Finalizado",
@@ -133,7 +135,7 @@ const TRANSLATIONS = {
     "about.text2": "Later on, it was through IT support and training that I got closer to technology and decided to steer my career in that direction. Today, I work on application development and support on the OutSystems platform, holding the Associate Developer for ODC and Associate Reactive Developer certifications. Along the way I've taken part in projects in the Insurance/Claims Management and Automotive sectors, while continuing to expand my skills in Python, JavaScript and C#. I also use AI tools as part of my workflow, to speed up tasks and validate results without giving up technical rigor.",
     "about.text3": "I try to bring the two fields together whenever it makes sense. Engineering taught me to think in terms of systems, processes and efficiency, and I try to apply that mindset to every project I build. This portfolio was born precisely from that drive to keep learning, evolving, and turning knowledge into practical solutions.",
     "experience.title": "Professional Experience",
-    "experience.subtitle": "From environmental consulting to IT support and development — my journey so far.",
+    "experience.subtitle": "From environmental consulting to IT support and development. My journey so far.",
     "experience.entry1.role": "OutSystems IT Consultant — Application Development & Support",
     "experience.entry1.highlight1": "2nd-line application support via a ticketing platform (TopDesk): incident resolution in production, code analysis, SQL and REST/SOAP integrations.",
     "experience.entry1.highlight2": "Development and maintenance of features in Reactive web applications on the OutSystems 11 platform, including testing and deploy preparation.",
@@ -153,9 +155,6 @@ const TRANSLATIONS = {
     "experience.entry4.highlight3": "Studied and simulated energy production and financial return.",
     "continuedu.title": "Continuing Education",
     "continuedu.subtitle": "Courses I kept taking to expand my technical skillset.",
-    "continuedu.item1.name": "ASP.NET Programming Languages",
-    "continuedu.item2.name": "Python Programming",
-    "continuedu.item3.name": "The Complete JavaScript Course: From Zero to Expert!",
     "resources.title": "Resources",
     "resources.subtitle": "Practical documents and guides I've put together to share technical knowledge in a simple, accessible way, from security best practices to support checklists.",
     "resources.openLabel": "Open guide →",
@@ -186,6 +185,11 @@ const TRANSLATIONS = {
     "project.zoomImage": "Enlarge image",
     "project.viewImage": "Image",
     "project.close": "Close",
+    "project.process.title": "Development Process",
+    "project.process.problem": "Problem",
+    "project.process.solution": "Solution",
+    "project.process.database": "Database",
+    "project.process.challenges": "Technical Challenges",
     "status.planned": "Planned",
     "status.inProgress": "In development",
     "status.done": "Completed",
@@ -255,6 +259,8 @@ function setLang(lang) {
   if (typeof renderProjectDetail === "function") renderProjectDetail();
   if (typeof renderResourcesList === "function") renderResourcesList();
   if (typeof renderResourceDetail === "function") renderResourceDetail();
+  if (typeof renderCertifications === "function") renderCertifications();
+  if (typeof renderContinuingEducation === "function") renderContinuingEducation();
   if (typeof renderStatsBanner === "function") renderStatsBanner();
 }
 

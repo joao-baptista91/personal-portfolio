@@ -136,6 +136,48 @@ function initProjectGallery(project) {
   document.addEventListener("keydown", galleryKeydownHandler);
 }
 
+// Gera o markup da secção "Processo de Desenvolvimento" (problema, base de dados, desafios).
+// É opcional: só aparece se o projeto tiver o campo "process" definido em data.js, e cada
+// parte (problema / base de dados / desafios) só é mostrada se tiver conteúdo — por exemplo,
+// projetos sem base de dados própria podem omitir esse bloco.
+function renderProcessSection(project, lang) {
+  if (!project.process) return "";
+
+  const parts = [
+    { key: "problem", labelKey: "project.process.problem", iconPath: '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>' },
+    { key: "solution", labelKey: "project.process.solution", iconPath: '<path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2Z"/>' },
+    { key: "database", labelKey: "project.process.database", iconPath: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/>' },
+    { key: "challenges", labelKey: "project.process.challenges", iconPath: '<path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1"/>' },
+  ];
+
+  const blocks = parts
+    .filter(({ key }) => project.process[key])
+    .map(({ key, labelKey, iconPath }) => {
+      const text = project.process[key][lang] || project.process[key].pt;
+      return `
+        <div class="process-block">
+          <div class="process-block-header">
+            <svg class="process-icon process-icon-${key}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${iconPath}</svg>
+            <h3>${t(labelKey)}</h3>
+          </div>
+          <p>${text}</p>
+        </div>
+      `;
+    })
+    .join("");
+
+  if (!blocks) return "";
+
+  return `
+    <div class="project-process">
+      <h2 class="process-title">${t("project.process.title")}</h2>
+      <div class="process-grid">
+        ${blocks}
+      </div>
+    </div>
+  `;
+}
+
 function renderProjectDetail() {
   const content = document.getElementById("project-detail-content");
   const notFound = document.getElementById("project-not-found");
@@ -172,6 +214,7 @@ function renderProjectDetail() {
     <div class="project-detail-body">
       <p>${description}</p>
     </div>
+    ${renderProcessSection(project, lang)}
   `;
 
   initProjectGallery(project);
