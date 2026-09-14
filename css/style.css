@@ -1818,7 +1818,7 @@ img {
   }
   .about-grid {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
   .projects-carousel .projects-grid,
   .all-projects-page .projects-grid {
