@@ -306,7 +306,57 @@ function initLangSwitcher() {
   });
 }
 
+// Menu móvel (hamburger): abre/fecha o painel ".nav-wrap" (links + idioma + botão CV) em ecrãs
+// estreitos (ver a media query "max-width: 900px" em css/style.css). Fecha automaticamente ao
+// clicar num link, ao clicar fora do painel, ao premir Escape, ou ao voltar para uma largura de
+// ecrã de desktop com o painel ainda aberto.
+function initNavToggle() {
+  const toggle = document.getElementById("nav-toggle");
+  const navWrap = document.querySelector(".nav-wrap");
+  if (!toggle || !navWrap) return;
+
+  const closeMenu = () => {
+    navWrap.classList.remove("open");
+    toggle.setAttribute("aria-expanded", "false");
+  };
+
+  const openMenu = () => {
+    navWrap.classList.add("open");
+    toggle.setAttribute("aria-expanded", "true");
+  };
+
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (navWrap.classList.contains("open")) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  navWrap.querySelectorAll(".nav a, .btn-cv").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("click", (e) => {
+    if (navWrap.classList.contains("open") && !navWrap.contains(e.target) && e.target !== toggle && !toggle.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMenu();
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 900 && navWrap.classList.contains("open")) {
+      closeMenu();
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   applyTranslations();
   initLangSwitcher();
+  initNavToggle();
 });

@@ -127,6 +127,44 @@ img {
   color: var(--text);
 }
 
+/* Botão de menu (hamburger), só visível em ecrãs estreitos — ver media query mais abaixo. */
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.nav-toggle:hover {
+  border-color: var(--blue);
+  background: rgba(59, 130, 246, 0.08);
+}
+
+.nav-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+.nav-toggle-icon-close {
+  display: none;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon-open {
+  display: none;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon-close {
+  display: block;
+}
+
 /* Language switcher */
 .lang-switcher {
   position: relative;
@@ -400,7 +438,8 @@ img {
   }
   .stat-item {
     border-left: none;
-    padding-left: 0;
+    padding: 0;
+    justify-content: flex-start;
   }
 }
 
@@ -1682,10 +1721,82 @@ img {
   font-size: 12px;
 }
 
-@media (max-width: 640px) {
-  .nav {
-    display: none;
+/* Menu móvel: abaixo de 900px, o botão hamburger aparece e o ".nav-wrap"
+   (links + seletor de idioma + botão CV) passa a um painel deslizante,
+   escondido por omissão e mostrado ao clicar no botão (ver initNavToggle em js/i18n.js). */
+@media (max-width: 900px) {
+  .nav-toggle {
+    display: flex;
   }
+
+  .nav-wrap {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+    background: var(--bg-alt);
+    border-bottom: 1px solid var(--card-border);
+    padding: 8px clamp(18px, 4vw, 48px) 20px;
+    transform: translateY(-12px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.18s ease, opacity 0.18s ease;
+  }
+
+  .nav-wrap.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .nav {
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 0;
+  }
+
+  .nav a {
+    padding: 12px 2px;
+    border-bottom: 1px solid var(--card-border);
+    font-size: 15px;
+  }
+
+  .nav a:last-child {
+    border-bottom: none;
+  }
+
+  .lang-switcher {
+    padding: 16px 0;
+    border-top: 1px solid var(--card-border);
+  }
+
+  .lang-toggle {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .lang-popover {
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  .btn-cv {
+    width: 100%;
+    justify-content: center;
+    margin-top: 4px;
+  }
+}
+
+@media (max-width: 640px) {
   .hero h1 {
     font-size: 2rem;
   }
