@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>A acordar a aplicação…</title>
+<style>
+  :root {
+    --bg: #0a1220;
+    --card-bg: #112238;
+    --card-border: #1c3552;
+    --text: #e7ecf3;
+    --text-muted: #9db0c7;
+    --blue: #3b82f6;
+    --blue-light: #60a5fa;
+    --yellow: #eab308;
+    --radius: 10px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  .wake-card {
+    max-width: 480px;
+    width: 100%;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 36px 32px;
+    text-align: center;
+  }
+
+  .wake-spinner {
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 22px;
+    border: 4px solid var(--card-border);
+    border-top-color: var(--blue-light);
+    border-radius: 50%;
+    animation: wake-spin 0.9s linear infinite;
+  }
+
+  @keyframes wake-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .wake-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+
+  .wake-subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin: 0 0 18px;
+    line-height: 1.5;
+  }
+
+  .wake-note {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--card-border);
+    border-left: 3px solid var(--yellow);
+    border-radius: var(--radius);
+    padding: 10px 14px;
+    text-align: left;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+
+  .wake-elapsed {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .wake-fallback {
+    display: none;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--card-border);
+  }
+
+  .wake-fallback.visible {
+    display: block;
+  }
+
+  .wake-fallback p {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin: 0 0 14px;
+  }
+
+  .wake-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: var(--radius);
+    background: var(--blue);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .wake-back {
+    display: block;
+    margin-top: 20px;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    text-decoration: none;
+  }
+
+  .wake-back:hover {
+    color: var(--blue-light);
+  }
+</style>
+</head>
+<body>
+
+  <div class="wake-card">
+    <div class="wake-spinner" id="wake-spinner" aria-hidden="true"></div>
+    <h1 class="wake-title" id="wake-title">A acordar a aplicação…</h1>
+    <p class="wake-subtitle" id="wake-subtitle"></p>
+    <p class="wake-note" id="wake-note"></p>
+    <p class="wake-elapsed" id="wake-elapsed"></p>
+
+    <div class="wake-fallback" id="wake-fallback">
+      <p id="wake-fallback-text"></p>
+      <a class="wake-btn" id="wake-fallback-link" href="#">Abrir mesmo assim</a>
+    </div>
+
+    <a class="wake-back" id="wake-back" href="index.html">Voltar ao portfólio</a>
+  </div>
+
+<script>
+  const TEXTS = {
+    pt: {
+      title: "A acordar a aplicação…",
+      subtitle: (app) => (app ? `Estamos a preparar a "${app}" — isto pode demorar até um minuto.` : "A aplicação está a ser preparada — isto pode demorar até um minuto."),
+      note: "Nota: esta aplicação está alojada num nível gratuito, que \"adormece\" por inatividade. Assim que estiver pronta, vais ser redirecionado automaticamente.",
+      elapsed: (s) => `A aguardar há ${s}s…`,
+      fallbackText: "Está a demorar mais do que o normal. Podes continuar a aguardar (a página vai redirecionar sozinha assim que estiver pronta), ou tentar abrir diretamente.",
+      fallbackLink: "Abrir mesmo assim",
+      back: "Voltar ao portfólio",
+      noTarget: "Faltou indicar a aplicação a abrir.",
+      noTargetBack: "Voltar ao portfólio"
+    },
+    en: {
+      title: "Waking up the application…",
+      subtitle: (app) => (app ? `We're getting "${app}" ready — this can take up to a minute.` : "The application is being prepared — this can take up to a minute."),
+      note: "Note: this application is hosted on a free tier, which \"sleeps\" after inactivity. You'll be redirected automatically once it's ready.",
+      elapsed: (s) => `Waiting for ${s}s…`,
+      fallbackText: "This is taking longer than usual. You can keep waiting (this page will redirect automatically once it's ready), or try opening it directly.",
+      fallbackLink: "Open anyway",
+      back: "Back to portfolio",
+      noTarget: "No application was specified to open.",
+      noTargetBack: "Back to portfolio"
+    }
+  };
+
+  const params = new URLSearchParams(location.search);
+  const target = params.get("to");
+  const appName = params.get("app") || "";
+  // Sem "lang" explícito no URL, usa o idioma do browser como aproximação razoável — esta
+  // página não depende do resto do site, por isso não tem acesso ao idioma escolhido lá.
+  const langParam = params.get("lang");
+  const browserLang = (navigator.language || "pt").toLowerCase().startsWith("en") ? "en" : "pt";
+  const lang = langParam === "en" || langParam === "pt" ? langParam : browserLang;
+  const t = TEXTS[lang];
+
+  document.documentElement.lang = lang === "en" ? "en" : "pt";
+  document.getElementById("wake-back").textContent = t.back;
+
+  if (!target) {
+    document.getElementById("wake-spinner").style.display = "none";
+    document.getElementById("wake-title").textContent = t.noTarget;
+    document.getElementById("wake-subtitle").textContent = "";
+    document.getElementById("wake-note").style.display = "none";
+    document.getElementById("wake-back").textContent = t.noTargetBack;
+  } else {
+    document.title = t.title;
+    document.getElementById("wake-title").textContent = t.title;
+    document.getElementById("wake-subtitle").textContent = t.subtitle(appName);
+    document.getElementById("wake-note").textContent = t.note;
+
+    const fallback = document.getElementById("wake-fallback");
+    const fallbackText = document.getElementById("wake-fallback-text");
+    const fallbackLink = document.getElementById("wake-fallback-link");
+    fallbackText.textContent = t.fallbackText;
+    fallbackLink.textContent = t.fallbackLink;
+    fallbackLink.href = target;
+
+    const elapsedEl = document.getElementById("wake-elapsed");
+    let elapsedSeconds = 0;
+    let redirected = false;
+    const FALLBACK_AFTER_SECONDS = 60;
+    const RETRY_EVERY_MS = 4000;
+    const REQUEST_TIMEOUT_MS = 5000;
+
+    function abortableSignal(ms) {
+      if (typeof AbortSignal !== "undefined" && typeof AbortSignal.timeout === "function") {
+        return AbortSignal.timeout(ms);
+      }
+      const controller = new AbortController();
+      setTimeout(() => controller.abort(), ms);
+      return controller.signal;
+    }
+
+    function redirectNow() {
+      if (redirected) return;
+      redirected = true;
+      window.location.href = target;
+    }
+
+    async function tryPing() {
+      if (redirected) return;
+      try {
+        // "no-cors" impede ler o estado exato da resposta (é de outra origem), mas se o pedido
+        // não falhar por timeout/ligação recusada, é sinal suficiente de que a app já responde.
+        await fetch(target, { mode: "no-cors", cache: "no-store", signal: abortableSignal(REQUEST_TIMEOUT_MS) });
+        redirectNow();
+      } catch (e) {
+        // continua a tentar
+      }
+    }
+
+    function tick() {
+      if (redirected) return;
+      elapsedSeconds += RETRY_EVERY_MS / 1000;
+      elapsedEl.textContent = t.elapsed(elapsedSeconds);
+      if (elapsedSeconds >= FALLBACK_AFTER_SECONDS) {
+        fallback.classList.add("visible");
+      }
+    }
+
+    tryPing();
+    setInterval(() => {
+      tick();
+      tryPing();
+    }, RETRY_EVERY_MS);
+  }
+</script>
+</body>
+</html>

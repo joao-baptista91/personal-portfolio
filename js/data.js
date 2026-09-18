@@ -54,14 +54,14 @@ const PROJECTS = [
     logo: "assets\\images\\app-logos\\fastdrop-logo.png",
     status: "done",
     tags: ["ASP.NET", "C#", "HTML", "CSS", "JS"],
-    link: "https://joao-fastdrop-c9b0bff3fchfg2h2.francecentral-01.azurewebsites.net",
+    link: "wake.html?to=https%3A%2F%2Fjoao-fastdrop-c9b0bff3fchfg2h2.francecentral-01.azurewebsites.net&app=FastDrop",
     demoCredentials: {
       pt: "<p>Contas de demonstração:</p><ul><li><strong>Administrador</strong>: admin_fastdrop@fastdrop.com / FD_Port_26X</li><li><strong>Estafeta</strong>: estafeta1_fastdrop@fastdrop.com / Est1_FD_26X</li></ul>",
       en: "<p>Demo accounts:</p><ul><li><strong>Administrator</strong>: admin_fastdrop@fastdrop.com / FD_Port_26X</li><li><strong>Courier</strong>: estafeta1_fastdrop@fastdrop.com / Est1_FD_26X</li></ul>"
     },
     demoNote: {
-      pt: "Nota: a aplicação está alojada num nível gratuito do Azure, que \"adormece\" por inatividade. O primeiro acesso pode demorar mais tempo ou precisar de uma segunda tentativa.",
-      en: "Note: the application is hosted on Azure's free tier, which \"sleeps\" after inactivity. The first access may take longer or need a second attempt."
+      pt: "Nota: a aplicação está alojada num nível gratuito do Azure, que \"adormece\" por inatividade. No primeiro acesso, vais ver um ecrã de espera automático até a aplicação estar pronta (pode demorar até um minuto).",
+      en: "Note: the application is hosted on Azure's free tier, which \"sleeps\" after inactivity. On first access, you'll see an automatic waiting screen until the application is ready (this can take up to a minute)."
     },
     process: {
       problem: {
@@ -102,14 +102,14 @@ const PROJECTS = [
     logo: "assets\\images\\app-logos\\corp-expenses-logo.png",
     status: "done",
     tags: ["Django", "Python", "HTML", "CSS", "SQLite3"],
-    link: "https://joao-corpexpenses-epbxeqdufrezctgd.francecentral-01.azurewebsites.net",
+    link: "wake.html?to=https%3A%2F%2Fjoao-corpexpenses-epbxeqdufrezctgd.francecentral-01.azurewebsites.net&app=Corp%20Expenses",
     demoCredentials: {
       pt: "<p>Conta de demonstração:</p><ul><li><strong>Administrador</strong>: admin_corpexpenses / CorpExp_26#</li></ul>",
       en: "<p>Demo account:</p><ul><li><strong>Administrator</strong>: admin_corpexpenses / CorpExp_26#</li></ul>"
     },
     demoNote: {
-      pt: "Nota: a aplicação está alojada num nível gratuito do Azure, que \"adormece\" por inatividade. O primeiro acesso pode demorar mais tempo ou precisar de uma segunda tentativa.",
-      en: "Note: the application is hosted on Azure's free tier, which \"sleeps\" after inactivity. The first access may take longer or need a second attempt."
+      pt: "Nota: a aplicação está alojada num nível gratuito do Azure, que \"adormece\" por inatividade. No primeiro acesso, vais ver um ecrã de espera automático até a aplicação estar pronta (pode demorar até um minuto).",
+      en: "Note: the application is hosted on Azure's free tier, which \"sleeps\" after inactivity. On first access, you'll see an automatic waiting screen until the application is ready (this can take up to a minute)."
     },
     process: {
       problem: {
