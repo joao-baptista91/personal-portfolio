@@ -24,7 +24,7 @@ function renderSiteFooter() {
     <div class="container footer-grid">
       <div class="footer-brand">
         <div class="footer-brand-header">
-          <span class="logo-mark small">JB</span>
+          <span class="logo-mark small"><img src="assets/images/about-photo.jpg" alt="João Baptista"></span>
           <div class="footer-brand-name">
             <p class="footer-name">João Baptista</p>
             <p class="footer-role" data-i18n="footer.role">Consultor TI</p>

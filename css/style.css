@@ -83,6 +83,17 @@ img {
   font-weight: 700;
   font-size: 15px;
   color: #061019;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.logo-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.05);
+  transform-origin: 50% 28%;
 }
 
 .logo-mark.small {
@@ -470,8 +481,8 @@ img {
 .about-photo {
   order: 2;
   flex-shrink: 0;
-  width: 220px;
-  height: 220px;
+  width: 286px;
+  height: 286px;
   border-radius: 16px;
   overflow: hidden;
   background: linear-gradient(135deg, #16324f, #0d1a2e);
