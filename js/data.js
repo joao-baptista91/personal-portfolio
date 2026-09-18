@@ -248,7 +248,7 @@ const PROJECTS = [
       en: "<p>The Secret Mission/Missão Secreta app is a mini-project developed to reveal the meeting location of an event to a group of teachers.</p><ul><li>Access to the location reveal depends on entering a secret code, shared beforehand only with participants.</li><li>Validation happens client-side, a choice appropriate to the scale and target audience of this mini-project.</li><li>The code is never written in plain text in the source: it's compared via a SHA-256 hash generated with the browser's Web Crypto API.</li></ul>"
     },
     image: "assets\\images\\app-screenshots\\secret-mission\\print-sm-1.png",
-    images: ["assets\\images\\app-screenshots\\secret-mission\\print-sm-1.png", "assets\\images\\app-screenshots\\secret-mission\\print-sm-2.png"],
+    images: ["assets\\images\\app-screenshots\\secret-mission\\print-sm-1.png", "assets\\images\\app-screenshots\\secret-mission\\print-sm-2.png", "assets\\images\\app-screenshots\\secret-mission\\print-sm-3.png"],
     logo: "assets\\images\\app-logos\\secret-mission-logo.png",
     status: "done",
     tags: ["HTML", "CSS", "JS"],
