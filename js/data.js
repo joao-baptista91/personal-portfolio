@@ -2,7 +2,9 @@
 // Para adicionar um projeto novo, basta copiar um dos objetos abaixo e preencher os campos.
 // "id" tem de ser único — é usado no URL da página de detalhe (project.html?id=...).
 // "description" (curta, usada nos cartões) e "longDescription" (mais detalhada, usada na página
-// de detalhe) têm sempre uma versão por idioma (pt / en).
+// de detalhe) têm sempre uma versão por idioma (pt / en). "description" é texto simples, mas
+// "longDescription" é HTML (à semelhança de "process", mais abaixo): uma frase de introdução em
+// <p> seguida, quando faz sentido, de uma lista <ul><li> com os pontos/funcionalidades principais.
 // "image" é a imagem usada no cartão da grelha; "images" é a lista de screenshots usada na
 // página de detalhe. Ambos podem apontar para ficheiros dentro de assets/images/
 // (ex: "assets/images/meu-projeto.png"). Se ficarem vazios, é mostrado um placeholder automaticamente.
@@ -13,12 +15,24 @@
 // página de detalhe: "planned" (cinzento, "Planeado"), "in-progress" (laranja, "Em desenvolvimento")
 // ou "done" (verde, "Finalizado").
 // "process" é opcional — documenta o processo de desenvolvimento na página de detalhe (Problema /
-// Solução / Base de Dados / Desafios Técnicos, cada um com pt/en). Só aparece se estiver definido,
-// e cada parte só é mostrada se tiver conteúdo (ex: projetos sem base de dados podem omitir
-// "database"). Este campo ainda não tem um formulário próprio no admin — se editares e
-// guardares um projeto que já tenha "process" através do admin, o valor mantém-se, mas para
-// adicionares "process" a um projeto novo, escreve-o diretamente em js/data.js depois de
-// descarregares.
+// Solução / Base de Dados / Desafios Técnicos / Contributo da IA / Principal Aprendizagem, cada um
+// com pt/en). Só aparece se estiver definido, e cada parte só é mostrada se tiver conteúdo (ex:
+// projetos sem base de dados podem omitir "database", e "aiContribution" só faz sentido em
+// projetos que usem IA de facto). O texto de cada parte é HTML (não só texto simples), para
+// permitir uma frase de introdução seguida de uma lista <ul><li>. Este campo ainda não tem um
+// formulário próprio no admin — se editares e guardares um projeto que já tenha "process" através
+// do admin, o valor mantém-se, mas para adicionares "process" a um projeto novo, escreve-o
+// diretamente em js/data.js depois de descarregares.
+// "link" aponta para a aplicação publicada (ex: "https://..."); se ficar "#" (predefinição), o
+// botão "Abrir Aplicação" não aparece na página de detalhe.
+// "demoCredentials" é opcional — mostra uma caixa com credenciais de acesso de demonstração por
+// baixo do botão "Abrir Aplicação" (útil para apps com login), com texto HTML por idioma (pt/en),
+// à semelhança de "process". Só faz sentido definir quando "link" também está definido.
+// "demoNote" é opcional — mostra um pequeno aviso (com destaque à esquerda) por baixo das
+// credenciais (ou logo a seguir ao texto de CTA, se não houver credenciais), útil para avisar de
+// limitações da app publicada, como por exemplo tempos de resposta mais lentos por estar alojada
+// num nível gratuito. Texto HTML por idioma (pt/en), só faz sentido definir quando "link" também
+// está definido.
 //
 // Este ficheiro foi gerado a partir de admin.html (Gestão de Projetos, Certificações e Formação
 // Contínua). Podes continuar a editá-lo à mão se preferires — a estrutura é exatamente a mesma.
@@ -32,15 +46,45 @@ const PROJECTS = [
       en: "Store Orders tracking, intended for Administrators and Delivery Couriers."
     },
     longDescription: {
-      pt: "A FastDrop é uma aplicação web desenvolvida em ASP.NET para o rastreamento de Encomendas de uma loja para Administradores e Estafetas de entrega.\n\nO sistema disponibiliza acessos distintos para Administradores e Estafetas, garantindo que cada utilizador acede apenas às funcionalidades adequadas ao seu perfil.\n\nOs Administradores podem criar e gerir encomendas, atualizar o seu estado, atribuir estafetas e gerir utilizadores, roles e estados de encomenda através de um BackOffice dedicado. Os Estafetas podem consultar as encomendas que lhes foram atribuídas e atualizar o estado das entregas diretamente a partir de dispositivos móveis.\n\nA aplicação inclui ainda dashboards com indicadores operacionais em tempo real, permitindo acompanhar facilmente o estado das encomendas e a atividade dos estafetas.",
-      en: "FastDrop is an ASP.NET-based web application designed for tracking store orders, intended for administrators and delivery couriers.\n\nThe system provides separate access for Administrators and Couriers, ensuring that each user can only access the features relevant to their role.\n\nAdministrators can create and manage orders, update their status, assign couriers, and manage users, roles, and order statuses through a dedicated BackOffice. Couriers can view their assigned orders and update delivery statuses directly from mobile devices.\n\nThe application also includes real-time operational dashboards, providing a clear overview of order status and courier activity."
+      pt: "<p>A FastDrop é uma aplicação web desenvolvida em ASP.NET para o rastreamento de Encomendas de uma loja, destinada a Administradores e Estafetas de entrega. O sistema disponibiliza acessos distintos para cada perfil, garantindo que cada utilizador acede apenas às funcionalidades adequadas à sua função:</p><ul><li><strong>Administradores</strong>: criam e gerem encomendas, atualizam o seu estado, atribuem estafetas, e gerem utilizadores, roles e estados de encomenda através de um BackOffice dedicado.</li><li><strong>Estafetas</strong>: consultam as encomendas que lhes foram atribuídas e atualizam o estado das entregas diretamente a partir de dispositivos móveis.</li><li><strong>Dashboards</strong> com indicadores operacionais em tempo real, para acompanhar o estado das encomendas e a atividade dos estafetas.</li></ul>",
+      en: "<p>FastDrop is an ASP.NET-based web application for tracking store orders, intended for Administrators and Delivery Couriers. The system provides separate access for each profile, ensuring that each user can only access the features relevant to their role:</p><ul><li><strong>Administrators</strong>: create and manage orders, update their status, assign couriers, and manage users, roles and order statuses through a dedicated BackOffice.</li><li><strong>Couriers</strong>: view their assigned orders and update delivery statuses directly from mobile devices.</li><li><strong>Dashboards</strong> with real-time operational indicators, to track order status and courier activity.</li></ul>"
     },
     image: "assets\\images\\app-screenshots\\fastdrop\\print-fd-0.png",
     images: ["assets\\images\\app-screenshots\\fastdrop\\print-fd-0.png", "assets\\images\\app-screenshots\\fastdrop\\print-fd-1.png", "assets\\images\\app-screenshots\\fastdrop\\print-fd-2.png", "assets\\images\\app-screenshots\\fastdrop\\print-fd-3.png", "assets\\images\\app-screenshots\\fastdrop\\print-fd-4.png", "assets\\images\\app-screenshots\\fastdrop\\print-fd-5.png"],
     logo: "assets\\images\\app-logos\\fastdrop-logo.png",
     status: "done",
     tags: ["ASP.NET", "C#", "HTML", "CSS", "JS"],
-    link: "#"
+    link: "https://joao-fastdrop-c9b0bff3fchfg2h2.francecentral-01.azurewebsites.net",
+    demoCredentials: {
+      pt: "<p>Contas de demonstração:</p><ul><li><strong>Administrador</strong>: admin_fastdrop@fastdrop.com / FD_Port_26X</li><li><strong>Estafeta</strong>: estafeta1_fastdrop@fastdrop.com / Est1_FD_26X</li></ul>",
+      en: "<p>Demo accounts:</p><ul><li><strong>Administrator</strong>: admin_fastdrop@fastdrop.com / FD_Port_26X</li><li><strong>Courier</strong>: estafeta1_fastdrop@fastdrop.com / Est1_FD_26X</li></ul>"
+    },
+    demoNote: {
+      pt: "Nota: a aplicação está alojada num nível gratuito do Azure, que \"adormece\" por inatividade. O primeiro acesso pode demorar mais tempo ou precisar de uma segunda tentativa.",
+      en: "Note: the application is hosted on Azure's free tier, which \"sleeps\" after inactivity. The first access may take longer or need a second attempt."
+    },
+    process: {
+      problem: {
+        pt: "<p>Antes desta aplicação, o acompanhamento de encomendas e a atribuição de estafetas era feito de forma dispersa. Era necessário um sistema que resolvesse:</p><ul><li>Falta de separação clara entre o que um Administrador e um Estafeta podem fazer.</li><li>Ausência de um registo fiável e centralizado do estado de cada encomenda.</li><li>Dificuldade em acompanhar a atividade dos estafetas em tempo real.</li></ul>",
+        en: "<p>Before this application, order tracking and courier assignment were handled in a scattered way. A system was needed to solve:</p><ul><li>Lack of clear separation between what an Administrator and a Courier can do.</li><li>No reliable, centralized record of each order's status.</li><li>Difficulty tracking courier activity in real time.</li></ul>"
+      },
+      solution: {
+        pt: "<p>A solução assenta em dois perfis de acesso distintos, com autenticação e autorização geridas ao nível da aplicação:</p><ul><li>Administradores acedem a um BackOffice completo, com gestão de utilizadores, roles e estados de encomenda.</li><li>Estafetas apenas visualizam e atualizam as encomendas que lhes foram atribuídas.</li><li>Dashboards com indicadores operacionais em tempo real.</li></ul>",
+        en: "<p>The solution relies on two distinct access profiles, with authentication and authorization managed at the application level:</p><ul><li>Administrators access a full BackOffice, with user, role and order-status management.</li><li>Couriers only view and update the orders assigned to them.</li><li>Real-time operational dashboards.</li></ul>"
+      },
+      database: {
+        pt: "<p>A base de dados relaciona Encomendas, Estados, Utilizadores e Roles através de chaves estrangeiras, o que impõe integridade referencial:</p><ul><li>Uma encomenda não pode existir sem um estado válido.</li><li>Uma encomenda não pode ser atribuída a um utilizador sem o role de Estafeta.</li><li>Este desenho evita inconsistências, como por exemplo uma encomenda \"Entregue\" sem estafeta associado.</li></ul>",
+        en: "<p>The database relates Orders, Statuses, Users and Roles through foreign keys, enforcing referential integrity:</p><ul><li>An order cannot exist without a valid status.</li><li>An order cannot be assigned to a user without the Courier role.</li><li>This design prevents inconsistencies, such as a \"Delivered\" order with no courier attached.</li></ul>"
+      },
+      challenges: {
+        pt: "<p>O maior desafio esteve em validar as regras de negócio associadas ao fluxo de encomendas:</p><ul><li>Impedir transições de estado inválidas (uma encomenda não pode passar de \"Entregue\" para \"Pendente\").</li><li>Garantir que um Estafeta autenticado só acede às encomendas que lhe pertencem, e não a todo o sistema.</li><li>Validar as permissões do lado do servidor, e não apenas na interface apresentada ao utilizador.</li></ul>",
+        en: "<p>The main challenge was validating the business rules behind the order flow:</p><ul><li>Preventing invalid status transitions (an order cannot move from \"Delivered\" back to \"Pending\").</li><li>Ensuring an authenticated Courier only accesses their own assigned orders, not the whole system.</li><li>Validating permissions on the server side, not just in the interface shown to the user.</li></ul>"
+      },
+      learning: {
+        pt: "<p>A separação de perfis de acesso só é fiável quando validada em todas as camadas da aplicação, e não apenas na interface apresentada ao utilizador. Esta foi a principal lição retirada do desenvolvimento da FastDrop, e passou a ser um cuidado que aplico em qualquer sistema com múltiplos perfis de utilizador.</p>",
+        en: "<p>Access-profile separation is only reliable when validated across every layer of the application, not just in the interface shown to the user. This was the main lesson from building FastDrop, and it became a concern I now apply to any system with multiple user profiles.</p>"
+      }
+    }
   },
   {
     id: "corp-expenses",
@@ -50,15 +94,45 @@ const PROJECTS = [
       en: "Registration and approval of Expenses in an organizational or business context."
     },
     longDescription: {
-      pt: "A Corp Expenses é uma aplicação web desenvolvida com a framework Django com o propósito de registo e aprovação de Despesas em contexto organizacional/empresarial.\n\nO seu Front Office conta com uma Lista de Despesas, onde se pode consultar essencialmente cada Despesa, quanto ao seu ID, Descrição, Valor, Funcionário, Datas e Estado.\n\nCada despesa tem um Estado associado, que principalmente indica o Estado de Aprovação da mesma ou de Processamento de Reembolso.",
-      en: "Corp Expenses is a web application developed with the Django framework for the purpose on registration and approval of Expenses in an organizational or business context.\n\nIts Front Office features an Expense List where you can view details for each expense, specifically its ID, Description, Amount, Associated Employee, dDates, and Status.\n\nEach Expense has an associated Status, which primarily indicates its approval Status or Reimbursement processing stage."
+      pt: "<p>A Corp Expenses é uma aplicação web desenvolvida com a framework Django para o registo e aprovação de Despesas em contexto organizacional/empresarial.</p><ul><li>O Front Office conta com uma Lista de Despesas, onde se consulta cada despesa quanto a ID, Descrição, Valor, Funcionário, Datas e Estado.</li><li>Cada despesa tem um Estado associado, que indica principalmente a fase de Aprovação ou de Processamento de Reembolso.</li></ul>",
+      en: "<p>Corp Expenses is a web application developed with the Django framework for the registration and approval of Expenses in an organizational or business context.</p><ul><li>Its Front Office features an Expense List, where each expense can be viewed by ID, Description, Amount, Associated Employee, Dates and Status.</li><li>Each expense has an associated Status, which primarily indicates its approval stage or reimbursement processing stage.</li></ul>"
     },
     image: "assets\\images\\app-screenshots\\corp-expenses\\print-ce-1.png",
     images: ["assets\\images\\app-screenshots\\corp-expenses\\print-ce-1.png", "assets\\images\\app-screenshots\\corp-expenses\\print-ce-2.png", "assets\\images\\app-screenshots\\corp-expenses\\print-ce-3.png", "assets\\images\\app-screenshots\\corp-expenses\\print-ce-4.png", "assets\\images\\app-screenshots\\corp-expenses\\print-ce-5.png", "assets\\images\\app-screenshots\\corp-expenses\\print-ce-6.png", "assets\\images\\app-screenshots\\corp-expenses\\print-ce-7.png"],
     logo: "assets\\images\\app-logos\\corp-expenses-logo.png",
     status: "done",
     tags: ["Django", "Python", "HTML", "CSS", "SQLite3"],
-    link: "#"
+    link: "https://joao-corpexpenses-epbxeqdufrezctgd.francecentral-01.azurewebsites.net",
+    demoCredentials: {
+      pt: "<p>Conta de demonstração:</p><ul><li><strong>Administrador</strong>: admin_corpexpenses / CorpExp_26#</li></ul>",
+      en: "<p>Demo account:</p><ul><li><strong>Administrator</strong>: admin_corpexpenses / CorpExp_26#</li></ul>"
+    },
+    demoNote: {
+      pt: "Nota: a aplicação está alojada num nível gratuito do Azure, que \"adormece\" por inatividade. O primeiro acesso pode demorar mais tempo ou precisar de uma segunda tentativa.",
+      en: "Note: the application is hosted on Azure's free tier, which \"sleeps\" after inactivity. The first access may take longer or need a second attempt."
+    },
+    process: {
+      problem: {
+        pt: "<p>O registo e a aprovação de despesas em contexto empresarial exigem um fluxo controlado. Era necessário resolver:</p><ul><li>Falta de visibilidade sobre quem submeteu, quem aprovou e em que fase se encontra cada despesa.</li><li>Acompanhamento manual e pouco rastreável do processo de reembolso.</li></ul>",
+        en: "<p>Registering and approving expenses in a business context requires a controlled flow. It was necessary to solve:</p><ul><li>Lack of visibility into who submitted, who approved, and what stage each expense is at.</li><li>Manual, hard-to-trace tracking of the reimbursement process.</li></ul>"
+      },
+      solution: {
+        pt: "<p>A Corp Expenses estrutura cada despesa em torno de um Estado que reflete a sua fase no processo:</p><ul><li>Cada despesa fica sempre associada a um Funcionário, um Valor e uma Descrição.</li><li>Os estados cobrem submissão, aprovação e processamento de reembolso.</li><li>O Front Office centraliza o histórico e a situação de cada despesa.</li></ul>",
+        en: "<p>Corp Expenses structures each expense around a Status that reflects its stage in the process:</p><ul><li>Every expense is always linked to an Employee, an Amount and a Description.</li><li>Statuses cover submission, approval and reimbursement processing.</li><li>The Front Office centralizes the history and current situation of each expense.</li></ul>"
+      },
+      database: {
+        pt: "<p>O modelo de dados, desenvolvido com o ORM do Django, relaciona Despesas, Funcionários e Estados:</p><ul><li>Impõe regras de integridade ao nível da base de dados, como por exemplo impedir uma despesa sem Funcionário associado.</li><li>Reduz a possibilidade de dados inconsistentes chegarem à camada de aprovação.</li></ul>",
+        en: "<p>The data model, built with Django's ORM, relates Expenses, Employees and Statuses:</p><ul><li>Enforces integrity rules at the database level, such as preventing an expense from existing without an associated Employee.</li><li>Reduces the chance of inconsistent data reaching the approval stage.</li></ul>"
+      },
+      challenges: {
+        pt: "<p>O principal desafio foi definir as regras de negócio que controlam o fluxo de aprovação:</p><ul><li>Impedir que uma despesa avance diretamente de \"Submetida\" para \"Reembolsada\" sem passar por aprovação.</li><li>Validar os dados introduzidos (como por exemplo valores negativos ou datas incoerentes) antes de os aceitar.</li><li>Manter a fiabilidade da informação usada no processo de aprovação.</li></ul>",
+        en: "<p>The main challenge was defining the business rules that control the approval flow:</p><ul><li>Preventing an expense from moving directly from \"Submitted\" to \"Reimbursed\" without going through approval.</li><li>Validating the data entered (such as negative amounts or inconsistent dates) before accepting it.</li><li>Keeping the information used in the approval process reliable.</li></ul>"
+      },
+      learning: {
+        pt: "<p>Um fluxo de aprovação só é confiável se as regras de negócio impedirem, na própria base de dados e na aplicação, que um registo avance para um estado que não devia alcançar. Ficou claro que validar dados à entrada é tão importante como desenhar bem o fluxo em si.</p>",
+        en: "<p>An approval flow is only trustworthy if the business rules prevent, both in the database and in the application, a record from reaching a status it should not. It became clear that validating data on entry is just as important as designing the flow itself.</p>"
+      }
+    }
   },
   {
     id: "talent-bridge-recruitment-platform",
@@ -68,15 +142,45 @@ const PROJECTS = [
       en: "Personal AI-powered recruitment platform connecting recruiters, candidates and job opportunities."
     },
     longDescription: {
-      pt: "Talent Bridge é uma plataforma pessoal de recrutamento com IA, que liga recrutadores, candidatos e oportunidades de emprego, com três papéis (Admin, Recrutador, Candidato) que cobrem a publicação de vagas, candidaturas e entrevistas.\n\nA IA está integrada no núcleo da aplicação: um Agente avalia a compatibilidade entre candidato e vaga para os recrutadores, com uma justificação escrita, e um segundo Agente recomenda vagas adequadas aos candidatos e consegue submeter candidaturas de forma autónoma em nome deles, através de Action Calling.",
-      en: "Talent Bridge is a personal AI-powered recruitment platform connecting recruiters, candidates and job opportunities, with three roles (Admin, Recruiter, Applicant) covering job postings, applications and interviews.\n\nAI is built into the app's core: an Agent scores candidate-to-job fit for recruiters with a written justification, and a second Agent recommends matching jobs to candidates and can autonomously submit applications on their behalf via Action Calling."
+      pt: "<p>Talent Bridge é uma plataforma pessoal de recrutamento com IA, que liga recrutadores, candidatos e oportunidades de emprego, com três papéis (Admin, Recrutador, Candidato) que cobrem a publicação de vagas, candidaturas e entrevistas.</p><ul><li>Um Agente avalia a compatibilidade entre candidato e vaga para os recrutadores, com uma justificação escrita.</li><li>Um segundo Agente recomenda vagas adequadas aos candidatos e consegue submeter candidaturas de forma autónoma em nome deles, através de Action Calling.</li></ul>",
+      en: "<p>Talent Bridge is a personal AI-powered recruitment platform connecting recruiters, candidates and job opportunities, with three roles (Admin, Recruiter, Applicant) covering job postings, applications and interviews.</p><ul><li>An Agent scores candidate-to-job fit for recruiters, with a written justification.</li><li>A second Agent recommends matching jobs to candidates and can autonomously submit applications on their behalf via Action Calling.</li></ul>"
     },
     image: "assets\\images\\app-screenshots\\talent-bridge\\print-tb-0.png",
     images: ["assets\\images\\app-screenshots\\talent-bridge\\print-tb-0.png", "assets\\images\\app-screenshots\\talent-bridge\\print-tb-1.png", "assets\\images\\app-screenshots\\talent-bridge\\print-tb-2.png", "assets\\images\\app-screenshots\\talent-bridge\\print-tb-3.png", "assets\\images\\app-screenshots\\talent-bridge\\print-tb-4.png", "assets\\images\\app-screenshots\\talent-bridge\\print-tb-5.png", "assets\\images\\app-screenshots\\talent-bridge\\print-tb-6.png", "assets\\images\\app-screenshots\\talent-bridge\\print-tb-7.png", "assets\\images\\app-screenshots\\talent-bridge\\print-tb-8.png", "assets\\images\\app-screenshots\\talent-bridge\\print-tb-9.png", "assets\\images\\app-screenshots\\talent-bridge\\print-tb-10.png", "assets\\images\\app-screenshots\\talent-bridge\\print-tb-11.png"],
     logo: "assets\\images\\app-logos\\talent-bridge-logo.png",
     status: "done",
     tags: ["OutSystems ODC", "AI"],
-    link: "#"
+    link: "https://personal-g9f0petr-dev.outsystems.app/TalentBridge/Login",
+    demoNote: {
+      pt: "Nota: o primeiro pedido a cada um dos Agentes de IA pode demorar mais tempo a responder (o timeout foi aumentado para acomodar esta situação).",
+      en: "Note: the first request to each of the AI Agents may take longer to respond (the timeout was increased to accommodate this)."
+    },
+    process: {
+      problem: {
+        pt: "<p>Associar candidatos a vagas de forma manual é moroso e pouco consistente. Era necessário um sistema que resolvesse:</p><ul><li>Recrutadores a analisarem currículos individualmente, sem apoio à decisão.</li><li>Candidatos a perderem oportunidades compatíveis por não terem conhecimento delas.</li><li>A necessidade de respeitar as fronteiras de acesso entre Administradores, Recrutadores e Candidatos.</li></ul>",
+        en: "<p>Manually matching candidates to jobs is slow and inconsistent. A system was needed to solve:</p><ul><li>Recruiters reviewing résumés individually, with no support for the decision.</li><li>Candidates missing suitable opportunities they never became aware of.</li><li>The need to respect the access boundaries between Admins, Recruiters and Candidates.</li></ul>"
+      },
+      solution: {
+        pt: "<p>A Talent Bridge define três perfis de acesso (Admin, Recrutador, Candidato), cada um limitado às ações do seu papel:</p><ul><li>Um Agente de IA avalia a compatibilidade entre candidato e vaga para os recrutadores, devolvendo sempre uma justificação escrita da pontuação.</li><li>Um segundo Agente recomenda vagas aos candidatos e pode submeter candidaturas de forma autónoma em seu nome, através de Action Calling.</li></ul>",
+        en: "<p>Talent Bridge defines three access profiles (Admin, Recruiter, Candidate), each limited to the actions of their role:</p><ul><li>An AI Agent scores candidate-to-job fit for recruiters, always returning a written justification for the score.</li><li>A second Agent recommends jobs to candidates and can autonomously submit applications on their behalf via Action Calling.</li></ul>"
+      },
+      database: {
+        pt: "<p>O modelo relaciona Vagas, Candidaturas, Utilizadores e Roles:</p><ul><li>Uma candidatura não pode existir sem uma Vaga e um Candidato válidos.</li><li>As avaliações geradas pelos Agentes (pontuação e justificação) ficam associadas à respetiva candidatura.</li><li>Mantém-se um registo rastreável de cada decisão, humana ou automatizada.</li></ul>",
+        en: "<p>The model relates Jobs, Applications, Users and Roles:</p><ul><li>An application cannot exist without a valid Job and Candidate.</li><li>The evaluations generated by the Agents (score and justification) are linked to the corresponding application.</li><li>A traceable record is kept of every decision, human or automated.</li></ul>"
+      },
+      challenges: {
+        pt: "<p>O maior desafio foi definir os limites de atuação do Agente que submete candidaturas de forma autónoma:</p><ul><li>Validar regras de negócio antes de executar a ação, como a vaga estar ainda aberta e a candidatura não ser duplicada.</li><li>Não confiar apenas na recomendação do Agente, mas sim em validação explícita a cada submissão.</li><li>Manter uma justificação escrita para cada decisão automatizada, para dar transparência ao recrutador e permitir auditar o comportamento da IA.</li></ul>",
+        en: "<p>The main challenge was defining the boundaries for the Agent that submits applications autonomously:</p><ul><li>Validating business rules before executing the action, such as the job still being open and the application not being a duplicate.</li><li>Not simply trusting the Agent's recommendation, but requiring explicit validation on every submission.</li><li>Keeping a written justification for every automated decision, to give recruiters transparency and allow the AI's behaviour to be audited.</li></ul>"
+      },
+      aiContribution: {
+        pt: "<p>A IA está integrada em dois pontos concretos da aplicação, cada um com uma responsabilidade distinta:</p><ul><li>Um Agente avalia a compatibilidade entre candidato e vaga, devolvendo sempre uma pontuação com justificação escrita, para apoiar (e não substituir) a decisão do recrutador.</li><li>Um segundo Agente recomenda vagas aos candidatos e pode submeter candidaturas em seu nome, através de Action Calling, mas apenas depois de as regras de negócio confirmarem que a ação é válida.</li></ul><p>A lógica de negócio (elegibilidade, duplicação, estado da vaga) mantém-se determinística; a IA entra apenas onde há avaliação ou linguagem a interpretar.</p>",
+        en: "<p>AI is built into two concrete points of the application, each with a distinct responsibility:</p><ul><li>An Agent scores candidate-to-job fit, always returning a score with a written justification, to support (not replace) the recruiter's decision.</li><li>A second Agent recommends jobs to candidates and can submit applications on their behalf via Action Calling, but only after the business rules confirm the action is valid.</li></ul><p>The business logic (eligibility, duplication, job status) stays deterministic; AI only steps in where there is evaluation or language to interpret.</p>"
+      },
+      learning: {
+        pt: "<p>Dar autonomia a um Agente de IA só é seguro quando as regras de negócio continuam a ser aplicadas de forma determinística antes de qualquer ação ser executada. A IA pode recomendar e agir em nome do utilizador, mas as garantias de integridade do processo têm de vir sempre do código, não do modelo.</p>",
+        en: "<p>Giving autonomy to an AI Agent is only safe when the business rules are still enforced deterministically before any action is executed. AI can recommend and act on the user's behalf, but the process's integrity guarantees always have to come from the code, not from the model.</p>"
+      }
+    }
   },
   {
     id: "meal-planner",
@@ -86,8 +190,8 @@ const PROJECTS = [
       en: "Weekly meal-planning app (lunch and dinner) with AI-generated suggestions."
     },
     longDescription: {
-      pt: "Meal Planner é uma aplicação para planeamento de ementas semanais, desenvolvida na plataforma OutSystems ODC, que permite organizar as refeições de almoço e jantar de toda a semana com um único clique. Além da escolha manual entre refeições já registadas, a aplicação integra um Agente de Inteligência Artificial que sugere pratos completos, com nome e processo de preparação, tendo em conta a cultura gastronómica portuguesa e, quando indicado, um ingrediente de referência escolhido pelo utilizador, como por exemplo peixe ou frango. Cada sugestão gerada evita repetir refeições já existentes na base de dados e fica disponível para reutilização em planos futuros.",
-      en: "Meal Planner is a weekly meal-planning application built on the OutSystems ODC platform, allowing a full week of lunches and dinners to be organised with a single click. Beyond manually selecting from existing meals, the app integrates an AI Agent that suggests complete dishes, including name and preparation process, informed by Portuguese cuisine and, when specified, a reference ingredient chosen by the user, such as fish or chicken. Each generated suggestion avoids repeating meals already in the database and becomes available for reuse in future plans."
+      pt: "<p>Meal Planner é uma aplicação para planeamento de ementas semanais, desenvolvida na plataforma OutSystems ODC, que permite organizar as refeições de almoço e jantar de toda a semana com um único clique.</p><ul><li>Escolha manual entre refeições já registadas na base de dados.</li><li>Um Agente de Inteligência Artificial sugere pratos completos, com nome e processo de preparação, tendo em conta a cultura gastronómica portuguesa.</li><li>Quando indicado, o Agente considera um ingrediente de referência escolhido pelo utilizador, como por exemplo peixe ou frango.</li><li>Cada sugestão gerada evita repetir refeições já existentes na base de dados e fica disponível para reutilização em planos futuros.</li></ul>",
+      en: "<p>Meal Planner is a weekly meal-planning application built on the OutSystems ODC platform, allowing a full week of lunches and dinners to be organised with a single click.</p><ul><li>Manual selection from meals already registered in the database.</li><li>An AI Agent suggests complete dishes, including name and preparation process, informed by Portuguese cuisine.</li><li>When specified, the Agent takes into account a reference ingredient chosen by the user, such as fish or chicken.</li><li>Each generated suggestion avoids repeating meals already in the database and becomes available for reuse in future plans.</li></ul>"
     },
     image: "assets\\images\\app-screenshots\\meal-planner\\print-mp-0.png",
     images: ["assets\\images\\app-screenshots\\meal-planner\\print-mp-0.png", "assets\\images\\app-screenshots\\meal-planner\\print-mp-1.png", "assets\\images\\app-screenshots\\meal-planner\\print-mp-2.png", "assets\\images\\app-screenshots\\meal-planner\\print-mp-3.png", "assets\\images\\app-screenshots\\meal-planner\\print-mp-4.png", "assets\\images\\app-screenshots\\meal-planner\\print-mp-5.png", "assets\\images\\app-screenshots\\meal-planner\\print-mp-6.png", "assets\\images\\app-screenshots\\meal-planner\\print-mp-7.png"],
@@ -104,8 +208,8 @@ const PROJECTS = [
       en: "Vehicle registration, maintenance history, revision/insurance expiry alerts, and integration with an external REST API."
     },
     longDescription: {
-      pt: "Sistema para gerir a frota de viaturas da empresa: registo de veículos, histórico de manutenções preventivas e corretivas, alertas automáticos de revisão e de seguro a expirar, e integração com uma API REST externa para sincronizar dados com sistemas de terceiros.",
-      en: "System for managing the company's vehicle fleet: vehicle registration, preventive and corrective maintenance history, automatic revision and insurance-expiry alerts, and integration with an external REST API to sync data with third-party systems."
+      pt: "<p>Sistema para gerir a frota de viaturas da empresa.</p><ul><li>Registo de veículos e histórico de manutenções preventivas e corretivas.</li><li>Alertas automáticos de revisão e de seguro a expirar.</li><li>Integração com uma API REST externa, para sincronizar dados com sistemas de terceiros.</li></ul>",
+      en: "<p>System for managing the company's vehicle fleet.</p><ul><li>Vehicle registration and preventive and corrective maintenance history.</li><li>Automatic revision and insurance-expiry alerts.</li><li>Integration with an external REST API, to sync data with third-party systems.</li></ul>"
     },
     image: "assets/images/app-screenshots/fleet-management/fleet-management-platform-0.png",
     images: ["assets/images/app-screenshots/fleet-management/fleet-management-platform-0.png", "assets/images/app-screenshots/fleet-management/fleet-management-platform-1.png"],
@@ -122,8 +226,8 @@ const PROJECTS = [
       en: "Telegram chatbot that searches a personal photo gallery and generates promotional text."
     },
     longDescription: {
-      pt: "Chatbot do Telegram que busca numa galeria de fotografias pessoal e gera textos promocionais.",
-      en: "Telegram chatbot that searches a personal photo gallery and generates promotional text."
+      pt: "<p>Chatbot do Telegram que combina pesquisa numa galeria de fotografias pessoal com geração automática de texto.</p><ul><li>Pesquisa fotografias na galeria pessoal a partir de critérios indicados pelo utilizador.</li><li>Gera automaticamente textos promocionais associados às fotografias selecionadas.</li></ul>",
+      en: "<p>Telegram chatbot combining search over a personal photo gallery with automatic text generation.</p><ul><li>Searches photos in the personal gallery based on criteria provided by the user.</li><li>Automatically generates promotional text associated with the selected photos.</li></ul>"
     },
     image: "assets\\images\\app-screenshots\\telegram-photopicker\\telegram-photopicker-1.png",
     images: ["assets\\images\\app-screenshots\\telegram-photopicker\\telegram-photopicker-1.png", "assets\\images\\app-screenshots\\telegram-photopicker\\telegram-photopicker-2.png"],
@@ -140,15 +244,33 @@ const PROJECTS = [
       en: "Revelation of the meeting location of an event to a group of teachers."
     },
     longDescription: {
-      pt: "A aplicação Secret Mission/Missão Secreta é um miniprojeto desenvolvido para a revelação do local de encontro de um evento para um grupo de professores. O Professores devem introduzir um código secreto para aceder à revelação do local.",
-      en: "The Secret Mission/Missão Secreta app is a mini-project developed to reveal the meeting location of an event to a group of teachers. Teachers must enter a secret code to access the location reveal."
+      pt: "<p>A aplicação Secret Mission/Missão Secreta é um miniprojeto desenvolvido para a revelação do local de encontro de um evento a um grupo de professores.</p><ul><li>O acesso à revelação do local depende da introdução de um código secreto, partilhado previamente apenas com os participantes.</li><li>A validação é feita do lado do cliente, uma opção adequada à escala e ao público-alvo deste miniprojeto.</li><li>O código não fica escrito em texto simples no código-fonte: é comparado através de um hash SHA-256, gerado com a Web Crypto API do browser.</li></ul>",
+      en: "<p>The Secret Mission/Missão Secreta app is a mini-project developed to reveal the meeting location of an event to a group of teachers.</p><ul><li>Access to the location reveal depends on entering a secret code, shared beforehand only with participants.</li><li>Validation happens client-side, a choice appropriate to the scale and target audience of this mini-project.</li><li>The code is never written in plain text in the source: it's compared via a SHA-256 hash generated with the browser's Web Crypto API.</li></ul>"
     },
     image: "assets\\images\\app-screenshots\\secret-mission\\print-sm-1.png",
     images: ["assets\\images\\app-screenshots\\secret-mission\\print-sm-1.png", "assets\\images\\app-screenshots\\secret-mission\\print-sm-2.png"],
     logo: "assets\\images\\app-logos\\secret-mission-logo.png",
     status: "done",
     tags: ["HTML", "CSS", "JS"],
-    link: "#"
+    link: "https://joao-baptista91.github.io/missao-secreta/",
+    process: {
+      problem: {
+        pt: "<p>Era necessário revelar o local de um evento a um grupo restrito de professores, sem:</p><ul><li>Expor a localização publicamente antes da data prevista.</li><li>Depender de comunicação manual individual a cada participante.</li></ul>",
+        en: "<p>The meeting location for an event needed to be revealed to a limited group of teachers, without:</p><ul><li>Exposing the location publicly before the planned date.</li><li>Relying on manual, one-by-one communication with each participant.</li></ul>"
+      },
+      solution: {
+        pt: "<p>A solução que implementei foi uma aplicação de página única, com acesso condicionado:</p><ul><li>O acesso à revelação do local depende da introdução de um código secreto, partilhado previamente apenas com os participantes.</li><li>O conteúdo com a localização só é apresentado depois de validado o código correto.</li></ul>",
+        en: "<p>The solution I implemented was a single-page application with conditional access:</p><ul><li>Access to the location reveal depends on entering a secret code, shared beforehand only with participants.</li><li>The location content is only displayed once the correct code has been validated.</li></ul>"
+      },
+      challenges: {
+        pt: "<p>Por se tratar de validação feita do lado do cliente, em JavaScript:</p><ul><li>Numa primeira versão, o código secreto estava escrito em texto simples no código-fonte, visível a quem inspecionasse a página.</li><li>Corrigi esta situação ao passar a comparar um hash SHA-256 do código introduzido (gerado com a Web Crypto API do browser), em vez do valor em claro.</li><li>Ainda assim, por se tratar de um código de 4 dígitos validado no cliente, um utilizador com conhecimentos técnicos poderia testar as 10.000 combinações possíveis, o que não equivale a uma validação do lado do servidor.</li><li>Considero que foi uma opção consciente, adequada à escala e ao público-alvo deste miniprojeto.</li></ul>",
+        en: "<p>Since validation happens client-side, in JavaScript:</p><ul><li>In an early version, the secret code was written in plain text in the source, visible to anyone inspecting the page.</li><li>I fixed this by comparing a SHA-256 hash of the entered code (generated with the browser's Web Crypto API) instead of the raw value.</li><li>Even so, since it's a 4-digit code validated client-side, a technically capable user could still test all 10,000 possible combinations, which is not equivalent to server-side validation.</li><li>I consider this a deliberate choice, appropriate to the scale and target audience of this mini-project.</li></ul>"
+      },
+      learning: {
+        pt: "<p>Na minha opinião, nem toda a aplicação precisa do mesmo nível de segurança: o que importa é escolher a solução adequada à escala e ao risco real do problema, sendo transparente sobre as suas limitações, em vez de aplicar sempre a abordagem mais robusta por rotina. Considero ainda que, mesmo dentro de uma abordagem simples, vale a pena eliminar as fragilidades mais óbvias e mais baratas de corrigir (como deixar de expor o código em texto simples), sem transformar isso num projeto de segurança que a escala do miniprojeto não justifica.</p>",
+        en: "<p>In my opinion, not every application needs the same level of security: what matters is choosing a solution suited to the scale and real risk of the problem, being transparent about its limitations, rather than always defaulting to the most robust approach out of habit. I'd also add that, even within a simple approach, it's worth eliminating the most obvious and cheapest-to-fix weaknesses (such as no longer exposing the code in plain text), without turning it into a security project the project's scale doesn't justify.</p>"
+      }
+    }
   },
   {
     id: "it-service-desk",
@@ -158,8 +280,8 @@ const PROJECTS = [
       en: "Ticket management system with workflows, SLAs, notifications and dashboards."
     },
     longDescription: {
-      pt: "Aplicação de suporte interno para registo e acompanhamento de pedidos, com atribuição automática por equipa, alertas de SLA e um dashboard com o estado de todos os tickets em tempo real.",
-      en: "Internal support application for logging and tracking requests, with automatic team assignment, SLA alerts and a real-time dashboard of ticket status."
+      pt: "<p>Aplicação de suporte interno para registo e acompanhamento de pedidos.</p><ul><li>Atribuição automática de pedidos por equipa.</li><li>Alertas de SLA.</li><li>Dashboard com o estado de todos os tickets em tempo real.</li></ul>",
+      en: "<p>Internal support application for logging and tracking requests.</p><ul><li>Automatic request assignment by team.</li><li>SLA alerts.</li><li>Real-time dashboard of ticket status.</li></ul>"
     },
     image: "",
     images: [],
@@ -176,8 +298,8 @@ const PROJECTS = [
       en: "Manage audits, non-conformities, actions and documentation in one place."
     },
     longDescription: {
-      pt: "Aplicação para planear auditorias ambientais e de qualidade, registar não conformidades e ações corretivas associadas, e centralizar toda a documentação de suporte por auditoria.",
-      en: "Application to plan environmental and quality audits, log non-conformities and their corrective actions, and centralise all supporting documentation per audit."
+      pt: "<p>Aplicação para planear auditorias ambientais e de qualidade.</p><ul><li>Registo de não conformidades e das ações corretivas associadas.</li><li>Centralização de toda a documentação de suporte por auditoria.</li></ul>",
+      en: "<p>Application to plan environmental and quality audits.</p><ul><li>Logging of non-conformities and their associated corrective actions.</li><li>Centralisation of all supporting documentation per audit.</li></ul>"
     },
     image: "",
     images: [],
@@ -194,8 +316,8 @@ const PROJECTS = [
       en: "Onboarding portal for new hires, with checklists and task tracking."
     },
     longDescription: {
-      pt: "Portal self-service para acompanhar o processo de integração de novos colaboradores, com checklists por função, notificações às equipas responsáveis e visão do progresso em tempo real.",
-      en: "Self-service portal to track the onboarding process for new hires, with role-based checklists, notifications to the responsible teams and real-time progress tracking."
+      pt: "<p>Portal self-service para acompanhar o processo de integração de novos colaboradores.</p><ul><li>Checklists por função.</li><li>Notificações às equipas responsáveis.</li><li>Visão do progresso em tempo real.</li></ul>",
+      en: "<p>Self-service portal to track the onboarding process for new hires.</p><ul><li>Role-based checklists.</li><li>Notifications to the responsible teams.</li><li>Real-time progress tracking.</li></ul>"
     },
     image: "",
     images: [],

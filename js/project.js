@@ -140,40 +140,76 @@ function initProjectGallery(project) {
 // É opcional: só aparece se o projeto tiver o campo "process" definido em data.js, e cada
 // parte (problema / base de dados / desafios) só é mostrada se tiver conteúdo — por exemplo,
 // projetos sem base de dados própria podem omitir esse bloco.
+// O texto de cada parte (pt/en) é inserido diretamente como HTML (não só texto simples), para
+// permitir uma frase de introdução seguida de uma lista <ul><li> — por isso, ao escrever/editar
+// "process" em js/data.js, o conteúdo deve incluir as próprias tags (ex: "<p>...</p><ul><li>...</li></ul>").
+//
+// "Problema" e "Solução" formam a sequência lógica principal (um leva ao outro), por isso são
+// mostrados numa fila própria ("process-flow"), com uma seta entre os dois. Os restantes blocos
+// (Base de Dados, Desafios Técnicos, Contributo da IA, Principal Aprendizagem) são detalhes de
+// apoio a essa narrativa, por isso aparecem separados, numa grelha própria por baixo.
 function renderProcessSection(project, lang) {
   if (!project.process) return "";
 
-  const parts = [
+  const flowParts = [
     { key: "problem", labelKey: "project.process.problem", iconPath: '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>' },
     { key: "solution", labelKey: "project.process.solution", iconPath: '<path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2Z"/>' },
+  ];
+  const detailParts = [
     { key: "database", labelKey: "project.process.database", iconPath: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/>' },
     { key: "challenges", labelKey: "project.process.challenges", iconPath: '<path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1"/>' },
+    { key: "aiContribution", labelKey: "project.process.aiContribution", iconPath: '<path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>' },
+    { key: "learning", labelKey: "project.process.learning", iconPath: '<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>' },
   ];
 
-  const blocks = parts
-    .filter(({ key }) => project.process[key])
-    .map(({ key, labelKey, iconPath }) => {
-      const text = project.process[key][lang] || project.process[key].pt;
-      return `
-        <div class="process-block">
-          <div class="process-block-header">
-            <svg class="process-icon process-icon-${key}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${iconPath}</svg>
-            <h3>${t(labelKey)}</h3>
-          </div>
-          <p>${text}</p>
+  function renderBlock({ key, labelKey, iconPath }) {
+    const text = project.process[key][lang] || project.process[key].pt;
+    return `
+      <div class="process-block">
+        <div class="process-block-header">
+          <svg class="process-icon process-icon-${key}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${iconPath}</svg>
+          <h3>${t(labelKey)}</h3>
         </div>
-      `;
-    })
-    .join("");
+        ${text}
+      </div>
+    `;
+  }
 
-  if (!blocks) return "";
+  const flowAvailable = flowParts.filter(({ key }) => project.process[key]);
+  const detailsAvailable = detailParts.filter(({ key }) => project.process[key]);
+
+  if (!flowAvailable.length && !detailsAvailable.length) return "";
+
+  const arrowSvg = `
+    <div class="process-flow-arrow" aria-hidden="true">
+      <span class="process-flow-arrow-line"></span>
+      <svg class="process-flow-arrow-head" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="1 1 9 8 1 15"/>
+      </svg>
+    </div>
+  `;
+
+  const flowHtml = flowAvailable.length
+    ? `
+      <div class="process-flow">
+        ${flowAvailable.map((part, i) => `${i > 0 ? arrowSvg : ""}${renderBlock(part)}`).join("")}
+      </div>
+    `
+    : "";
+
+  const detailsHtml = detailsAvailable.length
+    ? `
+      <div class="process-details">
+        ${detailsAvailable.map(renderBlock).join("")}
+      </div>
+    `
+    : "";
 
   return `
     <div class="project-process">
       <h2 class="process-title">${t("project.process.title")}</h2>
-      <div class="process-grid">
-        ${blocks}
-      </div>
+      ${flowHtml}
+      ${detailsHtml}
     </div>
   `;
 }
@@ -212,8 +248,31 @@ function renderProjectDetail() {
     </div>
     ${renderGalleryMarkup(project)}
     <div class="project-detail-body">
-      <p>${description}</p>
+      ${description}
     </div>
+    ${project.link && project.link !== "#" ? `
+      <div class="project-demo">
+        <p class="project-demo-cta">${t("project.demoCta")}</p>
+        ${project.demoCredentials ? `
+          <div class="project-demo-credentials">
+            ${project.demoCredentials[lang] || project.demoCredentials.pt}
+          </div>
+        ` : ""}
+        ${project.demoNote ? `
+          <p class="project-demo-note">
+            ${project.demoNote[lang] || project.demoNote.pt}
+          </p>
+        ` : ""}
+        <a class="btn btn-primary project-demo-link" href="${project.link}" target="_blank" rel="noopener noreferrer">
+          <span>${t("project.openApp")}</span>
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+        </a>
+      </div>
+    ` : ""}
     ${renderProcessSection(project, lang)}
   `;
 
