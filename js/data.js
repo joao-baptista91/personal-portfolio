@@ -510,8 +510,8 @@ const RESOURCES = [
       en: "A quick, practical guide for everyday use, with simple recommendations to protect your data, equipment and the organization's network."
     },
     intro: {
-      pt: "Muitos incidentes de segurança informática não começa com um ataque sofisticado, mas sim com um clique apressado, uma password fraca ou um computador desbloqueado. Este guia reúne recomendações simples, sem jargão técnico, para reduzir esse risco no dia a dia.",
-      en: "Many IT security incidents don't start with a sophisticated attack, but they start with a rushed click, a weak password or an unlocked computer. This guide gathers simple, jargon-free recommendations to reduce that risk in everyday use."
+      pt: "O presente guia reúne recomendações simples e sem jargão técnico para reduzir o risco de incidentes de segurança informática no dia a dia. Muitos destes incidentes não têm origem num ataque sofisticado, mas sim num clique apressado, numa password fraca ou num computador desbloqueado.",
+      en: "This guide gathers simple, jargon-free recommendations to reduce the risk of IT security incidents in everyday use. Many of these incidents don't originate from a sophisticated attack, but rather from a rushed click, a weak password or an unlocked computer."
     },
     meta: "João Baptista · Consultor TI · v1.0",
     pdf: "assets/documents/guia-seguranca-informatica.pdf",
@@ -519,20 +519,20 @@ const RESOURCES = [
       {
         title: { pt: "Palavras-passe e acessos", en: "Passwords and access" },
         items: [
-          { pt: "Usa uma password diferente para cada serviço — se uma for comprometida, as outras contas ficam protegidas.", en: "Use a different password for each service — if one is compromised, the others stay protected." },
+          { pt: "Usa uma password diferente para cada serviço, para que, caso uma seja comprometida, as restantes contas se mantenham protegidas.", en: "Use a different password for each service, so that if one is compromised, the others remain protected." },
           { pt: "Prefere frases longas e fáceis de lembrar (ex: \"CafeAzul-27!Porta\") a palavras curtas e óbvias.", en: "Prefer long, memorable passphrases (e.g. \"BlueCoffee-27!Door\") over short, obvious words." },
           { pt: "Ativa a autenticação em dois fatores (2FA) sempre que disponível, especialmente no email e em aplicações de trabalho.", en: "Enable two-factor authentication (2FA) wherever available, especially for email and work applications." },
-          { pt: "Nunca partilhes a tua password por email, chat ou telefone — nenhum departamento de TI legítimo a pede dessa forma.", en: "Never share your password by email, chat or phone — no legitimate IT department asks for it that way." }
+          { pt: "Nunca partilhes a tua password por email, chat ou telefone: nenhum departamento de TI legítimo a pede dessa forma.", en: "Never share your password by email, chat or phone: no legitimate IT department asks for it that way." }
         ],
         callout: {
-          pt: "Dica: um gestor de passwords (ex: Bitwarden) permite usar passwords fortes e diferentes sem teres de as memorizar todas.",
-          en: "Tip: a password manager (e.g. Bitwarden) lets you use strong, different passwords without having to memorize them all."
+          pt: "Dica: um gestor de passwords (como por exemplo o Bitwarden) permite usar passwords fortes e diferentes, sem que seja necessário memorizá-las todas.",
+          en: "Tip: a password manager (such as Bitwarden) lets you use strong, different passwords, without having to memorize all of them."
         }
       },
       {
         title: { pt: "Reconhecer phishing e engenharia social", en: "Recognizing phishing and social engineering" },
         items: [
-          { pt: "Desconfia de emails com urgência excessiva (\"a tua conta será bloqueada em 24h\") — é uma tática comum para provocar reações precipitadas.", en: "Be wary of emails with excessive urgency (\"your account will be blocked in 24h\") — a common tactic to provoke hasty reactions." },
+          { pt: "Desconfia de emails com urgência excessiva (como por exemplo \"a tua conta será bloqueada em 24h\"): esta é uma tática comum para provocar reações precipitadas.", en: "Be wary of emails with excessive urgency (such as \"your account will be blocked in 24h\"): this is a common tactic to provoke hasty reactions." },
           { pt: "Verifica sempre o endereço de email do remetente, não apenas o nome apresentado.", en: "Always check the sender's actual email address, not just the display name." },
           { pt: "Antes de clicar num link, passa o cursor por cima para ver o destino real.", en: "Before clicking a link, hover over it to see the real destination." },
           { pt: "Nunca abras anexos inesperados, mesmo que pareçam vir de alguém conhecido.", en: "Never open unexpected attachments, even if they appear to come from someone you know." },
@@ -542,7 +542,7 @@ const RESOURCES = [
       {
         title: { pt: "Atualizações de software", en: "Software updates" },
         items: [
-          { pt: "Mantém o sistema operativo, antivírus e aplicações sempre atualizados — as atualizações corrigem falhas de segurança conhecidas.", en: "Keep your operating system, antivirus and applications up to date — updates fix known security flaws." },
+          { pt: "Mantém o sistema operativo, o antivírus e as aplicações sempre atualizados, uma vez que as atualizações corrigem falhas de segurança conhecidas.", en: "Keep your operating system, antivirus and applications up to date, since updates fix known security flaws." },
           { pt: "Não adies indefinidamente os pedidos de reinício para atualizar o Windows.", en: "Don't indefinitely postpone Windows restart prompts for updates." },
           { pt: "Evita instalar software de fontes não oficiais ou desconhecidas.", en: "Avoid installing software from unofficial or unknown sources." }
         ]
@@ -551,7 +551,7 @@ const RESOURCES = [
         title: { pt: "Cópias de segurança (backups)", en: "Backups" },
         items: [
           { pt: "Guarda documentos importantes em locais com backup automático (rede da empresa, cloud), não apenas no ambiente de trabalho local.", en: "Store important documents in locations with automatic backup (company network, cloud), not just the local desktop." },
-          { pt: "Confirma periodicamente que consegues aceder e restaurar os teus backups — um backup nunca testado é um risco.", en: "Periodically confirm you can access and restore your backups — an untested backup is a risk." }
+          { pt: "Confirma periodicamente que consegues aceder e restaurar os teus backups, pois um backup nunca testado constitui um risco.", en: "Periodically confirm you can access and restore your backups, since an untested backup constitutes a risk." }
         ]
       },
       {
@@ -565,9 +565,9 @@ const RESOURCES = [
       {
         title: { pt: "Cuidados físicos com o equipamento", en: "Physical care of equipment" },
         items: [
-          { pt: "Bloqueia sempre o ecrã (Windows + L) ao afastar-te do posto de trabalho, mesmo por poucos minutos.", en: "Always lock your screen (Windows + L) when stepping away from your workstation, even for a few minutes." },
+          { pt: "Bloqueia sempre o ecrã (\"Windows + L\") ao afastares-te do posto de trabalho, mesmo que seja por poucos minutos.", en: "Always lock your screen (\"Windows + L\") when stepping away from your workstation, even if only for a few minutes." },
           { pt: "Não deixes o portátil ou dispositivos com dados da empresa visíveis dentro do carro ou em locais públicos.", en: "Don't leave laptops or devices with company data visible inside your car or in public places." },
-          { pt: "Usa apenas pens USB de origem confiável — podem ser um vetor comum de malware.", en: "Only use USB drives from trusted sources — they're a common malware vector." }
+          { pt: "Usa apenas pens USB de origem confiável, pois podem constituir um vetor comum de malware.", en: "Only use USB drives from trusted sources, since they can constitute a common malware vector." }
         ]
       }
     ],
