@@ -482,3 +482,124 @@ function renderStatusTag(project) {
   if (!info) return "";
   return `<span class="status-tag ${info.cls}">${t(info.key)}</span>`;
 }
+
+// Lista de recursos (guias/artigos) da secção "Recursos".
+// Para adicionar um novo recurso, basta copiar um dos objetos abaixo e preencher os campos.
+// "id" tem de ser único — é usado no URL da página de detalhe (resource.html?id=...).
+// Todos os textos de conteúdo (title, cardDescription, subtitle, intro, topics, checklist,
+// footerUpdated) têm sempre uma versão por idioma (pt / en).
+// "pdf" aponta para o ficheiro PDF descarregável em assets/documents/.
+// "iconSvg" é o markup interno (paths) do ícone mostrado no cartão e na página de detalhe.
+// "topics" é a lista das secções do guia; cada uma tem "title", "items" (lista de textos) e,
+// opcionalmente, "callout" (uma dica em destaque).
+const RESOURCES = [
+  {
+    id: "seguranca-informatica",
+    iconSvg: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/>',
+    tag: { pt: "Guia", en: "Guide" },
+    title: {
+      pt: "Boas Práticas de Segurança Informática",
+      en: "IT Security Best Practices"
+    },
+    cardDescription: {
+      pt: "Um guia rápido e prático com recomendações simples para proteger dados, equipamento e rede no dia a dia.",
+      en: "A quick, practical guide with simple recommendations to protect data, equipment and the network in everyday use."
+    },
+    subtitle: {
+      pt: "Um guia rápido e prático para o dia a dia, com recomendações simples para proteger os teus dados, o equipamento e a rede da organização.",
+      en: "A quick, practical guide for everyday use, with simple recommendations to protect your data, equipment and the organization's network."
+    },
+    intro: {
+      pt: "Muitos incidentes de segurança informática não começa com um ataque sofisticado, mas sim com um clique apressado, uma password fraca ou um computador desbloqueado. Este guia reúne recomendações simples, sem jargão técnico, para reduzir esse risco no dia a dia.",
+      en: "Many IT security incidents don't start with a sophisticated attack, but they start with a rushed click, a weak password or an unlocked computer. This guide gathers simple, jargon-free recommendations to reduce that risk in everyday use."
+    },
+    meta: "João Baptista · Consultor TI · v1.0",
+    pdf: "assets/documents/guia-seguranca-informatica.pdf",
+    topics: [
+      {
+        title: { pt: "Palavras-passe e acessos", en: "Passwords and access" },
+        items: [
+          { pt: "Usa uma password diferente para cada serviço — se uma for comprometida, as outras contas ficam protegidas.", en: "Use a different password for each service — if one is compromised, the others stay protected." },
+          { pt: "Prefere frases longas e fáceis de lembrar (ex: \"CafeAzul-27!Porta\") a palavras curtas e óbvias.", en: "Prefer long, memorable passphrases (e.g. \"BlueCoffee-27!Door\") over short, obvious words." },
+          { pt: "Ativa a autenticação em dois fatores (2FA) sempre que disponível, especialmente no email e em aplicações de trabalho.", en: "Enable two-factor authentication (2FA) wherever available, especially for email and work applications." },
+          { pt: "Nunca partilhes a tua password por email, chat ou telefone — nenhum departamento de TI legítimo a pede dessa forma.", en: "Never share your password by email, chat or phone — no legitimate IT department asks for it that way." }
+        ],
+        callout: {
+          pt: "Dica: um gestor de passwords (ex: Bitwarden) permite usar passwords fortes e diferentes sem teres de as memorizar todas.",
+          en: "Tip: a password manager (e.g. Bitwarden) lets you use strong, different passwords without having to memorize them all."
+        }
+      },
+      {
+        title: { pt: "Reconhecer phishing e engenharia social", en: "Recognizing phishing and social engineering" },
+        items: [
+          { pt: "Desconfia de emails com urgência excessiva (\"a tua conta será bloqueada em 24h\") — é uma tática comum para provocar reações precipitadas.", en: "Be wary of emails with excessive urgency (\"your account will be blocked in 24h\") — a common tactic to provoke hasty reactions." },
+          { pt: "Verifica sempre o endereço de email do remetente, não apenas o nome apresentado.", en: "Always check the sender's actual email address, not just the display name." },
+          { pt: "Antes de clicar num link, passa o cursor por cima para ver o destino real.", en: "Before clicking a link, hover over it to see the real destination." },
+          { pt: "Nunca abras anexos inesperados, mesmo que pareçam vir de alguém conhecido.", en: "Never open unexpected attachments, even if they appear to come from someone you know." },
+          { pt: "Em caso de dúvida, confirma o pedido por outro canal (telefone, presencialmente) antes de agir.", en: "When in doubt, confirm the request through another channel (phone, in person) before acting." }
+        ]
+      },
+      {
+        title: { pt: "Atualizações de software", en: "Software updates" },
+        items: [
+          { pt: "Mantém o sistema operativo, antivírus e aplicações sempre atualizados — as atualizações corrigem falhas de segurança conhecidas.", en: "Keep your operating system, antivirus and applications up to date — updates fix known security flaws." },
+          { pt: "Não adies indefinidamente os pedidos de reinício para atualizar o Windows.", en: "Don't indefinitely postpone Windows restart prompts for updates." },
+          { pt: "Evita instalar software de fontes não oficiais ou desconhecidas.", en: "Avoid installing software from unofficial or unknown sources." }
+        ]
+      },
+      {
+        title: { pt: "Cópias de segurança (backups)", en: "Backups" },
+        items: [
+          { pt: "Guarda documentos importantes em locais com backup automático (rede da empresa, cloud), não apenas no ambiente de trabalho local.", en: "Store important documents in locations with automatic backup (company network, cloud), not just the local desktop." },
+          { pt: "Confirma periodicamente que consegues aceder e restaurar os teus backups — um backup nunca testado é um risco.", en: "Periodically confirm you can access and restore your backups — an untested backup is a risk." }
+        ]
+      },
+      {
+        title: { pt: "Redes Wi-Fi públicas e trabalho remoto", en: "Public Wi-Fi and remote work" },
+        items: [
+          { pt: "Evita aceder a sistemas sensíveis (email de trabalho, banca) em redes Wi-Fi públicas sem VPN.", en: "Avoid accessing sensitive systems (work email, banking) on public Wi-Fi networks without a VPN." },
+          { pt: "Desativa a ligação automática a redes Wi-Fi desconhecidas no portátil e telemóvel.", en: "Disable automatic connection to unknown Wi-Fi networks on your laptop and phone." },
+          { pt: "Em teletrabalho, mantém o router de casa com password própria e firmware atualizado.", en: "When working remotely, keep your home router with its own password and updated firmware." }
+        ]
+      },
+      {
+        title: { pt: "Cuidados físicos com o equipamento", en: "Physical care of equipment" },
+        items: [
+          { pt: "Bloqueia sempre o ecrã (Windows + L) ao afastar-te do posto de trabalho, mesmo por poucos minutos.", en: "Always lock your screen (Windows + L) when stepping away from your workstation, even for a few minutes." },
+          { pt: "Não deixes o portátil ou dispositivos com dados da empresa visíveis dentro do carro ou em locais públicos.", en: "Don't leave laptops or devices with company data visible inside your car or in public places." },
+          { pt: "Usa apenas pens USB de origem confiável — podem ser um vetor comum de malware.", en: "Only use USB drives from trusted sources — they're a common malware vector." }
+        ]
+      }
+    ],
+    checklist: [
+      { pt: "Passwords diferentes por serviço, com 2FA ativo onde possível", en: "Different passwords per service, with 2FA enabled where possible" },
+      { pt: "Verificar remetente e link antes de clicar", en: "Check sender and link before clicking" },
+      { pt: "Sistema e antivírus atualizados", en: "System and antivirus up to date" },
+      { pt: "Documentos importantes com backup automático", en: "Important documents with automatic backup" },
+      { pt: "Evitar redes Wi-Fi públicas sem VPN para dados sensíveis", en: "Avoid public Wi-Fi without a VPN for sensitive data" },
+      { pt: "Ecrã sempre bloqueado ao ausentar-se do posto de trabalho", en: "Screen always locked when away from your workstation" }
+    ],
+    footerUpdated: { pt: "Última atualização: agosto de 2026", en: "Last updated: August 2026" }
+  }
+];
+
+// Gera o markup de um cartão de recurso (usado em resources.html). Aponta sempre para
+// resource.html?id=... — uma única página de detalhe partilhada por todos os recursos,
+// tal como project.html faz para os projetos.
+function renderResourceCard(resource, lang) {
+  return `
+    <a href="resource.html?id=${encodeURIComponent(resource.id)}" class="resource-card">
+      <div class="resource-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          ${resource.iconSvg}
+        </svg>
+      </div>
+      <div class="resource-text">
+        <span class="resource-tag">${resource.tag[lang] || resource.tag.pt}</span>
+        <h2 class="resource-title">${resource.title[lang] || resource.title.pt}</h2>
+        <p class="resource-description">${resource.cardDescription[lang] || resource.cardDescription.pt}</p>
+        <span class="resource-link">${t("resources.openLabel")}</span>
+      </div>
+    </a>
+  `;
+}
