@@ -4,7 +4,7 @@ Hi! My name is João Baptista,
 I have worked in three Outsystems projects.
 I'm learning and practicing Python, C# and Javascript programming languages.
 
-🚧🚧🚧 **I'm Currently Building A New Personal Portfolio Website. Stay Tuned, It Will Be Live Soon!🚧🚧🚧**
+🚧🚧🚧 **I'm Currently Building A New Personal Portfolio Website. Stay Tuned, It's Being Regularly Updated!🚧🚧🚧**
 
 🤖 Languages and Technologies
 
