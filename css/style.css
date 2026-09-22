@@ -12,9 +12,20 @@
   --orange: #f97316;
   --yellow: #eab308;
   --gray-solid: #64748b;
+  --radius-xs: 6px;
+  --radius-sm: 8px;
   --radius: 10px;
+  --radius-md: 12px;
   --max-width: 1560px;
 }
+
+/* Escala de breakpoints usada em todo o ficheiro (CSS não permite variáveis dentro de
+   @media, por isso fica documentada aqui em vez de num token):
+     1100px - grelhas largas (ex: certificações) passam de 3 para 2 colunas
+     900px  - menu de navegação muda para hambúrguer; outras grelhas passam de 4 para 2 colunas
+     640px  - ponto principal de mudança para layout de telemóvel/coluna única
+     560px  - afinação extra para telemóveis muito estreitos (ex: stats-banner 2 -> 1 coluna)
+   Ao acrescentar uma media query nova, usar um destes quatro valores em vez de inventar um novo. */
 
 * {
   margin: 0;
@@ -41,6 +52,18 @@ a {
 img {
   max-width: 100%;
   display: block;
+}
+
+/* Estado de foco pelo teclado (Tab), consistente em todo o site: substitui o contorno
+   genérico do browser por um anel que acompanha a forma de cada elemento (arredondado
+   onde o próprio elemento já é arredondado), a condizer com os efeitos de hover existentes.
+   Só aparece com navegação por teclado (:focus-visible), não ao clicar com o rato. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.5);
 }
 
 .container {
@@ -75,7 +98,7 @@ img {
 .logo-mark {
   width: 40px;
   height: 40px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   background: linear-gradient(135deg, var(--blue), var(--green));
   display: flex;
   align-items: center;
@@ -145,7 +168,7 @@ img {
   justify-content: center;
   width: 40px;
   height: 40px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   border: 1px solid var(--card-border);
   background: transparent;
   color: var(--text);
@@ -189,7 +212,7 @@ img {
   border: 1px solid var(--card-border);
   color: var(--text);
   padding: 6px 10px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   font-size: 13px;
   font-family: inherit;
   cursor: pointer;
@@ -231,7 +254,7 @@ img {
   right: 0;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: 10px;
+  border-radius: var(--radius);
   padding: 8px;
   min-width: 170px;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
@@ -243,7 +266,7 @@ img {
   align-items: center;
   gap: 10px;
   padding: 8px 10px;
-  border-radius: 6px;
+  border-radius: var(--radius-xs);
   font-size: 13px;
   cursor: pointer;
   transition: background 0.15s ease;
@@ -317,7 +340,7 @@ img {
   align-items: center;
   gap: 8px;
   padding: 12px 24px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   font-size: 14px;
   font-weight: 600;
   font-family: inherit;
@@ -396,7 +419,7 @@ img {
   flex-shrink: 0;
   width: 56px;
   height: 56px;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -752,7 +775,7 @@ img {
   flex-shrink: 0;
   width: 44px;
   height: 44px;
-  border-radius: 10px;
+  border-radius: var(--radius);
   background: rgba(59, 130, 246, 0.12);
   color: var(--blue-light);
   display: flex;
@@ -834,7 +857,7 @@ img {
   flex-shrink: 0;
   width: 40px;
   height: 40px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -926,7 +949,7 @@ img {
   flex-shrink: 0;
   width: 40px;
   height: 40px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   background: rgba(59, 130, 246, 0.12);
   color: var(--blue-light);
   display: flex;
@@ -1122,7 +1145,7 @@ img {
   flex-shrink: 0;
   width: 48px;
   height: 48px;
-  border-radius: 10px;
+  border-radius: var(--radius);
   background: rgba(59, 130, 246, 0.12);
   border: 1px solid var(--card-border);
   color: var(--blue-light);
@@ -1146,7 +1169,7 @@ img {
 .project-logo-lg {
   width: 64px;
   height: 64px;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
 }
 
 .project-logo-lg svg {
@@ -1285,7 +1308,7 @@ img {
   font-weight: 600;
   padding: 8px 14px;
   border: 1px solid var(--card-border);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   margin-bottom: 24px;
   transition: border-color 0.15s ease, background 0.15s ease;
 }
@@ -1463,7 +1486,7 @@ img {
 .gallery-thumb {
   width: 64px;
   height: 44px;
-  border-radius: 6px;
+  border-radius: var(--radius-xs);
   overflow: hidden;
   border: 2px solid var(--card-border);
   padding: 0;
@@ -1508,7 +1531,7 @@ img {
   max-width: 90vw;
   max-height: 88vh;
   object-fit: contain;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
 }
 
 .lightbox-close,
@@ -1882,7 +1905,7 @@ img {
   justify-content: center;
   width: 36px;
   height: 36px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   border: 1px solid var(--card-border);
   color: var(--text-muted);
   transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
