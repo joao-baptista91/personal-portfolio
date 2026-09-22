@@ -71,7 +71,10 @@ function renderSiteFooter() {
           </svg>
           <p>Building solutions.<br>Supporting systems.<br>Protecting the <span class="highlight-green">future</span>.</p>
         </div>
-        <p class="copyright" data-i18n="footer.copyright">© 2026 João Baptista. Todos os direitos reservados.</p>
+        <div class="footer-legal">
+          <p class="copyright" data-i18n="footer.copyright">© 2026 João Baptista. Todos os direitos reservados.</p>
+          <p class="accessibility-note" data-i18n="footer.accessibility">Este site foi desenvolvido tendo em conta as diretrizes de acessibilidade WCAG 2.2.</p>
+        </div>
       </div>
     </div>
   </footer>

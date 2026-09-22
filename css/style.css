@@ -1909,10 +1909,25 @@ img {
   color: var(--green);
 }
 
+.footer-legal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
 .copyright {
   text-align: right;
   color: var(--text-muted);
   font-size: 12px;
+}
+
+.accessibility-note {
+  text-align: right;
+  color: var(--text-muted);
+  font-size: 11px;
+  line-height: 1.4;
+  max-width: 320px;
 }
 
 /* Menu móvel: abaixo de 900px, o botão hamburger aparece e o ".nav-wrap"
@@ -2007,7 +2022,11 @@ img {
     flex-direction: column;
     align-items: flex-start;
   }
-  .copyright {
+  .footer-legal {
+    align-items: flex-start;
+  }
+  .copyright,
+  .accessibility-note {
     text-align: left;
   }
   .about-grid {

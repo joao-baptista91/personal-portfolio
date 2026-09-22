@@ -111,6 +111,7 @@ const TRANSLATIONS = {
     "footer.tagline": "Tecnologia, eficiência e melhoria contínua para criar soluções que fazem a diferença. Sempre a aprender, sempre a evoluir.",
     "footer.heading": "Onde me encontrar:",
     "footer.emailLabel": "Enviar-me um email",
+    "footer.accessibility": "Este site foi desenvolvido tendo em conta as diretrizes de acessibilidade WCAG 2.2.",
     "footer.copyright": "© 2026 João Baptista. Todos os direitos reservados."
   },
   en: {
@@ -207,6 +208,7 @@ const TRANSLATIONS = {
     "footer.tagline": "Technology, efficiency and continuous improvement to build solutions that make a difference. Always learning, always evolving.",
     "footer.heading": "Where to find me:",
     "footer.emailLabel": "Send me an email",
+    "footer.accessibility": "This site was built with WCAG 2.2 accessibility guidelines in mind.",
     "footer.copyright": "© 2026 João Baptista. All rights reserved."
   }
 };
