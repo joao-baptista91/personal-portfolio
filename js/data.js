@@ -381,6 +381,22 @@ const CONTINUING_EDUCATION = [
   },
   {
     name: {
+      pt: "JIRA & Confluence AI Agent",
+      en: "JIRA & Confluence AI Agent"
+    },
+    institution: "OutSystems User Group",
+    year: "2026"
+  },
+  {
+    name: {
+      pt: "The ABCs of DDD with ODC & Smart Widgets in ODC",
+      en: "The ABCs of DDD with ODC & Smart Widgets in ODC"
+    },
+    institution: "OutSystems User Group",
+    year: "2025"
+  },
+  {
+    name: {
       pt: "Linguagens de Programação ASP.NET",
       en: "ASP.NET Programming Languages"
     },
