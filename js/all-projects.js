@@ -8,7 +8,7 @@ function renderAllProjects() {
     <article class="project-card">
       <div class="project-image">
         ${renderStatusTag(p)}
-        ${p.image ? `<img src="${p.image}" alt="${p.title}">` : t("project.imagePlaceholder")}
+        ${p.image ? `<img src="${p.image}" alt="${p.title}" loading="lazy">` : t("project.imagePlaceholder")}
       </div>
       <div class="project-body">
         <div class="project-card-header">

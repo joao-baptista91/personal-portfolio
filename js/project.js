@@ -26,7 +26,7 @@ function renderGalleryMarkup(project) {
       <div class="project-gallery-thumbs">
         ${images.map((src, i) => `
           <button type="button" class="gallery-thumb${i === 0 ? " active" : ""}" data-index="${i}" aria-label="${t("project.viewImage")} ${i + 1}">
-            <img src="${src}" alt="">
+            <img src="${src}" alt="" loading="lazy">
           </button>
         `).join("")}
       </div>
@@ -60,7 +60,7 @@ function renderGalleryMarkup(project) {
       ${thumbs}
     </div>
 
-    <div class="lightbox" id="project-lightbox" hidden>
+    <div class="lightbox" id="project-lightbox" role="dialog" aria-modal="true" aria-label="${t("project.zoomImage")}" hidden>
       <button type="button" class="lightbox-close" id="lightbox-close" aria-label="${t("project.close")}">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
@@ -90,6 +90,12 @@ function initProjectGallery(project) {
   const nextBtn = document.getElementById("lightbox-next");
   if (!mainImg || !mainBox || !lightbox || !lightboxImg) return;
 
+  let lastFocusedElement = null;
+
+  function getFocusableLightboxElements() {
+    return Array.from(lightbox.querySelectorAll("button")).filter((el) => !el.hidden && el.offsetParent !== null);
+  }
+
   function setIndex(i) {
     currentIndex = (i + images.length) % images.length;
     mainImg.src = images[currentIndex];
@@ -99,13 +105,21 @@ function initProjectGallery(project) {
 
   function openLightbox() {
     lightboxImg.src = images[currentIndex];
+    lastFocusedElement = document.activeElement;
     lightbox.hidden = false;
     document.body.style.overflow = "hidden";
+    if (closeBtn) closeBtn.focus();
   }
 
   function closeLightbox() {
     lightbox.hidden = true;
     document.body.style.overflow = "";
+    if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+      lastFocusedElement.focus();
+    } else {
+      mainBox.focus();
+    }
+    lastFocusedElement = null;
   }
 
   thumbs.forEach((btn) => {
@@ -132,6 +146,19 @@ function initProjectGallery(project) {
     if (e.key === "Escape") closeLightbox();
     if (e.key === "ArrowLeft" && prevBtn) setIndex(currentIndex - 1);
     if (e.key === "ArrowRight" && nextBtn) setIndex(currentIndex + 1);
+    if (e.key === "Tab") {
+      const focusable = getFocusableLightboxElements();
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
   };
   document.addEventListener("keydown", galleryKeydownHandler);
 }

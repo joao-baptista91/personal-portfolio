@@ -8,71 +8,8 @@
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="#home" class="logo">
-        <span class="logo-mark"><img src="assets/images/about-photo.jpg" alt="João Baptista"></span>
-        <span class="logo-text">
-          João Baptista
-          <small>IT Consultant</small>
-        </span>
-      </a>
-
-      <div class="nav-wrap">
-        <nav class="nav">
-          <a href="#home">Home</a>
-          <a href="#about" data-i18n="nav.about">Sobre mim</a>
-          <a href="#experience" data-i18n="nav.experience">Experiência</a>
-          <a href="#skills" data-i18n="nav.skills">Competências</a>
-          <a href="#certifications" data-i18n="nav.certs">Certificações</a>
-          <a href="#projects" data-i18n="nav.projects">Projetos</a>
-          <a href="#resources-teaser" data-i18n="nav.resources">Recursos</a>
-          <a href="#contact" data-i18n="nav.contact">Contacto</a>
-        </nav>
-
-        <div class="lang-switcher">
-          <button id="lang-toggle" class="lang-toggle" type="button" aria-haspopup="true" aria-expanded="false">
-            <img class="lang-flag" id="lang-flag" src="assets/icons/flag-pt.svg" alt="PT">
-            <span class="lang-code" id="lang-code">PT</span>
-            <span class="lang-caret" aria-hidden="true">▾</span>
-          </button>
-          <div class="lang-popover" id="lang-popover" role="menu" hidden>
-            <label class="lang-option">
-              <input type="radio" name="lang" value="pt" checked>
-              <img class="lang-flag" src="assets/icons/flag-pt.svg" alt="PT">
-              <span>Português</span>
-            </label>
-            <label class="lang-option">
-              <input type="radio" name="lang" value="en">
-              <img class="lang-flag" src="assets/icons/flag-gb.svg" alt="EN">
-              <span>English</span>
-            </label>
-          </div>
-        </div>
-
-        <a class="btn btn-outline btn-cv cv-download" href="assets/documents/CV_JoaoBaptista.pdf" download>
-          <span data-i18n="header.downloadCV">Download CV</span>
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M12 3v12"/>
-            <polyline points="7 10 12 15 17 10"/>
-            <path d="M5 19h14"/>
-          </svg>
-        </a>
-      </div>
-
-      <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
-        <svg class="nav-toggle-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <line x1="4" y1="7" x2="20" y2="7"/>
-          <line x1="4" y1="12" x2="20" y2="12"/>
-          <line x1="4" y1="17" x2="20" y2="17"/>
-        </svg>
-        <svg class="nav-toggle-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <line x1="18" y1="6" x2="6" y2="18"/>
-          <line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
-      </button>
-    </div>
-  </header>
+  <div id="site-header-root" data-variant="home"></div>
+  <script src="js/header.js"></script>
 
   <main>
     <section id="home" class="hero">
@@ -168,7 +105,7 @@
     <section id="about" class="about">
       <div class="container about-grid">
         <div class="about-photo">
-          <img src="assets/images/about-photo.jpg" alt="João Baptista">
+          <img src="assets/images/about-photo.jpg" alt="João Baptista" loading="lazy">
         </div>
         <div class="about-content">
           <h2 class="section-title">
@@ -312,61 +249,61 @@
         <div class="skills-grid">
           <div class="skill-card">
             <span class="skill-icon">
-              <img src="assets/icons/skills/outsystems.svg" alt="O11">
+              <img src="assets/icons/skills/outsystems.svg" alt="O11" loading="lazy">
             </span>
             <span class="skill-name">OutSystems 11</span>
           </div>
           <div class="skill-card">
             <span class="skill-icon">
-              <img src="assets/icons/skills/odc.svg" alt="ODC">
+              <img src="assets/icons/skills/odc.svg" alt="ODC" loading="lazy">
             </span>
             <span class="skill-name">OutSystems ODC</span>
           </div>
           <div class="skill-card">
             <span class="skill-icon">
-              <img src="assets/icons/skills/outsystems-mentor.svg" alt="OutSystems Mentor">
+              <img src="assets/icons/skills/outsystems-mentor.svg" alt="OutSystems Mentor" loading="lazy">
             </span>
             <span class="skill-name">OutSystems Mentor</span>
           </div>
           <div class="skill-card">
             <span class="skill-icon">
-              <img src="assets/icons/skills/sql.svg" alt="SQL">
+              <img src="assets/icons/skills/sql.svg" alt="SQL" loading="lazy">
             </span>
             <span class="skill-name">SQL</span>
           </div>
           <div class="skill-card">
             <span class="skill-icon">
-              <img src="assets/icons/skills/api.svg" alt="API">
+              <img src="assets/icons/skills/api.svg" alt="API" loading="lazy">
             </span>
             <span class="skill-name">REST / SOAP</span>
           </div>
           <div class="skill-card">
             <span class="skill-icon">
-              <img src="assets/icons/skills/javascript.svg" alt="JavaScript">
+              <img src="assets/icons/skills/javascript.svg" alt="JavaScript" loading="lazy">
             </span>
             <span class="skill-name">JavaScript</span>
           </div>
           <div class="skill-card">
             <span class="skill-icon">
-              <img src="assets/icons/skills/html5.svg" alt="HTML5">
+              <img src="assets/icons/skills/html5.svg" alt="HTML5" loading="lazy">
             </span>
             <span class="skill-name">HTML5</span>
           </div>
           <div class="skill-card">
             <span class="skill-icon">
-              <img src="assets/icons/skills/css3.svg" alt="CSS3">
+              <img src="assets/icons/skills/css3.svg" alt="CSS3" loading="lazy">
             </span>
             <span class="skill-name">CSS3</span>
           </div>
           <div class="skill-card">
             <span class="skill-icon">
-              <img src="assets/icons/skills/csharp.svg" alt="C#">
+              <img src="assets/icons/skills/csharp.svg" alt="C#" loading="lazy">
             </span>
             <span class="skill-name">C#</span>
           </div>
           <div class="skill-card">
             <span class="skill-icon">
-              <img src="assets/icons/skills/python.svg" alt="Python">
+              <img src="assets/icons/skills/python.svg" alt="Python" loading="lazy">
             </span>
             <span class="skill-name">Python</span>
           </div>

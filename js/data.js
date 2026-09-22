@@ -453,7 +453,7 @@ function renderContinueduItem(item, lang) {
 function renderProjectLogo(project, extraClass) {
   const cls = "project-logo" + (extraClass ? " " + extraClass : "");
   if (project.logo) {
-    return `<div class="${cls}"><img src="${project.logo}" alt="${project.title} logo"></div>`;
+    return `<div class="${cls}"><img src="${project.logo}" alt="${project.title} logo" loading="lazy"></div>`;
   }
   return `
     <div class="${cls}" aria-hidden="true">
