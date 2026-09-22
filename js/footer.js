@@ -73,7 +73,7 @@ function renderSiteFooter() {
         </div>
         <div class="footer-legal">
           <p class="copyright" data-i18n="footer.copyright">© 2026 João Baptista. Todos os direitos reservados.</p>
-          <p class="accessibility-note" data-i18n="footer.accessibility">Este site foi desenvolvido tendo em conta as diretrizes de acessibilidade WCAG 2.2.</p>
+          <p class="accessibility-note"><span data-i18n="footer.accessibilityPre">Este site foi desenvolvido tendo em conta as diretrizes de acessibilidade </span><a id="wcag-link" href="https://www.w3.org/Translations/WCAG22-pt-BR/" target="_blank" rel="noopener">WCAG 2.2</a><span data-i18n="footer.accessibilityPost">.</span></p>
         </div>
       </div>
     </div>

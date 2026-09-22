@@ -112,7 +112,8 @@ const TRANSLATIONS = {
     "footer.tagline": "Tecnologia, eficiência e melhoria contínua para criar soluções que fazem a diferença. Sempre a aprender, sempre a evoluir.",
     "footer.heading": "Onde me encontrar:",
     "footer.emailLabel": "Enviar-me um email",
-    "footer.accessibility": "Este site foi desenvolvido tendo em conta as diretrizes de acessibilidade WCAG 2.2.",
+    "footer.accessibilityPre": "Este site foi desenvolvido tendo em conta as diretrizes de acessibilidade ",
+    "footer.accessibilityPost": ".",
     "footer.copyright": "© 2026 João Baptista. Todos os direitos reservados."
   },
   en: {
@@ -210,7 +211,8 @@ const TRANSLATIONS = {
     "footer.tagline": "Technology, efficiency and continuous improvement to build solutions that make a difference. Always learning, always evolving.",
     "footer.heading": "Where to find me:",
     "footer.emailLabel": "Send me an email",
-    "footer.accessibility": "This site was built with WCAG 2.2 accessibility guidelines in mind.",
+    "footer.accessibilityPre": "This site was built with ",
+    "footer.accessibilityPost": " accessibility guidelines in mind.",
     "footer.copyright": "© 2026 João Baptista. All rights reserved."
   }
 };
@@ -260,6 +262,15 @@ function applyTranslations() {
   document.querySelectorAll(".cv-download").forEach((el) => {
     el.href = cvFile;
   });
+
+  // Rodapé: o link "WCAG 2.2" aponta para a versão inglesa oficial ou para a tradução
+  // pt-BR (não existe tradução pt-PT), consoante o idioma ativo do site.
+  const wcagLink = document.getElementById("wcag-link");
+  if (wcagLink) {
+    wcagLink.href = lang === "en"
+      ? "https://www.w3.org/TR/WCAG22/"
+      : "https://www.w3.org/Translations/WCAG22-pt-BR/";
+  }
 }
 
 function setLang(lang) {

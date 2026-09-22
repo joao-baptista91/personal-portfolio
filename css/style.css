@@ -1982,6 +1982,16 @@ input:focus-visible,
   max-width: 320px;
 }
 
+.accessibility-note a {
+  color: var(--blue-light);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.accessibility-note a:hover {
+  color: var(--text);
+}
+
 /* Menu móvel: abaixo de 900px, o botão hamburger aparece e o ".nav-wrap"
    (links + seletor de idioma + botão CV) passa a um painel deslizante,
    escondido por omissão e mostrado ao clicar no botão (ver initNavToggle em js/i18n.js). */
