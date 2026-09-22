@@ -115,6 +115,11 @@ const TRANSLATIONS = {
     "footer.emailLabel": "Enviar-me um email",
     "footer.accessibilityPre": "Este site foi desenvolvido tendo em conta as diretrizes de acessibilidade ",
     "footer.accessibilityPost": ".",
+    "footer.cookies": "Preferências de cookies",
+    "cookies.title": "Estatísticas de visitas",
+    "cookies.text": "Este site usa o Google Analytics para contar visitas de forma agregada (páginas vistas, origem das visitas e tipo de dispositivo), o que implica guardar cookies no teu browser. Só é ativado se aceitares.",
+    "cookies.accept": "Aceitar",
+    "cookies.reject": "Recusar",
     "footer.copyright": "© 2026 João Baptista. Todos os direitos reservados."
   },
   en: {
@@ -215,6 +220,11 @@ const TRANSLATIONS = {
     "footer.emailLabel": "Send me an email",
     "footer.accessibilityPre": "This site was built with ",
     "footer.accessibilityPost": " accessibility guidelines in mind.",
+    "footer.cookies": "Cookie preferences",
+    "cookies.title": "Visit statistics",
+    "cookies.text": "This site uses Google Analytics to count visits in aggregate (pages viewed, where visits come from and device type), which involves storing cookies in your browser. It is only enabled if you accept.",
+    "cookies.accept": "Accept",
+    "cookies.reject": "Decline",
     "footer.copyright": "© 2026 João Baptista. All rights reserved."
   }
 };

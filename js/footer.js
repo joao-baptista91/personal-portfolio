@@ -74,6 +74,7 @@ function renderSiteFooter() {
         <div class="footer-legal">
           <p class="copyright" data-i18n="footer.copyright">© 2026 João Baptista. Todos os direitos reservados.</p>
           <p class="accessibility-note"><span data-i18n="footer.accessibilityPre">Este site foi desenvolvido tendo em conta as diretrizes de acessibilidade </span><a id="wcag-link" href="https://www.w3.org/Translations/WCAG22-pt-BR/" target="_blank" rel="noopener">WCAG 2.2</a><span data-i18n="footer.accessibilityPost">.</span></p>
+          <button type="button" id="cookie-preferences" class="cookie-preferences-link" data-i18n="footer.cookies" hidden>Preferências de cookies</button>
         </div>
       </div>
     </div>
