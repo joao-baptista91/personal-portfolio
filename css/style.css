@@ -362,7 +362,7 @@ input:focus-visible,
   font-weight: 600;
   margin-bottom: 14px;
   max-width: 520px;
-  text-align: justify;
+  text-align: left;
 }
 
 .hero-text:last-of-type {
@@ -584,8 +584,10 @@ input:focus-visible,
   max-width: 640px;
 }
 
+/* Antes justificado; passou a alinhado à esquerda (o justificado abria espaços irregulares
+   entre palavras, sobretudo no telemóvel). */
 .about-content p.text-justify {
-  text-align: justify;
+  text-align: left;
 }
 
 .about-content p:last-child {
@@ -853,7 +855,7 @@ input:focus-visible,
   font-size: 13px;
   color: var(--text-muted);
   margin-bottom: 4px;
-  text-align: justify;
+  text-align: left;
   hyphens: auto;
   -webkit-hyphens: auto;
   overflow-wrap: break-word;
@@ -1224,7 +1226,7 @@ input:focus-visible,
 .project-body p {
   color: var(--text-muted);
   font-size: 0.88rem;
-  text-align: justify;
+  text-align: left;
   hyphens: auto;
   -webkit-hyphens: auto;
   overflow-wrap: break-word;
@@ -1332,7 +1334,7 @@ input:focus-visible,
 
 .resources-teaser-text {
   max-width: 620px;
-  text-align: justify;
+  text-align: left;
   hyphens: auto;
   -webkit-hyphens: auto;
   overflow-wrap: break-word;
@@ -1643,7 +1645,7 @@ input:focus-visible,
   color: var(--text-muted);
   font-size: 15px;
   line-height: 1.7;
-  text-align: justify;
+  text-align: left;
   hyphens: auto;
   -webkit-hyphens: auto;
   overflow-wrap: break-word;
@@ -1807,7 +1809,7 @@ input:focus-visible,
   color: var(--text-muted);
   font-size: 14px;
   line-height: 1.65;
-  text-align: justify;
+  text-align: left;
   hyphens: auto;
   -webkit-hyphens: auto;
   overflow-wrap: break-word;
@@ -1994,7 +1996,7 @@ input:focus-visible,
   font-size: 13px;
   font-weight: 600;
   line-height: 1.5;
-  text-align: justify;
+  text-align: left;
 }
 
 .footer-bottom-tagline .highlight-green {
