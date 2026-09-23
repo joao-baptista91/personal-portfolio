@@ -26,7 +26,7 @@ const NAV_ITEMS = [
   { hash: "certifications", i18n: "nav.certs", label: "Certificações" },
   { hash: "projects", i18n: "nav.projects", label: "Projetos" },
   { hash: "resources-teaser", i18n: "nav.resources", label: "Recursos" },
-  { hash: "contact", i18n: "nav.contact", label: "Contactar-me" }
+  { hash: "contact", i18n: "nav.contact", label: "Contactos" }
 ];
 
 function renderSiteHeader() {

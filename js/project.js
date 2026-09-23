@@ -8,6 +8,16 @@ function getProjectFromUrl() {
 
 let galleryKeydownHandler = null;
 
+// Caminho da miniatura de uma captura: mesma pasta, subpasta "thumbs", extensão ".jpg"
+// (geradas por scripts/generate-thumbnails.py). Ex: ".../talent-bridge/print-tb-0.png" passa a
+// ".../talent-bridge/thumbs/print-tb-0.jpg". Aceita "/" ou "\\" como separador, porque o
+// data.js tem caminhos nos dois formatos.
+function galleryThumbPath(src) {
+  const cut = Math.max(src.lastIndexOf("/"), src.lastIndexOf("\\")) + 1;
+  const name = src.slice(cut).replace(/\.[^.]+$/, "");
+  return src.slice(0, cut) + "thumbs/" + name + ".jpg";
+}
+
 function renderGalleryMarkup(project) {
   const images = project.images && project.images.length ? project.images : [];
 
@@ -26,7 +36,7 @@ function renderGalleryMarkup(project) {
       <div class="project-gallery-thumbs">
         ${images.map((src, i) => `
           <button type="button" class="gallery-thumb${i === 0 ? " active" : ""}" data-index="${i}" aria-label="${t("project.viewImage")} ${i + 1}">
-            <img src="${src}" alt="" loading="lazy">
+            <img src="${galleryThumbPath(src)}" data-full="${src}" alt="">
           </button>
         `).join("")}
       </div>
@@ -83,6 +93,16 @@ function initProjectGallery(project) {
   const mainImg = document.getElementById("gallery-main-img");
   const mainBox = document.getElementById("gallery-main");
   const thumbs = document.querySelectorAll(".gallery-thumb");
+
+  // Se ainda não houver miniatura para alguma captura (ex: captura nova sem correr
+  // scripts/generate-thumbnails.py), mostra a captura original em vez de uma caixa vazia.
+  thumbs.forEach((btn) => {
+    const img = btn.querySelector("img");
+    if (!img) return;
+    img.addEventListener("error", () => {
+      if (img.dataset.full && img.getAttribute("src") !== img.dataset.full) img.src = img.dataset.full;
+    }, { once: true });
+  });
   const lightbox = document.getElementById("project-lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
   const closeBtn = document.getElementById("lightbox-close");
