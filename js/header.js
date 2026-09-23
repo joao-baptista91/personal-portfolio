@@ -43,7 +43,7 @@ function renderSiteHeader() {
           <span class="logo-mark"><img src="assets/images/about-photo.jpg" alt="João Baptista"></span>
           <span class="logo-text">
             João Baptista
-            <small>Gestão de Projetos</small>
+            <small>Gestão do Portefólio</small>
           </span>
         </a>
         <a href="index.html" class="back-link admin-header-back">
