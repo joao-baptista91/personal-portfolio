@@ -12,7 +12,7 @@
 // A página admin.html não inclui este ficheiro, para as visitas de gestão do próprio site
 // não serem contadas como visitas reais.
 
-const GA_MEASUREMENT_ID = "G-XXXXXXXXXX";
+const GA_MEASUREMENT_ID = "G-5GEK4L2R17";
 const ANALYTICS_CONSENT_KEY = "portfolio-analytics-consent";
 
 let analyticsLoaded = false;
