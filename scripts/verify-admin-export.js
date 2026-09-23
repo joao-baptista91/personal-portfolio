@@ -76,7 +76,7 @@ function makeStubContext(extra) {
 // ficam) — por isso, depois de avaliar o ficheiro, corremos um pequeno script extra, no
 // mesmo contexto, que copia cada variável para uma propriedade do objeto global, para os
 // conseguirmos ler do lado do Node.
-const CAPTURE_NAMES = ["PROJECTS", "CERTIFICATIONS", "CONTINUING_EDUCATION", "RESOURCES", "CERT_ICONS"];
+const CAPTURE_NAMES = ["PROJECTS", "CERTIFICATIONS", "CONTINUING_EDUCATION", "RESOURCES"];
 
 function captureGlobals(context) {
   const code = CAPTURE_NAMES
@@ -125,8 +125,7 @@ function main() {
     ["PROJECTS", "PROJECTS"],
     ["CERTIFICATIONS", "CERTIFICATIONS"],
     ["CONTINUING_EDUCATION", "CONTINUING_EDUCATION"],
-    ["RESOURCES", "RESOURCES"],
-    ["CERT_ICONS", "CERT_ICONS"]
+    ["RESOURCES", "RESOURCES"]
   ];
 
   let allOk = true;
@@ -150,6 +149,15 @@ function main() {
       console.log(`    Antes:  ${JSON.stringify(before).slice(0, 300)}...`);
       console.log(`    Depois: ${JSON.stringify(after).slice(0, 300)}...`);
     }
+  }
+
+  // O data.js tem de ter só dados: as funções de apresentação vivem em js/render.js.
+  const functionsInGenerated = (regeneratedSource.match(/^function /gm) || []).length;
+  if (functionsInGenerated > 0) {
+    allOk = false;
+    console.log(`  ✘ O data.js gerado tem ${functionsInGenerated} função(ões): devia ter só dados (ver js/render.js).`);
+  } else {
+    console.log("  ✔ O data.js gerado tem só dados (sem funções)");
   }
 
   console.log("");

@@ -34,8 +34,9 @@
 // num nível gratuito. Texto HTML por idioma (pt/en), só faz sentido definir quando "link" também
 // está definido.
 //
-// Este ficheiro foi gerado a partir de admin.html (Gestão de Projetos, Certificações e Formação
-// Contínua). Podes continuar a editá-lo à mão se preferires — a estrutura é exatamente a mesma.
+// Este ficheiro contém só dados. As funções que os mostram no site estão em js/render.js.
+// É gerado a partir do admin.html (Projetos, Certificações, Formação Contínua e Recursos), mas
+// também pode ser editado à mão: o admin deteta essas alterações ao abrir.
 
 const PROJECTS = [
   {
@@ -330,9 +331,8 @@ const PROJECTS = [
 
 // Lista de certificações, mostrada na secção "Certificações" da homepage.
 // "title" e "entity" não têm tradução (são nomes próprios/oficiais, iguais em PT e EN).
-// "icon" escolhe um ícone de uma pequena biblioteca pré-definida (ver CERT_ICONS, mais abaixo)
-// — usa uma das chaves existentes (ex: "cloud", "shield") ou pede-me para acrescentar uma nova
-// se nenhuma servir.
+// "icon" escolhe um ícone da biblioteca CERT_ICONS, em js/render.js (ex: "cloud", "shield").
+// Para um ícone novo, acrescenta-o lá.
 const CERTIFICATIONS = [
   {
     title: "Associate Developer for ODC",
@@ -405,92 +405,6 @@ const CONTINUING_EDUCATION = [
   }
 ];
 
-// Biblioteca de ícones disponíveis para as certificações. Cada entrada é o conteúdo interno
-// (paths/shapes) de um <svg viewBox="0 0 24 24">, no estilo "outline" usado em todo o site.
-// Para acrescentar um ícone novo: define aqui uma chave nova com o path SVG, e passa a poder
-// escolhê-la no campo "icon" de uma certificação (e no dropdown do admin.html — ver
-// CERT_ICON_LIBRARY em js/admin.js, que tem de ficar sincronizado com este objeto).
-const CERT_ICONS = {
-  cloud: "<path d=\"M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z\"/>",
-  monitor: "<rect x=\"2\" y=\"4\" width=\"20\" height=\"16\" rx=\"2\"/><line x1=\"2\" y1=\"9\" x2=\"22\" y2=\"9\"/><line x1=\"6\" y1=\"6.5\" x2=\"6\" y2=\"6.5\"/>",
-  key: "<path d=\"M14.7 6.3a4 4 0 1 0-5.6 5.6L3 18v3h3l6.1-6.1a4 4 0 0 0 5.6-5.6l-2.65 2.65a1.5 1.5 0 0 1-2.12-2.12L14.7 6.3z\"/>",
-  cap: "<path d=\"M22 10 12 5 2 10l10 5 10-5Z\"/><path d=\"M6 12v4.5c0 .8 2.5 2.5 6 2.5s6-1.7 6-2.5V12\"/><path d=\"M22 10v6\"/>",
-  shield: "<path d=\"M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5l-8-3Z\"/><path d=\"m9 12 2 2 4-4\"/>",
-  database: "<ellipse cx=\"12\" cy=\"5\" rx=\"8\" ry=\"3\"/><path d=\"M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5\"/><path d=\"M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3\"/>",
-  code: "<polyline points=\"16 18 22 12 16 6\"/><polyline points=\"8 6 2 12 8 18\"/>",
-  book: "<path d=\"M4 19.5A2.5 2.5 0 0 1 6.5 17H20\"/><path d=\"M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z\"/>",
-  lock: "<rect x=\"5\" y=\"11\" width=\"14\" height=\"10\" rx=\"2\"/><path d=\"M8 11V7a4 4 0 0 1 8 0v4\"/>",
-  puzzle: "<path d=\"M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1\"/>",
-  star: "<path d=\"M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z\"/>"
-};
-
-function renderCertCard(cert) {
-  const iconPath = CERT_ICONS[cert.icon] || CERT_ICONS.shield;
-  return `
-    <div class="cert-card">
-      <div class="cert-content">
-        <div class="cert-icon-col">
-          <span class="cert-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">${iconPath}</svg>
-          </span>
-        </div>
-        <div class="cert-body">
-          <p class="cert-title">${cert.title}</p>
-          <p class="cert-entity">${cert.entity}</p>
-          <p class="cert-year">${cert.year}</p>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-function renderContinueduItem(item, lang) {
-  const name = (item.name && (item.name[lang] || item.name.pt)) || "";
-  return `
-    <div class="continuedu-item">
-      <span class="continuedu-name">${name}</span>
-      <span class="continuedu-meta">${item.institution} · ${item.year}</span>
-    </div>
-  `;
-}
-
-// Gera o markup do pequeno logótipo/ícone da aplicação, usado ao lado do título tanto nos
-// cartões (homepage e "Todos os Projetos") como na página de detalhe. Se o projeto tiver um
-// "logo" definido, mostra essa imagem; caso contrário, mostra um ícone genérico de aplicação.
-// extraClass permite aplicar uma variante maior (ex: "project-logo-lg" na página de detalhe).
-function renderProjectLogo(project, extraClass) {
-  const cls = "project-logo" + (extraClass ? " " + extraClass : "");
-  if (project.logo) {
-    return `<div class="${cls}"><img src="${project.logo}" alt="${project.title} logo" loading="lazy"></div>`;
-  }
-  return `
-    <div class="${cls}" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-        <rect x="3" y="3" width="7" height="7" rx="1.5"/>
-        <rect x="14" y="3" width="7" height="7" rx="1.5"/>
-        <rect x="14" y="14" width="7" height="7" rx="1.5"/>
-        <rect x="3" y="14" width="7" height="7" rx="1.5"/>
-      </svg>
-    </div>
-  `;
-}
-
-// Gera a tag colorida com o estado de desenvolvimento da app, usada nos cartões (sobre o print)
-// e na página de detalhe (ao lado do título). Estados possíveis para "status":
-// "planned" (cinzento, "Planeado"), "in-progress" (laranja, "Em desenvolvimento") e
-// "done" (verde, "Finalizado"). Se o projeto não tiver "status" definido, não mostra nada.
-const STATUS_TAGS = {
-  planned: { cls: "status-tag-planned", key: "status.planned" },
-  "in-progress": { cls: "status-tag-progress", key: "status.inProgress" },
-  done: { cls: "status-tag-done", key: "status.done" }
-};
-
-function renderStatusTag(project) {
-  const info = STATUS_TAGS[project.status];
-  if (!info) return "";
-  return `<span class="status-tag ${info.cls}">${t(info.key)}</span>`;
-}
-
 // Lista de recursos (guias/artigos) da secção "Recursos".
 // Para adicionar um novo recurso, basta copiar um dos objetos abaixo e preencher os campos.
 // "id" tem de ser único — é usado no URL da página de detalhe (resource.html?id=...).
@@ -499,11 +413,13 @@ function renderStatusTag(project) {
 // "pdf" aponta para o ficheiro PDF descarregável em assets/documents/.
 // "iconSvg" é o markup interno (paths) do ícone mostrado no cartão e na página de detalhe.
 // "topics" é a lista das secções do guia; cada uma tem "title", "items" (lista de textos) e,
-// opcionalmente, "callout" (uma dica em destaque).
+// opcionalmente, "callout" (uma dica em destaque). "topics" e "checklist" ainda não têm
+// formulário próprio no admin — tal como "process" nos projetos, editam-se à mão diretamente
+// em js/data.js depois de descarregares; os restantes campos já são geridos por aqui.
 const RESOURCES = [
   {
     id: "seguranca-informatica",
-    iconSvg: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/>',
+    iconSvg: "<path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z\"/>",
     tag: { pt: "Guia", en: "Guide" },
     title: {
       pt: "Boas Práticas de Segurança Informática",
@@ -525,12 +441,27 @@ const RESOURCES = [
     pdf: "assets/documents/guia-seguranca-informatica.pdf",
     topics: [
       {
-        title: { pt: "Palavras-passe e acessos", en: "Passwords and access" },
+        title: {
+          pt: "Palavras-passe e acessos",
+          en: "Passwords and access"
+        },
         items: [
-          { pt: "Usa uma password diferente para cada serviço, para que, caso uma seja comprometida, as restantes contas se mantenham protegidas.", en: "Use a different password for each service, so that if one is compromised, the others remain protected." },
-          { pt: "Prefere frases longas e fáceis de lembrar (ex: \"CafeAzul-27!Porta\") a palavras curtas e óbvias.", en: "Prefer long, memorable passphrases (e.g. \"BlueCoffee-27!Door\") over short, obvious words." },
-          { pt: "Ativa a autenticação em dois fatores (2FA) sempre que disponível, especialmente no email e em aplicações de trabalho.", en: "Enable two-factor authentication (2FA) wherever available, especially for email and work applications." },
-          { pt: "Nunca partilhes a tua password por email, chat ou telefone: nenhum departamento de TI legítimo a pede dessa forma.", en: "Never share your password by email, chat or phone: no legitimate IT department asks for it that way." }
+          {
+            pt: "Usa uma password diferente para cada serviço, para que, caso uma seja comprometida, as restantes contas se mantenham protegidas.",
+            en: "Use a different password for each service, so that if one is compromised, the others remain protected."
+          },
+          {
+            pt: "Prefere frases longas e fáceis de lembrar (ex: \"CafeAzul-27!Porta\") a palavras curtas e óbvias.",
+            en: "Prefer long, memorable passphrases (e.g. \"BlueCoffee-27!Door\") over short, obvious words."
+          },
+          {
+            pt: "Ativa a autenticação em dois fatores (2FA) sempre que disponível, especialmente no email e em aplicações de trabalho.",
+            en: "Enable two-factor authentication (2FA) wherever available, especially for email and work applications."
+          },
+          {
+            pt: "Nunca partilhes a tua password por email, chat ou telefone: nenhum departamento de TI legítimo a pede dessa forma.",
+            en: "Never share your password by email, chat or phone: no legitimate IT department asks for it that way."
+          }
         ],
         callout: {
           pt: "Dica: um gestor de passwords (como por exemplo o Bitwarden) permite usar passwords fortes e diferentes, sem que seja necessário memorizá-las todas.",
@@ -538,76 +469,136 @@ const RESOURCES = [
         }
       },
       {
-        title: { pt: "Reconhecer phishing e engenharia social", en: "Recognizing phishing and social engineering" },
+        title: {
+          pt: "Reconhecer phishing e engenharia social",
+          en: "Recognizing phishing and social engineering"
+        },
         items: [
-          { pt: "Desconfia de emails com urgência excessiva (como por exemplo \"a tua conta será bloqueada em 24h\"): esta é uma tática comum para provocar reações precipitadas.", en: "Be wary of emails with excessive urgency (such as \"your account will be blocked in 24h\"): this is a common tactic to provoke hasty reactions." },
-          { pt: "Verifica sempre o endereço de email do remetente, não apenas o nome apresentado.", en: "Always check the sender's actual email address, not just the display name." },
-          { pt: "Antes de clicar num link, passa o cursor por cima para ver o destino real.", en: "Before clicking a link, hover over it to see the real destination." },
-          { pt: "Nunca abras anexos inesperados, mesmo que pareçam vir de alguém conhecido.", en: "Never open unexpected attachments, even if they appear to come from someone you know." },
-          { pt: "Em caso de dúvida, confirma o pedido por outro canal (telefone, presencialmente) antes de agir.", en: "When in doubt, confirm the request through another channel (phone, in person) before acting." }
+          {
+            pt: "Desconfia de emails com urgência excessiva (como por exemplo \"a tua conta será bloqueada em 24h\"): esta é uma tática comum para provocar reações precipitadas.",
+            en: "Be wary of emails with excessive urgency (such as \"your account will be blocked in 24h\"): this is a common tactic to provoke hasty reactions."
+          },
+          {
+            pt: "Verifica sempre o endereço de email do remetente, não apenas o nome apresentado.",
+            en: "Always check the sender's actual email address, not just the display name."
+          },
+          {
+            pt: "Antes de clicar num link, passa o cursor por cima para ver o destino real.",
+            en: "Before clicking a link, hover over it to see the real destination."
+          },
+          {
+            pt: "Nunca abras anexos inesperados, mesmo que pareçam vir de alguém conhecido.",
+            en: "Never open unexpected attachments, even if they appear to come from someone you know."
+          },
+          {
+            pt: "Em caso de dúvida, confirma o pedido por outro canal (telefone, presencialmente) antes de agir.",
+            en: "When in doubt, confirm the request through another channel (phone, in person) before acting."
+          }
         ]
       },
       {
-        title: { pt: "Atualizações de software", en: "Software updates" },
+        title: {
+          pt: "Atualizações de software",
+          en: "Software updates"
+        },
         items: [
-          { pt: "Mantém o sistema operativo, o antivírus e as aplicações sempre atualizados, uma vez que as atualizações corrigem falhas de segurança conhecidas.", en: "Keep your operating system, antivirus and applications up to date, since updates fix known security flaws." },
-          { pt: "Não adies indefinidamente os pedidos de reinício para atualizar o Windows.", en: "Don't indefinitely postpone Windows restart prompts for updates." },
-          { pt: "Evita instalar software de fontes não oficiais ou desconhecidas.", en: "Avoid installing software from unofficial or unknown sources." }
+          {
+            pt: "Mantém o sistema operativo, o antivírus e as aplicações sempre atualizados, uma vez que as atualizações corrigem falhas de segurança conhecidas.",
+            en: "Keep your operating system, antivirus and applications up to date, since updates fix known security flaws."
+          },
+          {
+            pt: "Não adies indefinidamente os pedidos de reinício para atualizar o Windows.",
+            en: "Don't indefinitely postpone Windows restart prompts for updates."
+          },
+          {
+            pt: "Evita instalar software de fontes não oficiais ou desconhecidas.",
+            en: "Avoid installing software from unofficial or unknown sources."
+          }
         ]
       },
       {
-        title: { pt: "Cópias de segurança (backups)", en: "Backups" },
+        title: {
+          pt: "Cópias de segurança (backups)",
+          en: "Backups"
+        },
         items: [
-          { pt: "Guarda documentos importantes em locais com backup automático (rede da empresa, cloud), não apenas no ambiente de trabalho local.", en: "Store important documents in locations with automatic backup (company network, cloud), not just the local desktop." },
-          { pt: "Confirma periodicamente que consegues aceder e restaurar os teus backups, pois um backup nunca testado constitui um risco.", en: "Periodically confirm you can access and restore your backups, since an untested backup constitutes a risk." }
+          {
+            pt: "Guarda documentos importantes em locais com backup automático (rede da empresa, cloud), não apenas no ambiente de trabalho local.",
+            en: "Store important documents in locations with automatic backup (company network, cloud), not just the local desktop."
+          },
+          {
+            pt: "Confirma periodicamente que consegues aceder e restaurar os teus backups, pois um backup nunca testado constitui um risco.",
+            en: "Periodically confirm you can access and restore your backups, since an untested backup constitutes a risk."
+          }
         ]
       },
       {
-        title: { pt: "Redes Wi-Fi públicas e trabalho remoto", en: "Public Wi-Fi and remote work" },
+        title: {
+          pt: "Redes Wi-Fi públicas e trabalho remoto",
+          en: "Public Wi-Fi and remote work"
+        },
         items: [
-          { pt: "Evita aceder a sistemas sensíveis (email de trabalho, banca) em redes Wi-Fi públicas sem VPN.", en: "Avoid accessing sensitive systems (work email, banking) on public Wi-Fi networks without a VPN." },
-          { pt: "Desativa a ligação automática a redes Wi-Fi desconhecidas no portátil e telemóvel.", en: "Disable automatic connection to unknown Wi-Fi networks on your laptop and phone." },
-          { pt: "Em teletrabalho, mantém o router de casa com password própria e firmware atualizado.", en: "When working remotely, keep your home router with its own password and updated firmware." }
+          {
+            pt: "Evita aceder a sistemas sensíveis (email de trabalho, banca) em redes Wi-Fi públicas sem VPN.",
+            en: "Avoid accessing sensitive systems (work email, banking) on public Wi-Fi networks without a VPN."
+          },
+          {
+            pt: "Desativa a ligação automática a redes Wi-Fi desconhecidas no portátil e telemóvel.",
+            en: "Disable automatic connection to unknown Wi-Fi networks on your laptop and phone."
+          },
+          {
+            pt: "Em teletrabalho, mantém o router de casa com password própria e firmware atualizado.",
+            en: "When working remotely, keep your home router with its own password and updated firmware."
+          }
         ]
       },
       {
-        title: { pt: "Cuidados físicos com o equipamento", en: "Physical care of equipment" },
+        title: {
+          pt: "Cuidados físicos com o equipamento",
+          en: "Physical care of equipment"
+        },
         items: [
-          { pt: "Bloqueia sempre o ecrã (\"Windows + L\") ao afastares-te do posto de trabalho, mesmo que seja por poucos minutos.", en: "Always lock your screen (\"Windows + L\") when stepping away from your workstation, even if only for a few minutes." },
-          { pt: "Não deixes o portátil ou dispositivos com dados da empresa visíveis dentro do carro ou em locais públicos.", en: "Don't leave laptops or devices with company data visible inside your car or in public places." },
-          { pt: "Usa apenas pens USB de origem confiável, pois podem constituir um vetor comum de malware.", en: "Only use USB drives from trusted sources, since they can constitute a common malware vector." }
+          {
+            pt: "Bloqueia sempre o ecrã (\"Windows + L\") ao afastares-te do posto de trabalho, mesmo que seja por poucos minutos.",
+            en: "Always lock your screen (\"Windows + L\") when stepping away from your workstation, even if only for a few minutes."
+          },
+          {
+            pt: "Não deixes o portátil ou dispositivos com dados da empresa visíveis dentro do carro ou em locais públicos.",
+            en: "Don't leave laptops or devices with company data visible inside your car or in public places."
+          },
+          {
+            pt: "Usa apenas pens USB de origem confiável, pois podem constituir um vetor comum de malware.",
+            en: "Only use USB drives from trusted sources, since they can constitute a common malware vector."
+          }
         ]
       }
     ],
     checklist: [
-      { pt: "Passwords diferentes por serviço, com 2FA ativo onde possível", en: "Different passwords per service, with 2FA enabled where possible" },
-      { pt: "Verificar remetente e link antes de clicar", en: "Check sender and link before clicking" },
-      { pt: "Sistema e antivírus atualizados", en: "System and antivirus up to date" },
-      { pt: "Documentos importantes com backup automático", en: "Important documents with automatic backup" },
-      { pt: "Evitar redes Wi-Fi públicas sem VPN para dados sensíveis", en: "Avoid public Wi-Fi without a VPN for sensitive data" },
-      { pt: "Ecrã sempre bloqueado ao ausentar-se do posto de trabalho", en: "Screen always locked when away from your workstation" }
+      {
+        pt: "Passwords diferentes por serviço, com 2FA ativo onde possível",
+        en: "Different passwords per service, with 2FA enabled where possible"
+      },
+      {
+        pt: "Verificar remetente e link antes de clicar",
+        en: "Check sender and link before clicking"
+      },
+      {
+        pt: "Sistema e antivírus atualizados",
+        en: "System and antivirus up to date"
+      },
+      {
+        pt: "Documentos importantes com backup automático",
+        en: "Important documents with automatic backup"
+      },
+      {
+        pt: "Evitar redes Wi-Fi públicas sem VPN para dados sensíveis",
+        en: "Avoid public Wi-Fi without a VPN for sensitive data"
+      },
+      {
+        pt: "Ecrã sempre bloqueado ao ausentar-se do posto de trabalho",
+        en: "Screen always locked when away from your workstation"
+      }
     ],
     footerUpdated: { pt: "Última atualização: agosto de 2026", en: "Last updated: August 2026" }
   }
 ];
-
-// Gera o markup de um cartão de recurso (usado em resources.html). Aponta sempre para
-// resource.html?id=... — uma única página de detalhe partilhada por todos os recursos,
-// tal como project.html faz para os projetos.
-function renderResourceCard(resource, lang) {
-  return `
-    <a href="resource.html?id=${encodeURIComponent(resource.id)}" class="resource-card">
-      <div class="resource-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          ${resource.iconSvg}
-        </svg>
-      </div>
-      <div class="resource-text">
-        <span class="resource-tag">${resource.tag[lang] || resource.tag.pt}</span>
-        <h2 class="resource-title">${resource.title[lang] || resource.title.pt}</h2>
-        <p class="resource-description">${resource.cardDescription[lang] || resource.cardDescription.pt}</p>
-        <span class="resource-link">${t("resources.openLabel")}</span>
-      </div>
-    </a>
-  `;
-}
