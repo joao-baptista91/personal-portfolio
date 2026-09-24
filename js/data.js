@@ -198,6 +198,10 @@ const PROJECTS = [
     status: "done",
     tags: ["OutSystems ODC", "AI"],
     link: "https://personal-g9f0petr-dev.outsystems.app/MealPlanner/Login",
+    demoNote: {
+      pt: "Nota: para explorar a aplicação a partir do portefólio, entra como convidado, através do botão \"Log in as Guest\" no ecrã de login.",
+      en: "Note: to explore the app from the portfolio, sign in as a guest using the \"Log in as Guest\" button on the login screen."
+    },
     process: {
       problem: {
         pt: "<p>Planear as refeições da semana é uma tarefa repetitiva, que muitas vezes acaba em decisões de última hora e nos mesmos pratos de sempre. Era necessário um sistema que resolvesse:</p><ul><li>A falta de um registo organizado das refeições habituais, com o respetivo processo de preparação.</li><li>O tempo gasto a decidir, dia a dia, o que cozinhar ao almoço e ao jantar.</li><li>A dificuldade em variar a ementa ao longo das semanas.</li></ul>",
