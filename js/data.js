@@ -230,6 +230,42 @@ const PROJECTS = [
     }
   },
   {
+    id: "secret-mission",
+    title: "Secret Mission",
+    description: {
+      pt: "Revelação do local de encontro de um evento para um grupo de professores.",
+      en: "Revelation of the meeting location of an event to a group of teachers."
+    },
+    longDescription: {
+      pt: "<p>A aplicação Secret Mission/Missão Secreta é um miniprojeto desenvolvido para a revelação do local de encontro de um evento a um grupo de professores.</p><ul><li>O acesso à revelação do local depende da introdução de um código secreto, partilhado previamente apenas com os participantes.</li><li>A validação é feita do lado do cliente, uma opção adequada à escala e ao público-alvo deste miniprojeto.</li><li>O código não fica escrito em texto simples no código-fonte: é comparado através de um hash SHA-256, gerado com a Web Crypto API do browser.</li></ul>",
+      en: "<p>The Secret Mission/Missão Secreta app is a mini-project developed to reveal the meeting location of an event to a group of teachers.</p><ul><li>Access to the location reveal depends on entering a secret code, shared beforehand only with participants.</li><li>Validation happens client-side, a choice appropriate to the scale and target audience of this mini-project.</li><li>The code is never written in plain text in the source: it's compared via a SHA-256 hash generated with the browser's Web Crypto API.</li></ul>"
+    },
+    image: "assets\\images\\app-screenshots\\secret-mission\\print-sm-1.png",
+    images: ["assets\\images\\app-screenshots\\secret-mission\\print-sm-1.png", "assets\\images\\app-screenshots\\secret-mission\\print-sm-2.png", "assets\\images\\app-screenshots\\secret-mission\\print-sm-3.png"],
+    logo: "assets\\images\\app-logos\\secret-mission-logo.png",
+    status: "done",
+    tags: ["HTML", "CSS", "JS"],
+    link: "https://joao-baptista91.github.io/missao-secreta/",
+    process: {
+      problem: {
+        pt: "<p>Era necessário revelar o local de um evento a um grupo restrito de professores, sem:</p><ul><li>Expor a localização publicamente antes da data prevista.</li><li>Depender de comunicação manual individual a cada participante.</li></ul>",
+        en: "<p>The meeting location for an event needed to be revealed to a limited group of teachers, without:</p><ul><li>Exposing the location publicly before the planned date.</li><li>Relying on manual, one-by-one communication with each participant.</li></ul>"
+      },
+      solution: {
+        pt: "<p>A solução que implementei foi uma aplicação de página única, com acesso condicionado:</p><ul><li>O acesso à revelação do local depende da introdução de um código secreto, partilhado previamente apenas com os participantes.</li><li>O conteúdo com a localização só é apresentado depois de validado o código correto.</li></ul>",
+        en: "<p>The solution I implemented was a single-page application with conditional access:</p><ul><li>Access to the location reveal depends on entering a secret code, shared beforehand only with participants.</li><li>The location content is only displayed once the correct code has been validated.</li></ul>"
+      },
+      challenges: {
+        pt: "<p>Por se tratar de validação feita do lado do cliente, em JavaScript:</p><ul><li>Numa primeira versão, o código secreto estava escrito em texto simples no código-fonte, visível a quem inspecionasse a página.</li><li>Corrigi esta situação ao passar a comparar um hash SHA-256 do código introduzido (gerado com a Web Crypto API do browser), em vez do valor em claro.</li><li>Ainda assim, por se tratar de um código de 4 dígitos validado no cliente, um utilizador com conhecimentos técnicos poderia testar as 10.000 combinações possíveis, o que não equivale a uma validação do lado do servidor.</li><li>Considero que foi uma opção consciente, adequada à escala e ao público-alvo deste miniprojeto.</li></ul>",
+        en: "<p>Since validation happens client-side, in JavaScript:</p><ul><li>In an early version, the secret code was written in plain text in the source, visible to anyone inspecting the page.</li><li>I fixed this by comparing a SHA-256 hash of the entered code (generated with the browser's Web Crypto API) instead of the raw value.</li><li>Even so, since it's a 4-digit code validated client-side, a technically capable user could still test all 10,000 possible combinations, which is not equivalent to server-side validation.</li><li>I consider this a deliberate choice, appropriate to the scale and target audience of this mini-project.</li></ul>"
+      },
+      learning: {
+        pt: "<p>Na minha opinião, nem toda a aplicação precisa do mesmo nível de segurança: o que importa é escolher a solução adequada à escala e ao risco real do problema, sendo transparente sobre as suas limitações, em vez de aplicar sempre a abordagem mais robusta por rotina. Considero ainda que, mesmo dentro de uma abordagem simples, vale a pena eliminar as fragilidades mais óbvias e mais baratas de corrigir (como deixar de expor o código em texto simples), sem transformar isso num projeto de segurança que a escala do miniprojeto não justifica.</p>",
+        en: "<p>In my opinion, not every application needs the same level of security: what matters is choosing a solution suited to the scale and real risk of the problem, being transparent about its limitations, rather than always defaulting to the most robust approach out of habit. I'd also add that, even within a simple approach, it's worth eliminating the most obvious and cheapest-to-fix weaknesses (such as no longer exposing the code in plain text), without turning it into a security project the project's scale doesn't justify.</p>"
+      }
+    }
+  },
+  {
     id: "databond",
     title: "DataBond",
     description: {
@@ -240,11 +276,11 @@ const PROJECTS = [
       pt: "<p>Muitas pequenas e médias empresas portuguesas ainda migram dados entre sistemas (Excel, ERPs, CRMs, software de faturação) manualmente, coluna a coluna, um problema que ganha urgência com a obrigatoriedade de faturação eletrónica prevista para 2027. O DataBond resolve isto com um fluxo simples de quatro passos:</p><ul><li>Carregar o ficheiro CSV de origem.</li><li>Definir os campos que o sistema de destino espera.</li><li>Confirmar o mapeamento entre colunas, com correspondência automática sugerida por semelhança de nome.</li><li>Exportar o resultado em CSV ou JSON.</li></ul><p>Todo o processamento acontece no browser do utilizador, sem qualquer dado a sair da máquina. Construído em HTML, CSS e JavaScript puro, sem frameworks, com identidade visual própria.</p>",
       en: "<p>Many small and medium Portuguese businesses still migrate data between systems (Excel, ERPs, CRMs, invoicing software) manually, column by column, a problem that is becoming more pressing with mandatory e-invoicing coming into effect in 2027. DataBond solves this with a simple four-step flow:</p><ul><li>Upload the source CSV.</li><li>Define the fields the destination system expects.</li><li>Confirm the column mapping, with automatic matching suggested by name similarity.</li><li>Export the result as CSV or JSON.</li></ul><p>All processing happens in the user's browser, with no data ever leaving the machine. Built with plain HTML, CSS and JavaScript, no frameworks, with its own visual identity.</p>"
     },
-    image: "",
-    images: [],
-    logo: "",
+    image: "assets\\images\\app-screenshots\\databond\\print-db-0.png",
+    images: ["assets\\images\\app-screenshots\\databond\\print-db-0.png", "assets\\images\\app-screenshots\\databond\\print-db-1.png", "assets\\images\\app-screenshots\\databond\\print-db-2.png"],
+    logo: "assets\\images\\app-logos\\databond-logo.png",
     status: "in-progress",
-    tags: ["HTML", "CSS", "JS"],
+    tags: ["HTML", "CSS", "JS", "AI"],
     link: "#"
   },
   {
@@ -282,42 +318,6 @@ const PROJECTS = [
     status: "in-progress",
     tags: ["Python", "Telegram Bot API"],
     link: "#"
-  },
-  {
-    id: "secret-mission",
-    title: "Secret Mission",
-    description: {
-      pt: "Revelação do local de encontro de um evento para um grupo de professores.",
-      en: "Revelation of the meeting location of an event to a group of teachers."
-    },
-    longDescription: {
-      pt: "<p>A aplicação Secret Mission/Missão Secreta é um miniprojeto desenvolvido para a revelação do local de encontro de um evento a um grupo de professores.</p><ul><li>O acesso à revelação do local depende da introdução de um código secreto, partilhado previamente apenas com os participantes.</li><li>A validação é feita do lado do cliente, uma opção adequada à escala e ao público-alvo deste miniprojeto.</li><li>O código não fica escrito em texto simples no código-fonte: é comparado através de um hash SHA-256, gerado com a Web Crypto API do browser.</li></ul>",
-      en: "<p>The Secret Mission/Missão Secreta app is a mini-project developed to reveal the meeting location of an event to a group of teachers.</p><ul><li>Access to the location reveal depends on entering a secret code, shared beforehand only with participants.</li><li>Validation happens client-side, a choice appropriate to the scale and target audience of this mini-project.</li><li>The code is never written in plain text in the source: it's compared via a SHA-256 hash generated with the browser's Web Crypto API.</li></ul>"
-    },
-    image: "assets\\images\\app-screenshots\\secret-mission\\print-sm-1.png",
-    images: ["assets\\images\\app-screenshots\\secret-mission\\print-sm-1.png", "assets\\images\\app-screenshots\\secret-mission\\print-sm-2.png", "assets\\images\\app-screenshots\\secret-mission\\print-sm-3.png"],
-    logo: "assets\\images\\app-logos\\secret-mission-logo.png",
-    status: "done",
-    tags: ["HTML", "CSS", "JS"],
-    link: "https://joao-baptista91.github.io/missao-secreta/",
-    process: {
-      problem: {
-        pt: "<p>Era necessário revelar o local de um evento a um grupo restrito de professores, sem:</p><ul><li>Expor a localização publicamente antes da data prevista.</li><li>Depender de comunicação manual individual a cada participante.</li></ul>",
-        en: "<p>The meeting location for an event needed to be revealed to a limited group of teachers, without:</p><ul><li>Exposing the location publicly before the planned date.</li><li>Relying on manual, one-by-one communication with each participant.</li></ul>"
-      },
-      solution: {
-        pt: "<p>A solução que implementei foi uma aplicação de página única, com acesso condicionado:</p><ul><li>O acesso à revelação do local depende da introdução de um código secreto, partilhado previamente apenas com os participantes.</li><li>O conteúdo com a localização só é apresentado depois de validado o código correto.</li></ul>",
-        en: "<p>The solution I implemented was a single-page application with conditional access:</p><ul><li>Access to the location reveal depends on entering a secret code, shared beforehand only with participants.</li><li>The location content is only displayed once the correct code has been validated.</li></ul>"
-      },
-      challenges: {
-        pt: "<p>Por se tratar de validação feita do lado do cliente, em JavaScript:</p><ul><li>Numa primeira versão, o código secreto estava escrito em texto simples no código-fonte, visível a quem inspecionasse a página.</li><li>Corrigi esta situação ao passar a comparar um hash SHA-256 do código introduzido (gerado com a Web Crypto API do browser), em vez do valor em claro.</li><li>Ainda assim, por se tratar de um código de 4 dígitos validado no cliente, um utilizador com conhecimentos técnicos poderia testar as 10.000 combinações possíveis, o que não equivale a uma validação do lado do servidor.</li><li>Considero que foi uma opção consciente, adequada à escala e ao público-alvo deste miniprojeto.</li></ul>",
-        en: "<p>Since validation happens client-side, in JavaScript:</p><ul><li>In an early version, the secret code was written in plain text in the source, visible to anyone inspecting the page.</li><li>I fixed this by comparing a SHA-256 hash of the entered code (generated with the browser's Web Crypto API) instead of the raw value.</li><li>Even so, since it's a 4-digit code validated client-side, a technically capable user could still test all 10,000 possible combinations, which is not equivalent to server-side validation.</li><li>I consider this a deliberate choice, appropriate to the scale and target audience of this mini-project.</li></ul>"
-      },
-      learning: {
-        pt: "<p>Na minha opinião, nem toda a aplicação precisa do mesmo nível de segurança: o que importa é escolher a solução adequada à escala e ao risco real do problema, sendo transparente sobre as suas limitações, em vez de aplicar sempre a abordagem mais robusta por rotina. Considero ainda que, mesmo dentro de uma abordagem simples, vale a pena eliminar as fragilidades mais óbvias e mais baratas de corrigir (como deixar de expor o código em texto simples), sem transformar isso num projeto de segurança que a escala do miniprojeto não justifica.</p>",
-        en: "<p>In my opinion, not every application needs the same level of security: what matters is choosing a solution suited to the scale and real risk of the problem, being transparent about its limitations, rather than always defaulting to the most robust approach out of habit. I'd also add that, even within a simple approach, it's worth eliminating the most obvious and cheapest-to-fix weaknesses (such as no longer exposing the code in plain text), without turning it into a security project the project's scale doesn't justify.</p>"
-      }
-    }
   },
   {
     id: "it-service-desk",
