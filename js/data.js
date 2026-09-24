@@ -19,10 +19,8 @@
 // com pt/en). Só aparece se estiver definido, e cada parte só é mostrada se tiver conteúdo (ex:
 // projetos sem base de dados podem omitir "database", e "aiContribution" só faz sentido em
 // projetos que usem IA de facto). O texto de cada parte é HTML (não só texto simples), para
-// permitir uma frase de introdução seguida de uma lista <ul><li>. Este campo ainda não tem um
-// formulário próprio no admin — se editares e guardares um projeto que já tenha "process" através
-// do admin, o valor mantém-se, mas para adicionares "process" a um projeto novo, escreve-o
-// diretamente em js/data.js depois de descarregares.
+// permitir uma frase de introdução seguida de uma lista <ul><li>. No admin, edita-se na secção
+// "Processo de desenvolvimento" do formulário do projeto.
 // "link" aponta para a aplicação publicada (ex: "https://..."); se ficar "#" (predefinição), o
 // botão "Abrir Aplicação" não aparece na página de detalhe.
 // "demoCredentials" é opcional — mostra uma caixa com credenciais de acesso de demonstração por
@@ -191,15 +189,41 @@ const PROJECTS = [
       en: "Weekly meal-planning app (lunch and dinner) with AI-generated suggestions."
     },
     longDescription: {
-      pt: "<p>Meal Planner é uma aplicação para planeamento de ementas semanais, desenvolvida na plataforma OutSystems ODC, que permite organizar as refeições de almoço e jantar de toda a semana com um único clique.</p><ul><li>Escolha manual entre refeições já registadas na base de dados.</li><li>Um Agente de Inteligência Artificial sugere pratos completos, com nome e processo de preparação, tendo em conta a cultura gastronómica portuguesa.</li><li>Quando indicado, o Agente considera um ingrediente de referência escolhido pelo utilizador, como por exemplo peixe ou frango.</li><li>Cada sugestão gerada evita repetir refeições já existentes na base de dados e fica disponível para reutilização em planos futuros.</li></ul>",
-      en: "<p>Meal Planner is a weekly meal-planning application built on the OutSystems ODC platform, allowing a full week of lunches and dinners to be organised with a single click.</p><ul><li>Manual selection from meals already registered in the database.</li><li>An AI Agent suggests complete dishes, including name and preparation process, informed by Portuguese cuisine.</li><li>When specified, the Agent takes into account a reference ingredient chosen by the user, such as fish or chicken.</li><li>Each generated suggestion avoids repeating meals already in the database and becomes available for reuse in future plans.</li></ul>"
+      pt: "<p>Meal Planner é uma aplicação para planeamento de ementas semanais, desenvolvida na plataforma OutSystems ODC, que permite organizar as refeições de almoço e jantar de toda a semana com um único clique.</p><ul><li>Escolha manual entre refeições já registadas na base de dados.</li><li>Um Agente de Inteligência Artificial sugere pratos completos, com nome e processo de preparação, tendo em conta a cultura gastronómica portuguesa.</li><li>Quando indicado, o Agente considera um ingrediente de referência escolhido pelo utilizador, como por exemplo peixe ou frango.</li><li>Cada sugestão gerada é revista antes de ser guardada e fica disponível para reutilização em planos futuros.</li></ul>",
+      en: "<p>Meal Planner is a weekly meal-planning application built on the OutSystems ODC platform, allowing a full week of lunches and dinners to be organised with a single click.</p><ul><li>Manual selection from meals already registered in the database.</li><li>An AI Agent suggests complete dishes, including name and preparation process, informed by Portuguese cuisine.</li><li>When specified, the Agent takes into account a reference ingredient chosen by the user, such as fish or chicken.</li><li>Each generated suggestion is reviewed before being saved and becomes available for reuse in future plans.</li></ul>"
     },
     image: "assets\\images\\app-screenshots\\meal-planner\\print-mp-0.png",
     images: ["assets\\images\\app-screenshots\\meal-planner\\print-mp-0.png", "assets\\images\\app-screenshots\\meal-planner\\print-mp-1.png", "assets\\images\\app-screenshots\\meal-planner\\print-mp-2.png", "assets\\images\\app-screenshots\\meal-planner\\print-mp-3.png", "assets\\images\\app-screenshots\\meal-planner\\print-mp-4.png", "assets\\images\\app-screenshots\\meal-planner\\print-mp-5.png", "assets\\images\\app-screenshots\\meal-planner\\print-mp-6.png", "assets\\images\\app-screenshots\\meal-planner\\print-mp-7.png"],
     logo: "assets\\images\\app-logos\\meal-planner-logo.png",
-    status: "in-progress",
+    status: "done",
     tags: ["OutSystems ODC", "AI"],
-    link: "#"
+    link: "https://personal-g9f0petr-dev.outsystems.app/MealPlanner/Login",
+    process: {
+      problem: {
+        pt: "<p>Planear as refeições da semana é uma tarefa repetitiva, que muitas vezes acaba em decisões de última hora e nos mesmos pratos de sempre. Era necessário um sistema que resolvesse:</p><ul><li>A falta de um registo organizado das refeições habituais, com o respetivo processo de preparação.</li><li>O tempo gasto a decidir, dia a dia, o que cozinhar ao almoço e ao jantar.</li><li>A dificuldade em variar a ementa ao longo das semanas.</li></ul>",
+        en: "<p>Planning the week's meals is a repetitive task that often ends in last-minute decisions and the same old dishes. A system was needed to solve:</p><ul><li>The lack of an organised record of usual meals, with their preparation process.</li><li>The time spent deciding, day by day, what to cook for lunch and dinner.</li><li>The difficulty of varying the menu from week to week.</li></ul>"
+      },
+      solution: {
+        pt: "<p>O Meal Planner organiza o planeamento em torno de três elementos: as refeições, os planos semanais e os ingredientes de referência.</p><ul><li>Cada plano corresponde a uma semana do ano e define o almoço e o jantar de cada dia, escolhidos manualmente ou de forma aleatória a partir das refeições registadas.</li><li>A opção \"Randomize All and Add to Plan\" preenche a semana inteira com um único clique.</li><li>Um Agente de IA propõe refeições novas (nome e processo de preparação), que passam a fazer parte da lista e ficam disponíveis para os planos seguintes.</li></ul>",
+        en: "<p>Meal Planner organises planning around three elements: meals, weekly plans and reference ingredients.</p><ul><li>Each plan corresponds to a week of the year and sets lunch and dinner for each day, chosen manually or at random from the registered meals.</li><li>The \"Randomize All and Add to Plan\" option fills the whole week with a single click.</li><li>An AI Agent proposes new meals (name and preparation process), which join the list and become available for future plans.</li></ul>"
+      },
+      database: {
+        pt: "<p>O modelo de dados relaciona Refeições, Planos Semanais, Ingredientes de Referência e os menus de cada dia:</p><ul><li>Cada menu diário associa um dia da semana de um plano a duas refeições (almoço e jantar), ambas obrigatórias.</li><li>Os planos são identificados pelo ano e pelo número da semana, o que facilita localizar planos anteriores.</li><li>Refeições e ingredientes têm um campo \"Is Active\", que permite retirá-los das escolhas sem os apagar da base de dados.</li></ul>",
+        en: "<p>The data model relates Meals, Weekly Plans, Reference Ingredients and each day's menus:</p><ul><li>Each daily menu links a weekday of a plan to two meals (lunch and dinner), both required.</li><li>Plans are identified by year and week number, which makes previous plans easy to find.</li><li>Meals and ingredients have an \"Is Active\" field, which removes them from the available choices without deleting them from the database.</li></ul>"
+      },
+      challenges: {
+        pt: "<p>Os principais desafios estiveram na integração do Agente de IA e na gestão das datas de cada plano:</p><ul><li>Obter do Agente uma resposta com estrutura previsível (tempo de preparação, ingredientes com quantidades e passos), para ser guardada diretamente nos campos da refeição.</li><li>Calcular corretamente o número da semana e a data de cada dia do plano.</li></ul>",
+        en: "<p>The main challenges lay in integrating the AI Agent and managing each plan's dates:</p><ul><li>Getting a predictably structured response from the Agent (preparation time, ingredients with quantities and steps), so it could be stored directly in the meal's fields.</li><li>Correctly calculating the week number and the date of each day in the plan.</li></ul>"
+      },
+      aiContribution: {
+        pt: "<p>A IA está integrada num ponto concreto da aplicação: a criação de refeições novas.</p><ul><li>O Agente gera o nome e o processo de preparação de um prato, tendo em conta a cultura gastronómica portuguesa.</li><li>Quando é escolhido um ingrediente de referência (como por exemplo peixe, frango ou cogumelos), o Agente constrói a sugestão a partir dele.</li><li>A sugestão fica no formulário para ser revista antes de ser guardada.</li></ul><p>O planeamento em si (escolha manual e distribuição aleatória das refeições pela semana) não depende da IA: é lógica simples e previsível.</p>",
+        en: "<p>AI is built into one specific point of the application: creating new meals.</p><ul><li>The Agent generates a dish's name and preparation process, informed by Portuguese cuisine.</li><li>When a reference ingredient is chosen (such as fish, chicken or mushrooms), the Agent builds the suggestion around it.</li><li>The suggestion stays in the form so it can be reviewed before being saved.</li></ul><p>The planning itself (manual choice and random distribution of meals across the week) does not depend on AI: it is simple, predictable logic.</p>"
+      },
+      learning: {
+        pt: "<p>Considero que a IA acrescenta mais valor quando tem um papel bem delimitado: neste caso, propor refeições novas, enquanto o planeamento continua a assentar em regras simples. Ficou também claro que o formato da resposta do Agente deve ser definido desde o início, para que o resultado possa ser guardado e reutilizado sem edição manual.</p>",
+        en: "<p>I believe AI adds the most value when it has a well-defined role: in this case, proposing new meals, while the planning itself remains based on simple rules. It also became clear that the format of the Agent's response should be defined from the start, so the result can be stored and reused without manual editing.</p>"
+      }
+    }
   },
   {
     id: "fleet-management-platform",
@@ -413,9 +437,8 @@ const CONTINUING_EDUCATION = [
 // "pdf" aponta para o ficheiro PDF descarregável em assets/documents/.
 // "iconSvg" é o markup interno (paths) do ícone mostrado no cartão e na página de detalhe.
 // "topics" é a lista das secções do guia; cada uma tem "title", "items" (lista de textos) e,
-// opcionalmente, "callout" (uma dica em destaque). "topics" e "checklist" ainda não têm
-// formulário próprio no admin — tal como "process" nos projetos, editam-se à mão diretamente
-// em js/data.js depois de descarregares; os restantes campos já são geridos por aqui.
+// opcionalmente, "callout" (uma dica em destaque). No admin, "topics" e "checklist" editam-se
+// como texto, na secção "Conteúdo do guia" do formulário do recurso.
 const RESOURCES = [
   {
     id: "seguranca-informatica",
