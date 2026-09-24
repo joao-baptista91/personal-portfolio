@@ -230,6 +230,24 @@ const PROJECTS = [
     }
   },
   {
+    id: "databond",
+    title: "DataBond",
+    description: {
+      pt: "Converte e mapeia colunas entre ficheiros CSV de sistemas diferentes, direto no browser, sem enviar dados para nenhum servidor.",
+      en: "Maps and converts columns between CSV files from different systems, entirely in the browser, with no data sent to any server."
+    },
+    longDescription: {
+      pt: "<p>Muitas pequenas e médias empresas portuguesas ainda migram dados entre sistemas (Excel, ERPs, CRMs, software de faturação) manualmente, coluna a coluna, um problema que ganha urgência com a obrigatoriedade de faturação eletrónica prevista para 2027. O DataBond resolve isto com um fluxo simples de quatro passos:</p><ul><li>Carregar o ficheiro CSV de origem.</li><li>Definir os campos que o sistema de destino espera.</li><li>Confirmar o mapeamento entre colunas, com correspondência automática sugerida por semelhança de nome.</li><li>Exportar o resultado em CSV ou JSON.</li></ul><p>Todo o processamento acontece no browser do utilizador, sem qualquer dado a sair da máquina. Construído em HTML, CSS e JavaScript puro, sem frameworks, com identidade visual própria.</p>",
+      en: "<p>Many small and medium Portuguese businesses still migrate data between systems (Excel, ERPs, CRMs, invoicing software) manually, column by column, a problem that is becoming more pressing with mandatory e-invoicing coming into effect in 2027. DataBond solves this with a simple four-step flow:</p><ul><li>Upload the source CSV.</li><li>Define the fields the destination system expects.</li><li>Confirm the column mapping, with automatic matching suggested by name similarity.</li><li>Export the result as CSV or JSON.</li></ul><p>All processing happens in the user's browser, with no data ever leaving the machine. Built with plain HTML, CSS and JavaScript, no frameworks, with its own visual identity.</p>"
+    },
+    image: "",
+    images: [],
+    logo: "",
+    status: "in-progress",
+    tags: ["HTML", "CSS", "JS"],
+    link: "#"
+  },
+  {
     id: "fleet-management-platform",
     title: "Fleet Management Platform",
     description: {
