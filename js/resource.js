@@ -78,7 +78,7 @@ function renderResourceDetail() {
     const nameEl = document.getElementById("resource-footer-name");
     const updatedEl = document.getElementById("resource-footer-updated");
     const title = resource.title[lang] || resource.title.pt;
-    if (nameEl) nameEl.textContent = lang === "en" ? `${title} Guide — João Baptista` : `Guia de ${title} — João Baptista`;
+    if (nameEl) nameEl.textContent = lang === "en" ? `${title} Guide - João Baptista` : `Guia de ${title} - João Baptista`;
     if (updatedEl) updatedEl.textContent = resource.footerUpdated[lang] || resource.footerUpdated.pt;
   }
 
