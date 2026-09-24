@@ -1,6 +1,18 @@
-const PROJECTS_PER_PAGE = 4;
-const CAROUSEL_LIMIT = 8;
+// Carrossel de projetos da página inicial: 5 cartões por página em ecrãs largos e 4 em ecrãs
+// mais estreitos (2 colunas x 2 linhas, abaixo de 1100px; no telemóvel ficam uns por baixo dos
+// outros). Mostra no máximo os 10 primeiros projetos de js/data.js; os restantes aparecem em
+// "Ver Todos os Projetos".
+const CAROUSEL_LIMIT = 10;
+const NARROW_CAROUSEL_QUERY = "(max-width: 1100px)";
 let projectsCurrentPage = 0;
+
+function projectsPerPage() {
+  return window.matchMedia && window.matchMedia(NARROW_CAROUSEL_QUERY).matches ? 4 : 5;
+}
+
+function projectsTotalPages() {
+  return Math.max(1, Math.ceil(Math.min(PROJECTS.length, CAROUSEL_LIMIT) / projectsPerPage()));
+}
 
 function renderProjects() {
   const grid = document.getElementById("projects-grid");
@@ -8,11 +20,12 @@ function renderProjects() {
 
   const lang = typeof getLang === "function" ? getLang() : "pt";
   const items = PROJECTS.slice(0, CAROUSEL_LIMIT);
-  const totalPages = Math.max(1, Math.ceil(items.length / PROJECTS_PER_PAGE));
+  const perPage = projectsPerPage();
+  const totalPages = projectsTotalPages();
   if (projectsCurrentPage > totalPages - 1) projectsCurrentPage = totalPages - 1;
 
-  const start = projectsCurrentPage * PROJECTS_PER_PAGE;
-  const pageItems = items.slice(start, start + PROJECTS_PER_PAGE);
+  const start = projectsCurrentPage * perPage;
+  const pageItems = items.slice(start, start + perPage);
 
   grid.innerHTML = pageItems.map((p) => `
     <article class="project-card">
@@ -57,8 +70,6 @@ function initProjectsCarousel() {
   const nextBtn = document.getElementById("projects-next");
   if (!prevBtn || !nextBtn || typeof PROJECTS === "undefined") return;
 
-  const totalPages = Math.max(1, Math.ceil(Math.min(PROJECTS.length, CAROUSEL_LIMIT) / PROJECTS_PER_PAGE));
-
   prevBtn.addEventListener("click", () => {
     if (projectsCurrentPage > 0) {
       projectsCurrentPage -= 1;
@@ -67,11 +78,23 @@ function initProjectsCarousel() {
   });
 
   nextBtn.addEventListener("click", () => {
-    if (projectsCurrentPage < totalPages - 1) {
+    if (projectsCurrentPage < projectsTotalPages() - 1) {
       projectsCurrentPage += 1;
       renderProjects();
     }
   });
+
+  // Ao passar a barreira dos 1100px (ex: rodar o tablet), o número de cartões por página muda:
+  // volta à primeira página e redesenha.
+  if (window.matchMedia) {
+    const query = window.matchMedia(NARROW_CAROUSEL_QUERY);
+    const onChange = () => {
+      projectsCurrentPage = 0;
+      renderProjects();
+    };
+    if (query.addEventListener) query.addEventListener("change", onChange);
+    else if (query.addListener) query.addListener(onChange);
+  }
 }
 
 function renderCertifications() {
@@ -117,7 +140,7 @@ function renderStatsBanner() {
 // Isto garante sempre uma janela justa a cada secção, mesmo secções curtas como
 // "Competências" ou "Recursos" — não depende da altura do ecrã nem da secção.
 //
-// "Contactar-me" é a exceção: não entra neste cálculo, só acende no fundo real da
+// "Contactos" é a exceção: não entra neste cálculo, só acende no fundo real da
 // página, como pedido.
 function initNavScrollSpy() {
   const navLinks = Array.from(document.querySelectorAll(".nav a[href^=\"#\"]"));

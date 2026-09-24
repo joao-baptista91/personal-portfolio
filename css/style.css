@@ -1259,14 +1259,14 @@ input:focus-visible,
   display: flex;
   align-items: center;
   gap: 16px;
-  max-width: 1312px;
+  max-width: 1560px;
   margin: 0 auto;
 }
 
 .projects-carousel .projects-grid {
   flex: 1;
-  max-width: 1200px;
-  grid-template-columns: repeat(4, 1fr);
+  max-width: 1460px;
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .carousel-arrow {
