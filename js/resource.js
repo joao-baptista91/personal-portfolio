@@ -34,7 +34,7 @@ function renderResourceDetail() {
     content.hidden = true;
     notFound.hidden = false;
     if (footer) footer.hidden = true;
-    document.title = lang === "en" ? "João Baptista — Resource not found" : "João Baptista — Recurso não encontrado";
+    document.title = lang === "en" ? "João Baptista - Resource not found" : "João Baptista - Recurso não encontrado";
     return;
   }
 
@@ -82,7 +82,7 @@ function renderResourceDetail() {
     if (updatedEl) updatedEl.textContent = resource.footerUpdated[lang] || resource.footerUpdated.pt;
   }
 
-  document.title = `${resource.title[lang] || resource.title.pt} — João Baptista`;
+  document.title = `${resource.title[lang] || resource.title.pt} - João Baptista`;
 }
 
 document.addEventListener("DOMContentLoaded", renderResourceDetail);

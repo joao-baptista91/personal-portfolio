@@ -18,7 +18,7 @@ const LANGUAGES = {
 
 const TRANSLATIONS = {
   pt: {
-    "meta.title": "João Baptista — Portfólio",
+    "meta.title": "João Baptista - Portfólio",
     "header.downloadCV": "Download CV",
     "nav.about": "Sobre mim",
     "nav.experience": "Experiência",
@@ -124,7 +124,7 @@ const TRANSLATIONS = {
     "footer.copyright": "© 2026 João Baptista. Todos os direitos reservados."
   },
   en: {
-    "meta.title": "João Baptista — Portfolio",
+    "meta.title": "João Baptista - Portfolio",
     "header.downloadCV": "Download CV",
     "nav.about": "About me",
     "nav.experience": "Experience",

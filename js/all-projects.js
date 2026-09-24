@@ -24,7 +24,7 @@ function renderAllProjects() {
     </article>
   `).join("");
 
-  document.title = lang === "en" ? "João Baptista — All Projects" : "João Baptista — Todos os Projetos";
+  document.title = lang === "en" ? "João Baptista - All Projects" : "João Baptista - Todos os Projetos";
 }
 
 document.addEventListener("DOMContentLoaded", renderAllProjects);

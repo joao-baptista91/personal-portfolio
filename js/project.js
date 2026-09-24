@@ -272,7 +272,7 @@ function renderProjectDetail() {
   if (!project) {
     content.hidden = true;
     notFound.hidden = false;
-    document.title = lang === "en" ? "João Baptista — Project not found" : "João Baptista — Projeto não encontrado";
+    document.title = lang === "en" ? "João Baptista - Project not found" : "João Baptista - Projeto não encontrado";
     return;
   }
 
@@ -325,7 +325,7 @@ function renderProjectDetail() {
 
   initProjectGallery(project);
 
-  document.title = `${project.title} — João Baptista`;
+  document.title = `${project.title} - João Baptista`;
 }
 
 document.addEventListener("DOMContentLoaded", renderProjectDetail);
