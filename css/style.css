@@ -2026,7 +2026,25 @@ input:focus-visible,
   color: var(--text-muted);
   font-size: 11px;
   line-height: 1.4;
-  max-width: 320px;
+}
+
+/* Nota de acessibilidade e preferências de cookies na mesma linha, por baixo do copyright,
+   para o lado direito do rodapé ter o mesmo peso visual do slogan à esquerda. O separador
+   só aparece quando o link dos cookies está visível (Analytics configurado). */
+.footer-legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4px 0;
+}
+
+.footer-legal-links .cookie-preferences-link:not([hidden])::before {
+  content: "·";
+  display: inline-block;
+  margin: 0 10px;
+  color: var(--text-muted);
+  text-decoration: none;
 }
 
 .accessibility-note a {
@@ -2199,6 +2217,9 @@ input:focus-visible,
   }
   .footer-legal {
     align-items: flex-start;
+  }
+  .footer-legal-links {
+    justify-content: flex-start;
   }
   .copyright,
   .accessibility-note {
