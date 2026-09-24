@@ -199,8 +199,8 @@ const PROJECTS = [
     tags: ["OutSystems ODC", "AI"],
     link: "https://personal-g9f0petr-dev.outsystems.app/MealPlanner/Login",
     demoNote: {
-      pt: "Nota: para explorar a aplicação a partir do portefólio, entra como convidado, através do botão \"Log in as Guest\" no ecrã de login.",
-      en: "Note: to explore the app from the portfolio, sign in as a guest using the \"Log in as Guest\" button on the login screen."
+      pt: "Nota: para explorar a aplicação a partir do portefólio, entra como convidado, através do botão \"Log in as Guest\" no ecrã de login. O primeiro pedido ao Agente de IA pode demorar mais tempo a responder.",
+      en: "Note: to explore the app from the portfolio, sign in as a guest using the \"Log in as Guest\" button on the login screen. The first request to the AI Agent may take longer to respond."
     },
     process: {
       problem: {
