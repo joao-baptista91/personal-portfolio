@@ -10,6 +10,17 @@
 // quando as funções são chamadas (depois de a página carregar), por isso a ordem entre este
 // ficheiro e o i18n.js não importa.
 
+// Projetos visíveis no site público. Os projetos com estado "planned" (Planeado) ficam
+// guardados em js/data.js e continuam editáveis no admin, mas não aparecem no carrossel, em
+// "Todos os Projetos" nem na página de detalhe. Para voltar a mostrá-los, basta mudar o estado
+// no admin (ex: para "Em desenvolvimento") ou retirar "planned" desta lista.
+const HIDDEN_PROJECT_STATUSES = ["planned"];
+
+function visibleProjects() {
+  if (typeof PROJECTS === "undefined") return [];
+  return PROJECTS.filter((p) => !HIDDEN_PROJECT_STATUSES.includes(p.status));
+}
+
 // Biblioteca de ícones disponíveis para as certificações. Cada entrada é o conteúdo interno
 // (paths/shapes) de um <svg viewBox="0 0 24 24">, no estilo "outline" usado em todo o site.
 // Para acrescentar um ícone novo, basta definir aqui uma chave nova com o path SVG: passa logo

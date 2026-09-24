@@ -1,6 +1,7 @@
 // Carrossel de projetos da página inicial: 5 cartões por página em ecrãs largos e 4 em ecrãs
 // mais estreitos (2 colunas x 2 linhas, abaixo de 1100px; no telemóvel ficam uns por baixo dos
-// outros). Mostra no máximo os 10 primeiros projetos de js/data.js; os restantes aparecem em
+// outros). Mostra no máximo os 10 primeiros projetos visíveis de js/data.js (os "Planeados" ficam
+// escondidos, ver visibleProjects() em js/render.js); os restantes aparecem em
 // "Ver Todos os Projetos".
 const CAROUSEL_LIMIT = 10;
 const NARROW_CAROUSEL_QUERY = "(max-width: 1100px)";
@@ -11,7 +12,7 @@ function projectsPerPage() {
 }
 
 function projectsTotalPages() {
-  return Math.max(1, Math.ceil(Math.min(PROJECTS.length, CAROUSEL_LIMIT) / projectsPerPage()));
+  return Math.max(1, Math.ceil(Math.min(visibleProjects().length, CAROUSEL_LIMIT) / projectsPerPage()));
 }
 
 function renderProjects() {
@@ -19,7 +20,7 @@ function renderProjects() {
   if (!grid || typeof PROJECTS === "undefined") return;
 
   const lang = typeof getLang === "function" ? getLang() : "pt";
-  const items = PROJECTS.slice(0, CAROUSEL_LIMIT);
+  const items = visibleProjects().slice(0, CAROUSEL_LIMIT);
   const perPage = projectsPerPage();
   const totalPages = projectsTotalPages();
   if (projectsCurrentPage > totalPages - 1) projectsCurrentPage = totalPages - 1;

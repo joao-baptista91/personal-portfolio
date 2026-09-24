@@ -4,7 +4,7 @@ function renderAllProjects() {
 
   const lang = typeof getLang === "function" ? getLang() : "pt";
 
-  grid.innerHTML = PROJECTS.map((p) => `
+  grid.innerHTML = visibleProjects().map((p) => `
     <article class="project-card">
       <div class="project-image">
         ${renderStatusTag(p)}

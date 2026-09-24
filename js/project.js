@@ -3,7 +3,7 @@ function getProjectFromUrl() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
   if (!id) return null;
-  return PROJECTS.find((p) => p.id === id) || null;
+  return visibleProjects().find((p) => p.id === id) || null;
 }
 
 let galleryKeydownHandler = null;
