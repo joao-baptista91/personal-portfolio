@@ -115,6 +115,50 @@
       </div>
     </section>
 
+    <section id="projects" class="projects">
+      <div class="container">
+        <h2 class="section-title">
+          <svg class="section-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/>
+          </svg>
+          <span data-i18n="projects.title">Projetos</span>
+        </h2>
+        <p class="section-subtitle" data-i18n="projects.subtitle">Uma seleção das aplicações que desenvolvi.</p>
+
+        <div class="projects-carousel">
+          <button id="projects-prev" class="carousel-arrow carousel-arrow-prev" type="button" aria-label="Anterior" title="Anterior" data-i18n-title="projects.prev">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+          </button>
+
+          <div id="projects-grid" class="projects-grid">
+            <!-- Os cartões de projeto são gerados a partir de js/data.js -->
+          </div>
+
+          <button id="projects-next" class="carousel-arrow carousel-arrow-next" type="button" aria-label="Seguinte" title="Seguinte" data-i18n-title="projects.next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </button>
+        </div>
+
+        <div id="projects-dots" class="projects-dots" aria-hidden="true"></div>
+
+        <div class="projects-cta">
+          <a href="all-projects.html" class="btn btn-outline">
+            <span data-i18n="projects.viewAll">Ver Todos os Projetos</span>
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <section id="about" class="about">
       <div class="container about-grid">
         <div class="about-photo">
@@ -237,21 +281,6 @@
       </div>
     </section>
 
-    <section id="continuous-education" class="continuous-education">
-      <div class="container">
-        <h2 class="section-title">
-          <svg class="section-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-          </svg>
-          <span data-i18n="continuedu.title">Formação Contínua</span>
-        </h2>
-        <p class="section-subtitle" data-i18n="continuedu.subtitle">Cursos que frequentei e participação na comunidade OutSystems, para continuar a expandir competências técnicas.</p>
-
-        <div class="continuedu-grid" id="continuedu-grid"></div>
-      </div>
-    </section>
-
     <section id="skills" class="skills">
       <div class="container">
         <h2 class="section-title">
@@ -347,47 +376,18 @@
       </div>
     </section>
 
-    <section id="projects" class="projects">
+    <section id="continuous-education" class="continuous-education">
       <div class="container">
         <h2 class="section-title">
           <svg class="section-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/>
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
           </svg>
-          <span data-i18n="projects.title">Projetos</span>
+          <span data-i18n="continuedu.title">Formação Contínua</span>
         </h2>
-        <p class="section-subtitle" data-i18n="projects.subtitle">Uma seleção das aplicações que desenvolvi.</p>
+        <p class="section-subtitle" data-i18n="continuedu.subtitle">Cursos que frequentei e participação na comunidade OutSystems, para continuar a expandir competências técnicas.</p>
 
-        <div class="projects-carousel">
-          <button id="projects-prev" class="carousel-arrow carousel-arrow-prev" type="button" aria-label="Anterior" title="Anterior" data-i18n-title="projects.prev">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <polyline points="15 18 9 12 15 6"/>
-            </svg>
-          </button>
-
-          <div id="projects-grid" class="projects-grid">
-            <!-- Os cartões de projeto são gerados a partir de js/data.js -->
-          </div>
-
-          <button id="projects-next" class="carousel-arrow carousel-arrow-next" type="button" aria-label="Seguinte" title="Seguinte" data-i18n-title="projects.next">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <polyline points="9 18 15 12 9 6"/>
-            </svg>
-          </button>
-        </div>
-
-        <div id="projects-dots" class="projects-dots" aria-hidden="true"></div>
-
-        <div class="projects-cta">
-          <a href="all-projects.html" class="btn btn-outline">
-            <span data-i18n="projects.viewAll">Ver Todos os Projetos</span>
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect x="3" y="3" width="7" height="7"/>
-              <rect x="14" y="3" width="7" height="7"/>
-              <rect x="14" y="14" width="7" height="7"/>
-              <rect x="3" y="14" width="7" height="7"/>
-            </svg>
-          </a>
-        </div>
+        <div class="continuedu-grid" id="continuedu-grid"></div>
       </div>
     </section>
 

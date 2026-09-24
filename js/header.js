@@ -20,11 +20,11 @@
 
 const NAV_ITEMS = [
   { hash: "home", i18n: null, label: "Home" },
+  { hash: "projects", i18n: "nav.projects", label: "Projetos" },
   { hash: "about", i18n: "nav.about", label: "Sobre mim" },
   { hash: "experience", i18n: "nav.experience", label: "Experiência" },
   { hash: "skills", i18n: "nav.skills", label: "Competências" },
   { hash: "certifications", i18n: "nav.certs", label: "Certificações" },
-  { hash: "projects", i18n: "nav.projects", label: "Projetos" },
   { hash: "resources-teaser", i18n: "nav.resources", label: "Recursos" },
   { hash: "contact", i18n: "nav.contact", label: "Contactos" }
 ];
