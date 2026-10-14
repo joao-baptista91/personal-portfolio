@@ -38,6 +38,46 @@
 
 const PROJECTS = [
   {
+    id: "solarroi-portugal",
+    title: "SolarROI Portugal",
+    description: {
+      pt: "Simulador de retorno de investimento em painéis solares para Portugal, com produção calculada a partir dos dados do PVGIS da Comissão Europeia.",
+      en: "Return-on-investment simulator for solar panels in Portugal, with production estimated from the European Commission's PVGIS data."
+    },
+    longDescription: {
+      pt: "<p>O SolarROI Portugal é uma aplicação web que ajuda quem pondera instalar painéis solares em casa a perceber se o investimento compensa. O utilizador indica os dados da sua instalação e a aplicação mostra o retorno ao longo da vida útil do sistema:</p>\n<ul>\n<li><strong>Parâmetros</strong>: região, potência, inclinação e orientação dos painéis, consumo anual e perfil de consumo, preços da eletricidade e da exportação, custo do sistema e vida útil.</li>\n<li><strong>Produção real</strong>: calculada a partir dos dados do PVGIS (Comissão Europeia), com um rendimento médio da região como plano alternativo quando o serviço não está disponível.</li>\n<li><strong>Resultados</strong>: produção anual, período de retorno, poupança líquida total e valor atual líquido (VAL), com gráfico do fluxo de caixa acumulado descontado e tabela ano a ano.</li>\n<li><strong>Exportação para PDF</strong> da simulação completa, para o utilizador a poder guardar, e uma página de metodologia com os pressupostos e as limitações.</li>\n</ul>",
+      en: "<p>SolarROI Portugal is a web application that helps homeowners considering solar panels understand whether the investment pays off. Users enter their installation details and the app shows the return over the system's lifespan:</p>\n<ul>\n<li><strong>Inputs</strong>: region, power, panel tilt and orientation, annual consumption and consumption profile, electricity and export prices, system cost and lifespan.</li>\n<li><strong>Real production</strong>: calculated from PVGIS data (European Commission), with an average regional yield as a fallback when the service is unavailable.</li>\n<li><strong>Results</strong>: annual production, payback period, total net savings and net present value (NPV), with a discounted cumulative cash flow chart and a year-by-year table.</li>\n<li><strong>PDF export</strong> of the full simulation so users can save it, plus a methodology page with the assumptions and limitations.</li>\n</ul>"
+    },
+    image: "assets/images/app-screenshots/solarroi-portugal/print-srp-0.png",
+    images: ["assets/images/app-screenshots/solarroi-portugal/print-srp-0.png", "assets/images/app-screenshots/solarroi-portugal/print-srp-1.png", "assets/images/app-screenshots/solarroi-portugal/print-srp-2.png"],
+    logo: "assets/images/app-logos/solarroi-portugal.png",
+    status: "done",
+    tags: ["OutSystems ODC", "REST"],
+    link: "https://personal-g9f0petr-dev.outsystems.app/SolarROIPortugal/Inicio",
+    process: {
+      problem: {
+        pt: "<p>Quem pondera instalar painéis solares em casa tem dificuldade em saber se o investimento compensa. Os orçamentos mostram o custo, mas não o retorno ao longo da vida útil, e as simulações gratuitas costumam esconder os pressupostos.</p>",
+        en: "<p>Homeowners considering solar panels struggle to know whether the investment pays off. Quotes show the cost, but not the return over the system's lifespan, and free simulators often hide their assumptions.</p>"
+      },
+      solution: {
+        pt: "<p>Um simulador que calcula a produção com dados reais do PVGIS, aplica os pressupostos financeiros do utilizador e mostra o retorno de forma transparente:</p>\n<ul>\n<li>Produção anual, período de retorno descontado, poupança líquida total e VAL;</li>\n<li>Gráfico do fluxo de caixa acumulado descontado e tabela ano a ano;</li>\n<li>Página de metodologia com pressupostos e limitações;</li>\n<li>Exportação da simulação completa para PDF.</li>\n</ul>",
+        en: "<p>A simulator that calculates production from real PVGIS data, applies the user's financial assumptions and presents the return transparently:</p>\n<ul>\n<li>Annual production, discounted payback period, total net savings and NPV;</li>\n<li>Discounted cumulative cash flow chart and year-by-year table;</li>\n<li>Methodology page with assumptions and limitations;</li>\n<li>Export of the full simulation to PDF.</li>\n</ul>"
+      },
+      database: {
+        pt: "<p>Os dados de apoio ao cálculo estão em entidades da aplicação: regiões (com coordenadas e rendimento de referência para o plano alternativo), perfis de consumo, orientações dos painéis e referências de preço de mercado por potência. A simulação em curso também é mantida numa entidade, o que permite validar e reutilizar os parâmetros em cada cálculo.</p>",
+        en: "<p>The data behind the calculation lives in application entities: regions (with coordinates and a reference yield for the fallback), consumption profiles, panel orientations and market price references by installed power. The simulation in progress is also kept in an entity, which allows the parameters to be validated and reused on every calculation.</p>"
+      },
+      challenges: {
+        pt: "<ul>\n<li>Integrar a API REST do PVGIS com tratamento de erros e um plano alternativo (rendimento médio da região) para que o simulador nunca fique inutilizável.</li>\n<li>Manter o cálculo coerente entre cartões, gráfico e tabela: o VAL e o período de retorno usam fluxos descontados, e o valor do último ano da tabela tem de coincidir com o VAL mostrado.</li>\n<li>Validar parâmetros no ecrã e no servidor (inclinação, orientação, perdas, coordenadas) antes de chamar o serviço externo.</li>\n<li>Exportar o ecrã completo para PDF no browser: o layout é refeito à largura da folha, por isso foi preciso ajustar o CSS, a largura de renderização e as quebras de página para o gráfico e a tabela saírem inteiros.</li>\n</ul>",
+        en: "<ul>\n<li>Integrating the PVGIS REST API with error handling and a fallback (average regional yield) so the simulator never becomes unusable.</li>\n<li>Keeping the calculation consistent across cards, chart and table: NPV and payback use discounted flows, and the last year of the table must match the NPV shown.</li>\n<li>Validating parameters on screen and on the server (tilt, orientation, losses, coordinates) before calling the external service.</li>\n<li>Exporting the full screen to PDF in the browser: the layout is rebuilt at the page width, so the CSS, render width and page breaks had to be tuned for the chart and table to come out whole.</li>\n</ul>"
+      },
+      learning: {
+        pt: "<p>Num simulador financeiro, a coerência dos números importa tanto como a interface: cada valor mostrado tem de poder ser confirmado noutro sítio do ecrã. Aprendi também a depender de serviços externos de forma defensiva, com validação antes da chamada e um plano alternativo quando falham.</p>",
+        en: "<p>In a financial simulator, the consistency of the numbers matters as much as the interface: every value shown has to be verifiable elsewhere on the screen. I also learned to rely on external services defensively, with validation before the call and a fallback when they fail.</p>"
+      }
+    }
+  },
+  {
     id: "fastdrop",
     title: "FastDrop",
     description: {
